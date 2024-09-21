@@ -54,3 +54,7 @@ func (s *server) CloseAllSessions(ctx context.Context, request *hsm.CloseAllSess
 
 	return &hsm.CloseAllSessionsResponse{ReturnValue: hsm.ReturnValue_OK}, nil
 }
+
+func (s *server) GetSessionInfo(ctx context.Context, request *hsm.GetSessionInfoRequest) (*hsm.GetSessionInfoResponse, error) {
+	return &hsm.GetSessionInfoResponse{ReturnValue: hsm.ReturnValue_OK}, nil
+}

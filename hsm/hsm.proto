@@ -11,6 +11,8 @@ service SessionManagement {
   rpc OpenSession(OpenSessionRequest)returns (OpenSessionResponse){}
   rpc CloseSession(CloseSessionRequest)returns (CloseSessionResponse){}
   rpc CloseAllSessions(CloseAllSessionsRequest)returns (CloseAllSessionsResponse){}
+  rpc GetSessionInfo(GetSessionInfoRequest)returns (GetSessionInfoResponse){}
+  rpc SessionCancel(SessionCancelRequest)returns(SessionCancelResponse){}
 }
 
 message OpenSessionRequest {
@@ -41,6 +43,43 @@ message CloseAllSessionsRequest {
 
 message CloseAllSessionsResponse {
   ReturnValue returnValue = 1;
+}
+
+message GetSessionInfoRequest {
+  uint64 sessionHandle = 1;
+}
+
+message GetSessionInfoResponse {
+  ReturnValue returnValue = 1;
+  GetSessionInfoData data = 2;
+}
+
+message GetSessionInfoData {
+  SessionInfo info = 1;
+}
+
+message SessionInfo {
+  uint64 slotId = 1;
+  SessionState state = 2;
+  uint64 flags = 3;
+
+  uint64 ulDeviceError = 4;
+}
+
+enum SessionState {
+  RO_PUBLIC_SESSION = 0;
+  RO_USER_FUNCTIONS = 1;
+  RW_PUBLIC_SESSION = 2;
+  RW_USER_FUNCTIONS = 3;
+  RW_SO_FUNCTIONS = 4;
+}
+
+message SessionCancelRequest {
+  uint64 sessionHandle = 1;
+}
+
+message SessionCancelResponse {
+
 }
 
 enum ReturnValue{

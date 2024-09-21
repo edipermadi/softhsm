@@ -22,6 +22,8 @@ const (
 	SessionManagement_OpenSession_FullMethodName      = "/hsm.SessionManagement/OpenSession"
 	SessionManagement_CloseSession_FullMethodName     = "/hsm.SessionManagement/CloseSession"
 	SessionManagement_CloseAllSessions_FullMethodName = "/hsm.SessionManagement/CloseAllSessions"
+	SessionManagement_GetSessionInfo_FullMethodName   = "/hsm.SessionManagement/GetSessionInfo"
+	SessionManagement_SessionCancel_FullMethodName    = "/hsm.SessionManagement/SessionCancel"
 )
 
 // SessionManagementClient is the client API for SessionManagement service.
@@ -31,6 +33,8 @@ type SessionManagementClient interface {
 	OpenSession(ctx context.Context, in *OpenSessionRequest, opts ...grpc.CallOption) (*OpenSessionResponse, error)
 	CloseSession(ctx context.Context, in *CloseSessionRequest, opts ...grpc.CallOption) (*CloseSessionResponse, error)
 	CloseAllSessions(ctx context.Context, in *CloseAllSessionsRequest, opts ...grpc.CallOption) (*CloseAllSessionsResponse, error)
+	GetSessionInfo(ctx context.Context, in *GetSessionInfoRequest, opts ...grpc.CallOption) (*GetSessionInfoResponse, error)
+	SessionCancel(ctx context.Context, in *SessionCancelRequest, opts ...grpc.CallOption) (*SessionCancelResponse, error)
 }
 
 type sessionManagementClient struct {
@@ -71,6 +75,26 @@ func (c *sessionManagementClient) CloseAllSessions(ctx context.Context, in *Clos
 	return out, nil
 }
 
+func (c *sessionManagementClient) GetSessionInfo(ctx context.Context, in *GetSessionInfoRequest, opts ...grpc.CallOption) (*GetSessionInfoResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetSessionInfoResponse)
+	err := c.cc.Invoke(ctx, SessionManagement_GetSessionInfo_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sessionManagementClient) SessionCancel(ctx context.Context, in *SessionCancelRequest, opts ...grpc.CallOption) (*SessionCancelResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SessionCancelResponse)
+	err := c.cc.Invoke(ctx, SessionManagement_SessionCancel_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SessionManagementServer is the server API for SessionManagement service.
 // All implementations must embed UnimplementedSessionManagementServer
 // for forward compatibility.
@@ -78,6 +102,8 @@ type SessionManagementServer interface {
 	OpenSession(context.Context, *OpenSessionRequest) (*OpenSessionResponse, error)
 	CloseSession(context.Context, *CloseSessionRequest) (*CloseSessionResponse, error)
 	CloseAllSessions(context.Context, *CloseAllSessionsRequest) (*CloseAllSessionsResponse, error)
+	GetSessionInfo(context.Context, *GetSessionInfoRequest) (*GetSessionInfoResponse, error)
+	SessionCancel(context.Context, *SessionCancelRequest) (*SessionCancelResponse, error)
 	mustEmbedUnimplementedSessionManagementServer()
 }
 
@@ -96,6 +122,12 @@ func (UnimplementedSessionManagementServer) CloseSession(context.Context, *Close
 }
 func (UnimplementedSessionManagementServer) CloseAllSessions(context.Context, *CloseAllSessionsRequest) (*CloseAllSessionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CloseAllSessions not implemented")
+}
+func (UnimplementedSessionManagementServer) GetSessionInfo(context.Context, *GetSessionInfoRequest) (*GetSessionInfoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSessionInfo not implemented")
+}
+func (UnimplementedSessionManagementServer) SessionCancel(context.Context, *SessionCancelRequest) (*SessionCancelResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SessionCancel not implemented")
 }
 func (UnimplementedSessionManagementServer) mustEmbedUnimplementedSessionManagementServer() {}
 func (UnimplementedSessionManagementServer) testEmbeddedByValue()                           {}
@@ -172,6 +204,42 @@ func _SessionManagement_CloseAllSessions_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SessionManagement_GetSessionInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetSessionInfoRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SessionManagementServer).GetSessionInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SessionManagement_GetSessionInfo_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SessionManagementServer).GetSessionInfo(ctx, req.(*GetSessionInfoRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SessionManagement_SessionCancel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SessionCancelRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SessionManagementServer).SessionCancel(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SessionManagement_SessionCancel_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SessionManagementServer).SessionCancel(ctx, req.(*SessionCancelRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // SessionManagement_ServiceDesc is the grpc.ServiceDesc for SessionManagement service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -190,6 +258,14 @@ var SessionManagement_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CloseAllSessions",
 			Handler:    _SessionManagement_CloseAllSessions_Handler,
+		},
+		{
+			MethodName: "GetSessionInfo",
+			Handler:    _SessionManagement_GetSessionInfo_Handler,
+		},
+		{
+			MethodName: "SessionCancel",
+			Handler:    _SessionManagement_SessionCancel_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

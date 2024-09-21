@@ -2,6 +2,8 @@ package sessionManagement_test
 
 import (
 	"context"
+	"encoding/asn1"
+	"encoding/hex"
 	"log"
 	"net"
 	"testing"
@@ -105,4 +107,16 @@ func TestServer_CloseAllSessions(t *testing.T) {
 		require.NoError(t, err)
 		require.Equal(t, hsm.ReturnValue_OK, response.GetReturnValue())
 	}
+}
+
+func TestEncodeASN1(t *testing.T) {
+	type Data struct {
+		ID   int64
+		Name string
+	}
+
+	data := Data{1, "edi"}
+	marshalled, err := asn1.Marshal(data)
+	require.NoError(t, err)
+	t.Logf("result = %s", hex.EncodeToString(marshalled))
 }
