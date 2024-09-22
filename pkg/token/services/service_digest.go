@@ -18,89 +18,118 @@ func (s *service) DigestInit(request *messages.DigestInitRequest) (*messages.Dig
 		return &messages.DigestInitResponse{ReturnValue: messages.ReturnValue_ARGUMENTS_BAD}, nil
 	}
 
+	session, found := s.sessions[request.SessionID]
+	if !found {
+		return &messages.DigestInitResponse{ReturnValue: messages.ReturnValue_SESSION_CLOSED}, nil
+	}
+
+	if session.Context != nil {
+		return &messages.DigestInitResponse{ReturnValue: messages.ReturnValue_SESSION_HANDLE_INVALID}, nil
+	}
+
 	mechanismType := request.Mechanism.Mechanism
 	switch mechanismType {
 	case messages.MechanismType_MD5:
-		s.sessions[request.SessionID] = &sessions.SessionDigest{
+		session.Context = &sessions.ContextDigest{
 			MechanismType: mechanismType,
 			Hash:          md5.New(),
 		}
+		s.sessions[request.SessionID] = session
+		return &messages.DigestInitResponse{ReturnValue: messages.ReturnValue_OK}, nil
 
 	case messages.MechanismType_SHA_1:
-		s.sessions[request.SessionID] = &sessions.SessionDigest{
+		session.Context = &sessions.ContextDigest{
 			MechanismType: mechanismType,
 			Hash:          sha1.New(),
 		}
+
+		s.sessions[request.SessionID] = session
 		return &messages.DigestInitResponse{ReturnValue: messages.ReturnValue_OK}, nil
 
 	case messages.MechanismType_RIPEMD160:
-		s.sessions[request.SessionID] = &sessions.SessionDigest{
+		session.Context = &sessions.ContextDigest{
 			MechanismType: mechanismType,
 			Hash:          ripemd160.New(),
 		}
+
+		s.sessions[request.SessionID] = session
 		return &messages.DigestInitResponse{ReturnValue: messages.ReturnValue_OK}, nil
 
 	case messages.MechanismType_SHA256:
-		s.sessions[request.SessionID] = &sessions.SessionDigest{
+		session.Context = &sessions.ContextDigest{
 			MechanismType: mechanismType,
 			Hash:          sha256.New(),
 		}
+
+		s.sessions[request.SessionID] = session
 		return &messages.DigestInitResponse{ReturnValue: messages.ReturnValue_OK}, nil
 
 	case messages.MechanismType_SHA224:
-		s.sessions[request.SessionID] = &sessions.SessionDigest{
+		session.Context = &sessions.ContextDigest{
 			MechanismType: mechanismType,
 			Hash:          sha256.New224(),
 		}
+
+		s.sessions[request.SessionID] = session
 		return &messages.DigestInitResponse{ReturnValue: messages.ReturnValue_OK}, nil
 
 	case messages.MechanismType_SHA384:
-		s.sessions[request.SessionID] = &sessions.SessionDigest{
+		session.Context = &sessions.ContextDigest{
 			MechanismType: mechanismType,
 			Hash:          sha512.New384(),
 		}
+
+		s.sessions[request.SessionID] = session
 		return &messages.DigestInitResponse{ReturnValue: messages.ReturnValue_OK}, nil
 
 	case messages.MechanismType_SHA512:
-		s.sessions[request.SessionID] = &sessions.SessionDigest{
+		session.Context = &sessions.ContextDigest{
 			MechanismType: mechanismType,
 			Hash:          sha512.New(),
 		}
+
+		s.sessions[request.SessionID] = session
 		return &messages.DigestInitResponse{ReturnValue: messages.ReturnValue_OK}, nil
 
 	case messages.MechanismType_SHA3_256:
-		s.sessions[request.SessionID] = &sessions.SessionDigest{
+		session.Context = &sessions.ContextDigest{
 			MechanismType: mechanismType,
 			Hash:          sha3.New256(),
 		}
+
+		s.sessions[request.SessionID] = session
 		return &messages.DigestInitResponse{ReturnValue: messages.ReturnValue_OK}, nil
 
 	case messages.MechanismType_SHA3_224:
-		s.sessions[request.SessionID] = &sessions.SessionDigest{
+		session.Context = &sessions.ContextDigest{
 			MechanismType: mechanismType,
 			Hash:          sha3.New224(),
 		}
+
+		s.sessions[request.SessionID] = session
 		return &messages.DigestInitResponse{ReturnValue: messages.ReturnValue_OK}, nil
 
 	case messages.MechanismType_SHA3_384:
-		s.sessions[request.SessionID] = &sessions.SessionDigest{
+		session.Context = &sessions.ContextDigest{
 			MechanismType: mechanismType,
 			Hash:          sha3.New384(),
 		}
+
+		s.sessions[request.SessionID] = session
 		return &messages.DigestInitResponse{ReturnValue: messages.ReturnValue_OK}, nil
 
 	case messages.MechanismType_SHA3_512:
-		s.sessions[request.SessionID] = &sessions.SessionDigest{
+		session.Context = &sessions.ContextDigest{
 			MechanismType: mechanismType,
 			Hash:          sha3.New512(),
 		}
+
+		s.sessions[request.SessionID] = session
 		return &messages.DigestInitResponse{ReturnValue: messages.ReturnValue_OK}, nil
 
 	default:
 		return &messages.DigestInitResponse{ReturnValue: messages.ReturnValue_MECHANISM_INVALID}, nil
 	}
-
-	return &messages.DigestInitResponse{ReturnValue: messages.ReturnValue_OK}, nil
 }
 
 func (s *service) Digest(request *messages.DigestRequest) (*messages.DigestResponse, error) {
@@ -109,11 +138,15 @@ func (s *service) Digest(request *messages.DigestRequest) (*messages.DigestRespo
 		return &messages.DigestResponse{ReturnValue: messages.ReturnValue_SESSION_CLOSED}, nil
 	}
 
-	if session.Type() != sessions.SessionTypeDigest {
+	if session.Context == nil {
 		return &messages.DigestResponse{ReturnValue: messages.ReturnValue_OPERATION_NOT_INITIALIZED}, nil
 	}
 
-	sessionDigest := session.(*sessions.SessionDigest)
+	if session.Context.Type() != sessions.ContextTypeDigest {
+		return &messages.DigestResponse{ReturnValue: messages.ReturnValue_OPERATION_NOT_INITIALIZED}, nil
+	}
+
+	sessionDigest := session.Context.(*sessions.ContextDigest)
 	_, err := sessionDigest.Hash.Write(request.Data)
 	if err != nil {
 		return nil, err
@@ -129,11 +162,15 @@ func (s *service) DigestUpdate(request *messages.DigestUpdateRequest) (*messages
 		return &messages.DigestUpdateResponse{ReturnValue: messages.ReturnValue_SESSION_CLOSED}, nil
 	}
 
-	if session.Type() != sessions.SessionTypeDigest {
+	if session.Context == nil {
 		return &messages.DigestUpdateResponse{ReturnValue: messages.ReturnValue_OPERATION_NOT_INITIALIZED}, nil
 	}
 
-	sessionDigest := session.(*sessions.SessionDigest)
+	if session.Context.Type() != sessions.ContextTypeDigest {
+		return &messages.DigestUpdateResponse{ReturnValue: messages.ReturnValue_OPERATION_NOT_INITIALIZED}, nil
+	}
+
+	sessionDigest := session.Context.(*sessions.ContextDigest)
 	_, err := sessionDigest.Hash.Write(request.Data)
 	if err != nil {
 		return nil, err
@@ -153,11 +190,15 @@ func (s *service) DigestFinal(request *messages.DigestFinalRequest) (*messages.D
 		return &messages.DigestFinalResponse{ReturnValue: messages.ReturnValue_SESSION_CLOSED}, nil
 	}
 
-	if session.Type() != sessions.SessionTypeDigest {
+	if session.Context == nil {
 		return &messages.DigestFinalResponse{ReturnValue: messages.ReturnValue_OPERATION_NOT_INITIALIZED}, nil
 	}
 
-	sessionDigest := session.(*sessions.SessionDigest)
+	if session.Context.Type() != sessions.ContextTypeDigest {
+		return &messages.DigestFinalResponse{ReturnValue: messages.ReturnValue_OPERATION_NOT_INITIALIZED}, nil
+	}
+
+	sessionDigest := session.Context.(*sessions.ContextDigest)
 	digest := sessionDigest.Hash.Sum(nil)
 
 	return &messages.DigestFinalResponse{ReturnValue: messages.ReturnValue_OK, Digest: digest}, nil

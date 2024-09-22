@@ -290,15 +290,19 @@ func TestService_Digest(t *testing.T) {
 		t.Run(tc.Title, func(t *testing.T) {
 			for _, tv := range tc.TestVectors {
 				svc := services.NewService()
+				openSessionResponse, err := svc.OpenSession(&messages.OpenSessionRequest{Flags: 0})
+				require.NoError(t, err)
+				sessionID := openSessionResponse.SessionID
+
 				initResponse, err := svc.DigestInit(&messages.DigestInitRequest{
-					SessionID: 1,
+					SessionID: sessionID,
 					Mechanism: tc.Mechanism,
 				})
 				require.NoError(t, err)
 				require.Equal(t, messages.ReturnValue_OK, initResponse.ReturnValue)
 
 				digestResponse, err := svc.Digest(&messages.DigestRequest{
-					SessionID: 1,
+					SessionID: sessionID,
 					Data:      []byte(tv.Message),
 				})
 				require.NoError(t, err)
@@ -588,8 +592,12 @@ func TestService_DigestUpdate(t *testing.T) {
 		t.Run(tc.Title, func(t *testing.T) {
 			for tvId, tv := range tc.TestVectors {
 				svc := services.NewService()
+				openSessionResponse, err := svc.OpenSession(&messages.OpenSessionRequest{Flags: 0})
+				require.NoError(t, err)
+				sessionID := openSessionResponse.SessionID
+
 				initResponse, err := svc.DigestInit(&messages.DigestInitRequest{
-					SessionID: 1,
+					SessionID: sessionID,
 					Mechanism: tc.Mechanism,
 				})
 				require.NoError(t, err)
@@ -598,7 +606,7 @@ func TestService_DigestUpdate(t *testing.T) {
 				chunks := chunkBy(tv.Message, 64)
 				for _, chunk := range chunks {
 					digestUpdateResponse, err := svc.DigestUpdate(&messages.DigestUpdateRequest{
-						SessionID: 1,
+						SessionID: sessionID,
 						Data:      []byte(chunk),
 					})
 					require.NoError(t, err)
@@ -606,7 +614,7 @@ func TestService_DigestUpdate(t *testing.T) {
 				}
 
 				digestFinalResponse, err := svc.DigestFinal(&messages.DigestFinalRequest{
-					SessionID: 1,
+					SessionID: sessionID,
 				})
 
 				require.Equal(t, strings.ReplaceAll(tv.Digest, " ", ""), hex.EncodeToString(digestFinalResponse.Digest), fmt.Sprintf("failed on test vector #%d", tvId+1))

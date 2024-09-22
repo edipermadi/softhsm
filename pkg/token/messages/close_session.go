@@ -1,6 +1,7 @@
 package messages
 
 type CloseSessionRequest struct {
+	SessionID int
 }
 
 func (d *CloseSessionRequest) Type() Type {

@@ -1,11 +1,15 @@
 package sessions
 
-type Session interface {
-	Type() SessionType
+type Session struct {
+	Flags   int32
+	Context Context
+}
+type Context interface {
+	Type() ContextType
 }
 
-type SessionType int
+type ContextType int
 
 const (
-	SessionTypeDigest = SessionType(1)
+	ContextTypeDigest = ContextType(1)
 )

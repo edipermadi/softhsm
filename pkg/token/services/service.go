@@ -3,6 +3,7 @@ package services
 import (
 	"github.com/edipermadi/softhsm/pkg/token/messages"
 	"github.com/edipermadi/softhsm/pkg/token/sessions"
+	"sync/atomic"
 )
 
 type Service interface {
@@ -121,5 +122,6 @@ func NewService() Service {
 }
 
 type service struct {
-	sessions map[int]sessions.Session
+	sessionSequence atomic.Int32
+	sessions        map[int]sessions.Session
 }

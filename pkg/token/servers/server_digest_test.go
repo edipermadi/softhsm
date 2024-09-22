@@ -293,15 +293,19 @@ func TestService_Digest(t *testing.T) {
 				svc := services.NewService()
 				srv := servers.NewServer(svc)
 
+				openSessionResponse, err := processSlipMsg(srv, &messages.OpenSessionRequest{Flags: 0})
+				require.NoError(t, err)
+				sessionID := openSessionResponse.(*messages.OpenSessionResponse).SessionID
+
 				initResponse, err := processSlipMsg(srv, &messages.DigestInitRequest{
-					SessionID: 1,
+					SessionID: sessionID,
 					Mechanism: tc.Mechanism,
 				})
 				require.NoError(t, err)
 				require.Equal(t, messages.ReturnValue_OK, initResponse.(*messages.DigestInitResponse).ReturnValue)
 
 				digestResponse, err := processSlipMsg(srv, &messages.DigestRequest{
-					SessionID: 1,
+					SessionID: sessionID,
 					Data:      []byte(tv.Message),
 				})
 				require.NoError(t, err)
@@ -592,8 +596,12 @@ func TestService_DigestUpdate(t *testing.T) {
 			for tvId, tv := range tc.TestVectors {
 				svc := services.NewService()
 				srv := servers.NewServer(svc)
+				openSessionResponse, err := processSlipMsg(srv, &messages.OpenSessionRequest{Flags: 0})
+				require.NoError(t, err)
+				sessionID := openSessionResponse.(*messages.OpenSessionResponse).SessionID
+
 				initResponse, err := processSlipMsg(srv, &messages.DigestInitRequest{
-					SessionID: 1,
+					SessionID: sessionID,
 					Mechanism: tc.Mechanism,
 				})
 				require.NoError(t, err)
@@ -602,7 +610,7 @@ func TestService_DigestUpdate(t *testing.T) {
 				chunks := chunkBy(tv.Message, 64)
 				for _, chunk := range chunks {
 					digestUpdateResponse, err := processSlipMsg(srv, &messages.DigestUpdateRequest{
-						SessionID: 1,
+						SessionID: sessionID,
 						Data:      []byte(chunk),
 					})
 					require.NoError(t, err)
@@ -610,7 +618,7 @@ func TestService_DigestUpdate(t *testing.T) {
 				}
 
 				digestFinalResponse, err := processSlipMsg(srv, &messages.DigestFinalRequest{
-					SessionID: 1,
+					SessionID: sessionID,
 				})
 
 				require.Equal(t, strings.ReplaceAll(tv.Digest, " ", ""), hex.EncodeToString(digestFinalResponse.(*messages.DigestFinalResponse).Digest), fmt.Sprintf("failed on test vector #%d", tvId+1))

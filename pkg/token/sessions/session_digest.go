@@ -6,12 +6,12 @@ import (
 	"github.com/edipermadi/softhsm/pkg/token/messages"
 )
 
-type SessionDigest struct {
+type ContextDigest struct {
 	MechanismType messages.MechanismType
 	Hash          hash.Hash
 	DigestSize    int // digest size
 }
 
-func (s *SessionDigest) Type() SessionType {
-	return SessionTypeDigest
+func (s *ContextDigest) Type() ContextType {
+	return ContextTypeDigest
 }

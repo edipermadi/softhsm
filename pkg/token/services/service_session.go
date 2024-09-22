@@ -3,21 +3,38 @@ package services
 import (
 	"errors"
 	"github.com/edipermadi/softhsm/pkg/token/messages"
+	"github.com/edipermadi/softhsm/pkg/token/sessions"
 )
 
 func (s *service) OpenSession(request *messages.OpenSessionRequest) (*messages.OpenSessionResponse, error) {
-	// TODO add implementation
-	return nil, errors.New("not implemented")
+	sessionID := int(s.sessionSequence.Add(1))
+	s.sessions[sessionID] = sessions.Session{Flags: request.Flags}
+	return &messages.OpenSessionResponse{
+		ReturnValue: messages.ReturnValue_OK,
+		SessionID:   sessionID,
+	}, nil
 }
 
 func (s *service) CloseSession(request *messages.CloseSessionRequest) (*messages.CloseSessionResponse, error) {
-	// TODO add implementation
-	return nil, errors.New("not implemented")
+	if _, found := s.sessions[request.SessionID]; !found {
+		return &messages.CloseSessionResponse{ReturnValue: messages.ReturnValue_SESSION_CLOSED}, nil
+	}
+
+	delete(s.sessions, request.SessionID)
+
+	return &messages.CloseSessionResponse{
+		ReturnValue: messages.ReturnValue_OK,
+	}, nil
 }
 
 func (s *service) CloseAllSessions(request *messages.CloseAllSessionsRequest) (*messages.CloseAllSessionsResponse, error) {
-	// TODO add implementation
-	return nil, errors.New("not implemented")
+	for sessionID := range s.sessions {
+		delete(s.sessions, sessionID)
+	}
+
+	return &messages.CloseAllSessionsResponse{
+		ReturnValue: messages.ReturnValue_OK,
+	}, nil
 }
 
 func (s *service) GetSessionInfo(request *messages.GetSessionInfoRequest) (*messages.GetSessionInfoResponse, error) {

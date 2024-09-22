@@ -1,6 +1,7 @@
 package messages
 
 type OpenSessionRequest struct {
+	Flags int32
 }
 
 func (d *OpenSessionRequest) Type() Type {
@@ -18,6 +19,7 @@ func (d *OpenSessionRequest) Wrap() WrappedOpenSessionRequest {
 
 type OpenSessionResponse struct {
 	ReturnValue ReturnValue
+	SessionID   int
 }
 
 func (d *OpenSessionResponse) Type() Type {
