@@ -5,6 +5,7 @@ import (
 	"crypto/sha1"
 	"crypto/sha256"
 	"crypto/sha512"
+	"errors"
 
 	"github.com/edipermadi/softhsm/pkg/token/messages"
 	"github.com/edipermadi/softhsm/pkg/token/sessions"
@@ -139,6 +140,11 @@ func (s *service) DigestUpdate(request *messages.DigestUpdateRequest) (*messages
 	}
 
 	return &messages.DigestUpdateResponse{ReturnValue: messages.ReturnValue_OK}, nil
+}
+
+func (s *service) DigestKey(request *messages.DigestKeyRequest) (*messages.DigestKeyResponse, error) {
+	// TODO add implementation
+	return nil, errors.New("not implemented")
 }
 
 func (s *service) DigestFinal(request *messages.DigestFinalRequest) (*messages.DigestFinalResponse, error) {
