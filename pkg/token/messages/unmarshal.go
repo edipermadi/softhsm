@@ -59,6 +59,20 @@ func Unmarshal(bytes []byte) (Message, error) {
 		}
 		return &decoded.Message, nil
 
+	case TypeDigestKeyRequest:
+		var decoded WrappedDigestKeyRequest
+		if _, err = asn1.Unmarshal(bytes, &decoded); err != nil {
+			return nil, err
+		}
+		return &decoded.Message, nil
+
+	case TypeDigestKeyResponse:
+		var decoded WrappedDigestKeyResponse
+		if _, err = asn1.Unmarshal(bytes, &decoded); err != nil {
+			return nil, err
+		}
+		return &decoded.Message, nil
+
 	case TypeDigestFinalRequest:
 		var decoded WrappedDigestFinalRequest
 		if _, err = asn1.Unmarshal(bytes, &decoded); err != nil {

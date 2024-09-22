@@ -25,6 +25,12 @@ func Marshall(message Message) ([]byte, error) {
 	case TypeDigestUpdateResponse:
 		return asn1.Marshal(message.(*DigestUpdateResponse).Wrap())
 
+	case TypeDigestKeyRequest:
+		return asn1.Marshal(message.(*DigestKeyRequest).Wrap())
+
+	case TypeDigestKeyResponse:
+		return asn1.Marshal(message.(*DigestKeyResponse).Wrap())
+
 	case TypeDigestFinalRequest:
 		return asn1.Marshal(message.(*DigestFinalRequest).Wrap())
 

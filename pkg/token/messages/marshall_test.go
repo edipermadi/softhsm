@@ -25,14 +25,14 @@ func TestMarshall(t *testing.T) {
 					Parameter: messages.MechanismParameter{SymmetricKey: make([]byte, 0)},
 				},
 			},
-			Expected: "30150201013010020101300b0202022030050400020100",
+			Expected: "30150201693010020101300b0202022030050400020100",
 		},
 		{
 			Title: "DigestInitResponse",
 			Given: &messages.DigestInitResponse{
 				ReturnValue: messages.ReturnValue_OK,
 			},
-			Expected: "30080201023003020100",
+			Expected: "300802016a3003020100",
 		},
 		{
 			Title: "DigestRequest",
@@ -40,7 +40,7 @@ func TestMarshall(t *testing.T) {
 				SessionID: 1,
 				Data:      []byte{0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef},
 			},
-			Expected: "3012020103300d02010104080123456789abcdef",
+			Expected: "301202016b300d02010104080123456789abcdef",
 		},
 		{
 			Title: "DigestResponse",
@@ -48,7 +48,7 @@ func TestMarshall(t *testing.T) {
 				ReturnValue: messages.ReturnValue_OK,
 				Digest:      []byte{0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef},
 			},
-			Expected: "3012020104300d02010004080123456789abcdef",
+			Expected: "301202016c300d02010004080123456789abcdef",
 		},
 		{
 			Title: "DigestUpdateRequest",
@@ -56,21 +56,21 @@ func TestMarshall(t *testing.T) {
 				SessionID: 1,
 				Data:      []byte{0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef},
 			},
-			Expected: "3012020105300d02010104080123456789abcdef",
+			Expected: "301202016d300d02010104080123456789abcdef",
 		},
 		{
 			Title: "DigestUpdateResponse",
 			Given: &messages.DigestUpdateResponse{
 				ReturnValue: messages.ReturnValue_OK,
 			},
-			Expected: "30080201063003020100",
+			Expected: "300802016e3003020100",
 		},
 		{
 			Title: "DigestFinalRequest",
 			Given: &messages.DigestFinalRequest{
 				SessionID: 1,
 			},
-			Expected: "30080201073003020101",
+			Expected: "30080201713003020101",
 		},
 		{
 			Title: "DigestFinalResponse",
@@ -78,7 +78,7 @@ func TestMarshall(t *testing.T) {
 				ReturnValue: messages.ReturnValue_OK,
 				Digest:      []byte{0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef},
 			},
-			Expected: "3012020108300d02010004080123456789abcdef",
+			Expected: "3012020172300d02010004080123456789abcdef",
 		},
 	}
 
