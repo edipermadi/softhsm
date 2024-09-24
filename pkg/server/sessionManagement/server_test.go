@@ -8,20 +8,20 @@ import (
 	"net"
 	"testing"
 
-	"github.com/edipermadi/softhsm/pkg/hsm"
 	"github.com/edipermadi/softhsm/pkg/server/sessionManagement"
+	"github.com/edipermadi/softhsm/pkg/transport/pb"
 	"github.com/stretchr/testify/require"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/test/bufconn"
 )
 
-func server(ctx context.Context) (hsm.SessionManagementClient, func()) {
+func server(ctx context.Context) (pb.SessionManagementClient, func()) {
 	buffer := 101024 * 1024
 	lis := bufconn.Listen(buffer)
 
 	baseServer := grpc.NewServer()
-	hsm.RegisterSessionManagementServer(baseServer, sessionManagement.NewServer())
+	pb.RegisterSessionManagementServer(baseServer, sessionManagement.NewServer())
 	go func() {
 		if err := baseServer.Serve(lis); err != nil {
 			log.Printf("error serving server: %v", err)
@@ -44,7 +44,7 @@ func server(ctx context.Context) (hsm.SessionManagementClient, func()) {
 		baseServer.Stop()
 	}
 
-	client := hsm.NewSessionManagementClient(conn)
+	client := pb.NewSessionManagementClient(conn)
 
 	return client, closer
 }
@@ -55,12 +55,12 @@ func TestServer_OpenSession(t *testing.T) {
 	defer closer()
 
 	for i := uint64(1); i <= uint64(10); i++ {
-		response, err := client.OpenSession(ctx, &hsm.OpenSessionRequest{
+		response, err := client.OpenSession(ctx, &pb.OpenSessionRequest{
 			SlotId: 1,
 			Flags:  2,
 		})
 		require.NoError(t, err)
-		require.Equal(t, hsm.ReturnValue_OK, response.GetReturnValue())
+		require.Equal(t, pb.ReturnValue_OK, response.GetReturnValue())
 		require.Equal(t, i, response.Data.SessionHandle)
 	}
 }
@@ -71,19 +71,19 @@ func TestServer_CloseSession(t *testing.T) {
 	defer closer()
 
 	{
-		response, err := client.OpenSession(ctx, &hsm.OpenSessionRequest{
+		response, err := client.OpenSession(ctx, &pb.OpenSessionRequest{
 			SlotId: 1,
 			Flags:  2,
 		})
 		require.NoError(t, err)
-		require.Equal(t, hsm.ReturnValue_OK, response.GetReturnValue())
+		require.Equal(t, pb.ReturnValue_OK, response.GetReturnValue())
 		require.Equal(t, uint64(1), response.Data.SessionHandle)
 	}
 
 	{
-		response, err := client.CloseSession(ctx, &hsm.CloseSessionRequest{SessionHandle: uint64(1)})
+		response, err := client.CloseSession(ctx, &pb.CloseSessionRequest{SessionHandle: uint64(1)})
 		require.NoError(t, err)
-		require.Equal(t, hsm.ReturnValue_OK, response.GetReturnValue())
+		require.Equal(t, pb.ReturnValue_OK, response.GetReturnValue())
 	}
 }
 
@@ -93,19 +93,19 @@ func TestServer_CloseAllSessions(t *testing.T) {
 	defer closer()
 
 	for i := uint64(1); i <= uint64(10); i++ {
-		response, err := client.OpenSession(ctx, &hsm.OpenSessionRequest{
+		response, err := client.OpenSession(ctx, &pb.OpenSessionRequest{
 			SlotId: 1,
 			Flags:  2,
 		})
 		require.NoError(t, err)
-		require.Equal(t, hsm.ReturnValue_OK, response.GetReturnValue())
+		require.Equal(t, pb.ReturnValue_OK, response.GetReturnValue())
 		require.Equal(t, i, response.Data.SessionHandle)
 	}
 
 	{
-		response, err := client.CloseAllSessions(ctx, &hsm.CloseAllSessionsRequest{SlotId: uint64(1)})
+		response, err := client.CloseAllSessions(ctx, &pb.CloseAllSessionsRequest{SlotId: uint64(1)})
 		require.NoError(t, err)
-		require.Equal(t, hsm.ReturnValue_OK, response.GetReturnValue())
+		require.Equal(t, pb.ReturnValue_OK, response.GetReturnValue())
 	}
 }
 

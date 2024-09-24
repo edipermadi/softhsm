@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-option go_package = "github.com/edipermadi/softhsm/pkg/hsm";
+option go_package = "github.com/edipermadi/softhsm/pkg/transport/pb";
 option java_multiple_files = true;
 option java_package = "com.github.edipermadi.softhsm.hsm";
 option java_outer_classname = "HSMProto";
 
-package hsm;
+package pb;
 
 service SessionManagement {
   rpc Initialize(InitializeRequest)returns(InitializeResponse){}

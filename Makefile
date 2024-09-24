@@ -10,9 +10,9 @@ test: generate
 	$(GO) test -v ./...
 
 .PHONY: generate
-generate: hsm/hsm.proto
-	PATH=${PATH}:"${GOPATH}/bin" protoc --go_out=pkg --go_opt=paths=source_relative \
-    	--go-grpc_out=pkg --go-grpc_opt=paths=source_relative \
+generate: pb/pkcs11.proto
+	PATH=${PATH}:"${GOPATH}/bin" protoc --go_out=pkg/transport --go_opt=paths=source_relative \
+    	--go-grpc_out=pkg/transport --go-grpc_opt=paths=source_relative \
     	$<
 
 .PHONY: flash-maixbit

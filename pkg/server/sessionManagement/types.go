@@ -1,6 +1,6 @@
 package sessionManagement
 
-import "github.com/edipermadi/softhsm/pkg/hsm"
+import "github.com/edipermadi/softhsm/pkg/transport/pb"
 
 type session struct {
 	sessionId uint64
@@ -8,6 +8,6 @@ type session struct {
 	flags     uint64
 }
 
-func makeSession(id uint64, req *hsm.OpenSessionRequest) session {
+func makeSession(id uint64, req *pb.OpenSessionRequest) session {
 	return session{sessionId: id, slotId: req.SlotId, flags: req.Flags}
 }
