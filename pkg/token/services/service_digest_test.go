@@ -8,6 +8,7 @@ import (
 
 	"github.com/edipermadi/softhsm/pkg/token/messages"
 	"github.com/edipermadi/softhsm/pkg/token/services"
+	"github.com/edipermadi/softhsm/pkg/token/users"
 	"github.com/stretchr/testify/require"
 )
 
@@ -289,17 +290,28 @@ func TestService_Digest(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.Title, func(t *testing.T) {
 			for _, tv := range tc.TestVectors {
-				svc := services.NewService()
+				userService, err := users.NewService()
+				require.NoError(t, err)
+
+				svc := services.NewService(userService)
 				openSessionResponse, err := svc.OpenSession(&messages.OpenSessionRequest{Flags: 0})
 				require.NoError(t, err)
 				sessionID := openSessionResponse.SessionID
 
-				initResponse, err := svc.DigestInit(&messages.DigestInitRequest{
+				loginResponse, err := svc.Login(&messages.LoginRequest{
+					SessionID: sessionID,
+					UserType:  users.TypeUser,
+					Pin:       []byte("password"),
+				})
+				require.NoError(t, err)
+				require.Equal(t, messages.ReturnValue_OK, loginResponse.ReturnValue)
+
+				digestInitResponse, err := svc.DigestInit(&messages.DigestInitRequest{
 					SessionID: sessionID,
 					Mechanism: tc.Mechanism,
 				})
 				require.NoError(t, err)
-				require.Equal(t, messages.ReturnValue_OK, initResponse.ReturnValue)
+				require.Equal(t, messages.ReturnValue_OK, digestInitResponse.ReturnValue)
 
 				digestResponse, err := svc.Digest(&messages.DigestRequest{
 					SessionID: sessionID,
@@ -591,17 +603,29 @@ func TestService_DigestUpdate(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.Title, func(t *testing.T) {
 			for tvId, tv := range tc.TestVectors {
-				svc := services.NewService()
+				userService, err := users.NewService()
+				require.NoError(t, err)
+
+				svc := services.NewService(userService)
 				openSessionResponse, err := svc.OpenSession(&messages.OpenSessionRequest{Flags: 0})
 				require.NoError(t, err)
+				require.Equal(t, messages.ReturnValue_OK, openSessionResponse.ReturnValue)
 				sessionID := openSessionResponse.SessionID
 
-				initResponse, err := svc.DigestInit(&messages.DigestInitRequest{
+				loginResponse, err := svc.Login(&messages.LoginRequest{
+					SessionID: sessionID,
+					UserType:  users.TypeUser,
+					Pin:       []byte("password"),
+				})
+				require.NoError(t, err)
+				require.Equal(t, messages.ReturnValue_OK, loginResponse.ReturnValue)
+
+				digestInitResponse, err := svc.DigestInit(&messages.DigestInitRequest{
 					SessionID: sessionID,
 					Mechanism: tc.Mechanism,
 				})
 				require.NoError(t, err)
-				require.Equal(t, messages.ReturnValue_OK, initResponse.ReturnValue)
+				require.Equal(t, messages.ReturnValue_OK, digestInitResponse.ReturnValue)
 
 				chunks := chunkBy(tv.Message, 64)
 				for _, chunk := range chunks {
@@ -617,6 +641,8 @@ func TestService_DigestUpdate(t *testing.T) {
 					SessionID: sessionID,
 				})
 
+				require.NoError(t, err)
+				require.Equal(t, messages.ReturnValue_OK, digestFinalResponse.ReturnValue)
 				require.Equal(t, strings.ReplaceAll(tv.Digest, " ", ""), hex.EncodeToString(digestFinalResponse.Digest), fmt.Sprintf("failed on test vector #%d", tvId+1))
 			}
 		})

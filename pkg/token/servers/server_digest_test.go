@@ -9,6 +9,7 @@ import (
 	"github.com/edipermadi/softhsm/pkg/token/messages"
 	"github.com/edipermadi/softhsm/pkg/token/servers"
 	"github.com/edipermadi/softhsm/pkg/token/services"
+	"github.com/edipermadi/softhsm/pkg/token/users"
 	"github.com/stretchr/testify/require"
 )
 
@@ -290,12 +291,24 @@ func TestService_Digest(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.Title, func(t *testing.T) {
 			for _, tv := range tc.TestVectors {
-				svc := services.NewService()
+				userService, err := users.NewService()
+				require.NoError(t, err)
+
+				svc := services.NewService(userService)
 				srv := servers.NewServer(svc)
 
 				openSessionResponse, err := processSlipMsg(srv, &messages.OpenSessionRequest{Flags: 0})
 				require.NoError(t, err)
+				require.Equal(t, messages.ReturnValue_OK, openSessionResponse.(*messages.OpenSessionResponse).ReturnValue)
 				sessionID := openSessionResponse.(*messages.OpenSessionResponse).SessionID
+
+				loginResponse, err := processSlipMsg(srv, &messages.LoginRequest{
+					SessionID: sessionID,
+					UserType:  users.TypeUser,
+					Pin:       []byte("password"),
+				})
+				require.NoError(t, err)
+				require.Equal(t, messages.ReturnValue_OK, loginResponse.(*messages.LoginResponse).ReturnValue)
 
 				initResponse, err := processSlipMsg(srv, &messages.DigestInitRequest{
 					SessionID: sessionID,
@@ -594,18 +607,30 @@ func TestService_DigestUpdate(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.Title, func(t *testing.T) {
 			for tvId, tv := range tc.TestVectors {
-				svc := services.NewService()
+				userService, err := users.NewService()
+				require.NoError(t, err)
+
+				svc := services.NewService(userService)
 				srv := servers.NewServer(svc)
 				openSessionResponse, err := processSlipMsg(srv, &messages.OpenSessionRequest{Flags: 0})
 				require.NoError(t, err)
+				require.Equal(t, messages.ReturnValue_OK, openSessionResponse.(*messages.OpenSessionResponse).ReturnValue)
 				sessionID := openSessionResponse.(*messages.OpenSessionResponse).SessionID
 
-				initResponse, err := processSlipMsg(srv, &messages.DigestInitRequest{
+				loginResponse, err := processSlipMsg(srv, &messages.LoginRequest{
+					SessionID: sessionID,
+					UserType:  users.TypeUser,
+					Pin:       []byte("password"),
+				})
+				require.NoError(t, err)
+				require.Equal(t, messages.ReturnValue_OK, loginResponse.(*messages.LoginResponse).ReturnValue)
+
+				digestInitResponse, err := processSlipMsg(srv, &messages.DigestInitRequest{
 					SessionID: sessionID,
 					Mechanism: tc.Mechanism,
 				})
 				require.NoError(t, err)
-				require.Equal(t, messages.ReturnValue_OK, initResponse.(*messages.DigestInitResponse).ReturnValue)
+				require.Equal(t, messages.ReturnValue_OK, digestInitResponse.(*messages.DigestInitResponse).ReturnValue)
 
 				chunks := chunkBy(tv.Message, 64)
 				for _, chunk := range chunks {
@@ -621,6 +646,8 @@ func TestService_DigestUpdate(t *testing.T) {
 					SessionID: sessionID,
 				})
 
+				require.NoError(t, err)
+				require.Equal(t, messages.ReturnValue_OK, digestFinalResponse.(*messages.DigestFinalResponse).ReturnValue)
 				require.Equal(t, strings.ReplaceAll(tv.Digest, " ", ""), hex.EncodeToString(digestFinalResponse.(*messages.DigestFinalResponse).Digest), fmt.Sprintf("failed on test vector #%d", tvId+1))
 			}
 		})

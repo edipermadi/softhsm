@@ -3,6 +3,8 @@ package services
 import (
 	"github.com/edipermadi/softhsm/pkg/token/messages"
 	"github.com/edipermadi/softhsm/pkg/token/sessions"
+	"github.com/edipermadi/softhsm/pkg/token/users"
+	"sync"
 	"sync/atomic"
 )
 
@@ -117,11 +119,16 @@ type Service interface {
 	CancelFunction(request *messages.CancelFunctionRequest) (*messages.CancelFunctionResponse, error)
 }
 
-func NewService() Service {
-	return &service{sessions: make(map[int]sessions.Session)}
+func NewService(userService users.Service) Service {
+	return &service{
+		sessions:    make(map[int]sessions.Session),
+		userService: userService,
+	}
 }
 
 type service struct {
 	sessionSequence atomic.Int32
 	sessions        map[int]sessions.Session
+	sessionsMutex   sync.Mutex
+	userService     users.Service
 }

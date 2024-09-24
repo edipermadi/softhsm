@@ -8,12 +8,142 @@ option java_outer_classname = "HSMProto";
 package hsm;
 
 service SessionManagement {
+  rpc Initialize(InitializeRequest)returns(InitializeResponse){}
+  rpc Finalize(FinalizeRequest)returns(FinalizeResponse){}
+  rpc GetInfo(GetInfoRequest)returns(GetInfoResponse){}
+  rpc GetFunctionList(GetFunctionListRequest)returns(GetFunctionListResponse){}
+  rpc GetInterfaceList(GetInterfaceListRequest)returns(GetInterfaceListResponse){}
+  rpc GetInterface(GetInterfaceRequest)returns(GetInterfaceResponse){}
+
+  rpc GetSlotList(GetSlotListRequest)returns (GetSlotListResponse){}
+  rpc GetSlotInfo(GetSlotInfoRequest)returns (GetSlotInfoResponse){}
+  rpc GetTokenInfo(GetTokenInfoRequest)returns (GetTokenInfoResponse){}
+  rpc WaitForSlotEvent(WaitForSlotEventRequest)returns (WaitForSlotEventResponse){}
+  rpc GetMechanismList(GetMechanismListRequest)returns (GetMechanismListResponse){}
+  rpc GetMechanismInfo(GetMechanismInfoRequest)returns (GetMechanismInfoResponse){}
+  rpc InitToken(InitTokenRequest)returns (InitTokenResponse){}
+  rpc InitPIN(InitPINRequest)returns (InitPINResponse){}
+  rpc SetPIN(SetPINRequest)returns (SetPINResponse){}
+
   rpc OpenSession(OpenSessionRequest)returns (OpenSessionResponse){}
   rpc CloseSession(CloseSessionRequest)returns (CloseSessionResponse){}
   rpc CloseAllSessions(CloseAllSessionsRequest)returns (CloseAllSessionsResponse){}
   rpc GetSessionInfo(GetSessionInfoRequest)returns (GetSessionInfoResponse){}
   rpc SessionCancel(SessionCancelRequest)returns(SessionCancelResponse){}
+
+  rpc CreateObject(CreateObjectRequest)returns(CreateObjectResponse){}
+  rpc CopyObject(CopyObjectRequest)returns(CopyObjectResponse){}
+  rpc DestroyObject(DestroyObjectRequest)returns(DestroyObjectResponse){}
+  rpc GetObjectSize(GetObjectSizeRequest)returns(GetObjectSizeResponse){}
+  rpc GetAttributeValue(GetAttributeValueRequest)returns(GetAttributeValueResponse){}
+  rpc SetAttributeValue(SetAttributeValueRequest)returns(SetAttributeValueResponse){}
+  rpc FindObjectsInit(FindObjectsInitRequest)returns(FindObjectsInitResponse){}
+  rpc FindObjects(FindObjectsRequest)returns(FindObjectsResponse){}
+  rpc FindObjectsFinal(FindObjectsFinalRequest)returns(FindObjectsFinalResponse){}
+
+  rpc EncryptInit(EncryptInitRequest) returns(EncryptInitResponse){}
+  rpc Encrypt(EncryptRequest) returns(EncryptResponse){}
+  rpc EncryptUpdate(EncryptUpdateRequest) returns(EncryptUpdateResponse){}
+  rpc EncryptFinal(EncryptFinalRequest) returns(EncryptFinalResponse){}
+
+  rpc EncryptMessageInit(EncryptMessageInitRequest)returns(EncryptMessageInitResponse){}
+  rpc EncryptMessage(EncryptMessageRequest)returns(EncryptMessageResponse){}
+  rpc EncryptMessageBegin(EncryptMessageBeginRequest)returns(EncryptMessageBeginResponse){}
+  rpc EncryptMessageNext(EncryptMessageNextRequest)returns(EncryptMessageNextResponse){}
+  rpc EncryptMessageFinal(EncryptMessageFinalRequest)returns(EncryptMessageFinalResponse){}
+
+  rpc DecryptInit(DecryptInitRequest)returns(DecryptInitResponse){}
+  rpc Decrypt(DecryptRequest)returns(DecryptResponse){}
+  rpc DecryptUpdate(DecryptUpdateRequest)returns(DecryptUpdateResponse){}
+  rpc DecryptFinal(DecryptFinalRequest)returns(DecryptFinalResponse){}
+
+  rpc DecryptMessageInit(DecryptMessageInitRequest)returns(DecryptMessageInitResponse){}
+  rpc DecryptMessage(DecryptMessageRequest)returns(DecryptMessageResponse){}
+  rpc DecryptMessageBegin(DecryptMessageBeginRequest)returns(DecryptMessageBeginResponse){}
+  rpc DecryptMessageNext(DecryptMessageNextRequest)returns(DecryptMessageNextResponse){}
+  rpc MessageDecryptFinal(MessageDecryptFinalRequest)returns(MessageDecryptFinalResponse){}
+
+  rpc DigestInit(DigestInitRequest)returns(DigestInitResponse){}
+  rpc Digest(DigestRequest)returns(DigestResponse){}
+  rpc DigestUpdate(DigestUpdateRequest)returns(DigestUpdateResponse){}
+  rpc DigestKey(DigestKeyRequest)returns(DigestKeyResponse){}
+  rpc DigestFinal(DigestFinalRequest)returns(DigestFinalResponse){}
+
+  rpc SignInit(SignInitRequest)returns(SignInitResponse){}
+  rpc Sign(SignRequest)returns(SignResponse){}
+  rpc SignUpdate(SignUpdateRequest)returns(SignUpdateResponse){}
+  rpc SignFinal(SignFinalRequest)returns(SignFinalResponse){}
+  rpc SignRecoverInit(SignRecoverInitRequest)returns(SignRecoverInitResponse){}
+  rpc SignRecover(SignRecoverRequest)returns(SignRecoverResponse){}
+
+  rpc SignMessageInit(SignMessageInitRequest)returns(SignMessageInitResponse){}
+  rpc SignMessage(SignMessageRequest)returns(SignMessageResponse){}
+  rpc SignMessageBegin(SignMessageBeginRequest)returns(SignMessageBeginResponse){}
+  rpc SignMessageNext(SignMessageNextRequest)returns(SignMessageNextResponse){}
+  rpc SignMessageFinal(SignMessageFinalRequest)returns(SignMessageFinalResponse){}
+
+  rpc VerifyInit(VerifyInitRequest)returns(VerifyInitResponse){}
+  rpc Verify(VerifyRequest)returns(VerifyResponse){}
+  rpc VerifyUpdate(VerifyUpdateRequest)returns(VerifyUpdateResponse){}
+  rpc VerifyFinal(VerifyFinalRequest)returns(VerifyFinalResponse){}
+  rpc VerifyRecoverInit(VerifyRecoverInitRequest)returns(VerifyRecoverInitResponse){}
+  rpc VerifyRecover(VerifyRecoverRequest)returns(VerifyRecoverResponse){}
+
+  rpc VerifyMessageInit(VerifyMessageInitRequest)returns(VerifyMessageInitResponse){}
+  rpc VerifyMessage(VerifyMessageRequest)returns(VerifyMessageResponse){}
+  rpc VerifyMessageBegin(VerifyMessageBeginRequest)returns(VerifyMessageBeginResponse){}
+  rpc VerifyMessageNext(VerifyMessageNextRequest)returns(VerifyMessageNextResponse){}
+  rpc VerifyMessageFinal(VerifyMessageFinalRequest)returns(VerifyMessageFinalResponse){}
+
+  rpc DigestEncryptUpdate(DigestEncryptUpdateRequest)returns(DigestEncryptUpdateResponse){}
+  rpc DecryptDigestUpdate(DecryptDigestUpdateRequest)returns(DecryptDigestUpdateResponse){}
+  rpc SignEncryptUpdate(SignEncryptUpdateRequest)returns(SignEncryptUpdateResponse){}
+  rpc DecryptVerifyUpdate(DecryptVerifyUpdateRequest)returns(DecryptVerifyUpdateResponse){}
+
+  rpc GenerateKey(GenerateKeyRequest)returns(GenerateKeyResponse){}
+  rpc GenerateKeyPair(GenerateKeyPairRequest)returns(GenerateKeyPairResponse){}
+  rpc WrapKey(WrapKeyRequest)returns(WrapKeyResponse){}
+  rpc UnwrapKey(UnwrapKeyRequest)returns(UnwrapKeyResponse){}
+  rpc DeriveKey(DeriveKeyRequest)returns(DeriveKeyResponse){}
+
+  rpc SeedRandom(SeedRandomRequest)returns(SeedRandomResponse){}
+  rpc GenerateRandom(GenerateRandomRequest)returns(GenerateRandomResponse){}
+
+  rpc GetFunctionStatus(GetFunctionStatusRequest)returns(GetFunctionStatusResponse){}
+  rpc CancelFunction(CancelFunctionRequest)returns(CancelFunctionResponse){}
 }
+
+message InitializeRequest{}
+message InitializeResponse{}
+message FinalizeRequest{}
+message FinalizeResponse{}
+message GetInfoRequest{}
+message GetInfoResponse{}
+message GetFunctionListRequest{}
+message GetFunctionListResponse{}
+message GetInterfaceListRequest{}
+message GetInterfaceListResponse{}
+message GetInterfaceRequest{}
+message GetInterfaceResponse{}
+
+message GetSlotListRequest{}
+message GetSlotListResponse{}
+message GetSlotInfoRequest{}
+message GetSlotInfoResponse{}
+message GetTokenInfoRequest{}
+message GetTokenInfoResponse{}
+message WaitForSlotEventRequest{}
+message WaitForSlotEventResponse{}
+message GetMechanismListRequest{}
+message GetMechanismListResponse{}
+message GetMechanismInfoRequest{}
+message GetMechanismInfoResponse{}
+message InitTokenRequest{}
+message InitTokenResponse{}
+message InitPINRequest{}
+message InitPINResponse{}
+message SetPINRequest{}
+message SetPINResponse{}
 
 message OpenSessionRequest {
   uint64 slotId = 1;
@@ -53,6 +183,154 @@ message GetSessionInfoResponse {
   ReturnValue returnValue = 1;
   GetSessionInfoData data = 2;
 }
+
+message CreateObjectRequest{}
+message CreateObjectResponse{}
+message CopyObjectRequest{}
+message CopyObjectResponse{}
+message DestroyObjectRequest{}
+message DestroyObjectResponse{}
+message GetObjectSizeRequest{}
+message GetObjectSizeResponse{}
+message GetAttributeValueRequest{}
+message GetAttributeValueResponse{}
+message SetAttributeValueRequest{}
+message SetAttributeValueResponse{}
+message FindObjectsInitRequest{}
+message FindObjectsInitResponse{}
+message FindObjectsRequest{}
+message FindObjectsResponse{}
+message FindObjectsFinalRequest{}
+message FindObjectsFinalResponse{}
+
+message EncryptInitRequest{}
+message EncryptInitResponse{}
+message EncryptRequest{}
+message EncryptResponse{}
+message EncryptUpdateRequest{}
+message EncryptUpdateResponse{}
+message EncryptFinalRequest{}
+message EncryptFinalResponse{}
+
+message EncryptMessageInitRequest{}
+message EncryptMessageInitResponse{}
+message EncryptMessageRequest{}
+message EncryptMessageResponse{}
+message EncryptMessageBeginRequest{}
+message EncryptMessageBeginResponse{}
+message EncryptMessageNextRequest{}
+message EncryptMessageNextResponse{}
+message EncryptMessageFinalRequest{}
+message EncryptMessageFinalResponse{}
+
+message DecryptInitRequest{}
+message DecryptInitResponse{}
+message DecryptRequest{}
+message DecryptResponse{}
+message DecryptUpdateRequest{}
+message DecryptUpdateResponse{}
+message DecryptFinalRequest{}
+message DecryptFinalResponse{}
+
+message DecryptMessageInitRequest{}
+message DecryptMessageInitResponse{}
+message DecryptMessageRequest{}
+message DecryptMessageResponse{}
+message DecryptMessageBeginRequest{}
+message DecryptMessageBeginResponse{}
+message DecryptMessageNextRequest{}
+message DecryptMessageNextResponse{}
+message MessageDecryptFinalRequest{}
+message MessageDecryptFinalResponse{}
+
+message DigestInitRequest{}
+message DigestInitResponse{}
+message DigestRequest{}
+message DigestResponse{}
+message DigestUpdateRequest{}
+message DigestUpdateResponse{}
+message DigestKeyRequest{}
+message DigestKeyResponse{}
+message DigestFinalRequest{}
+message DigestFinalResponse{}
+
+message SignInitRequest{}
+message SignInitResponse{}
+message SignRequest{}
+message SignResponse{}
+message SignUpdateRequest{}
+message SignUpdateResponse{}
+message SignFinalRequest{}
+message SignFinalResponse{}
+message SignRecoverInitRequest{}
+message SignRecoverInitResponse{}
+message SignRecoverRequest{}
+message SignRecoverResponse{}
+
+message SignMessageInitRequest{}
+message SignMessageInitResponse{}
+message SignMessageRequest{}
+message SignMessageResponse{}
+message SignMessageBeginRequest{}
+message SignMessageBeginResponse{}
+message SignMessageNextRequest{}
+message SignMessageNextResponse{}
+message SignMessageFinalRequest{}
+message SignMessageFinalResponse{}
+
+message VerifyInitRequest{}
+message VerifyInitResponse{}
+message VerifyRequest{}
+message VerifyResponse{}
+message VerifyUpdateRequest{}
+message VerifyUpdateResponse{}
+message VerifyFinalRequest{}
+message VerifyFinalResponse{}
+message VerifyRecoverInitRequest{}
+message VerifyRecoverInitResponse{}
+message VerifyRecoverRequest{}
+message VerifyRecoverResponse{}
+
+message VerifyMessageInitRequest{}
+message VerifyMessageInitResponse{}
+message VerifyMessageRequest{}
+message VerifyMessageResponse{}
+message VerifyMessageBeginRequest{}
+message VerifyMessageBeginResponse{}
+message VerifyMessageNextRequest{}
+message VerifyMessageNextResponse{}
+message VerifyMessageFinalRequest{}
+message VerifyMessageFinalResponse{}
+
+message DigestEncryptUpdateRequest{}
+message DigestEncryptUpdateResponse{}
+message DecryptDigestUpdateRequest{}
+message DecryptDigestUpdateResponse{}
+message SignEncryptUpdateRequest{}
+message SignEncryptUpdateResponse{}
+message DecryptVerifyUpdateRequest{}
+message DecryptVerifyUpdateResponse{}
+
+message GenerateKeyRequest{}
+message GenerateKeyResponse{}
+message GenerateKeyPairRequest{}
+message GenerateKeyPairResponse{}
+message WrapKeyRequest{}
+message WrapKeyResponse{}
+message UnwrapKeyRequest{}
+message UnwrapKeyResponse{}
+message DeriveKeyRequest{}
+message DeriveKeyResponse{}
+
+message SeedRandomRequest{}
+message SeedRandomResponse{}
+message GenerateRandomRequest{}
+message GenerateRandomResponse{}
+
+message GetFunctionStatusRequest{}
+message GetFunctionStatusResponse{}
+message CancelFunctionRequest{}
+message CancelFunctionResponse{}
 
 message GetSessionInfoData {
   SessionInfo info = 1;

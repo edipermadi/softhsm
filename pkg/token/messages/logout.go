@@ -1,6 +1,7 @@
 package messages
 
 type LogoutRequest struct {
+	SessionID int
 }
 
 func (d *LogoutRequest) Type() Type {

@@ -1,6 +1,11 @@
 package messages
 
+import "github.com/edipermadi/softhsm/pkg/token/users"
+
 type LoginRequest struct {
+	SessionID int
+	UserType  users.Type
+	Pin       []byte
 }
 
 func (d *LoginRequest) Type() Type {
