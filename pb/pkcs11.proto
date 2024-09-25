@@ -741,12 +741,22 @@ message DigestResponse{
   ReturnValue returnValue = 1;
   bytes digest = 2;
 }
-message DigestUpdateRequest{}
-message DigestUpdateResponse{}
+message DigestUpdateRequest{
+  uint64 sessionHandle = 1;
+  bytes data = 2;
+}
+message DigestUpdateResponse{
+  ReturnValue returnValue = 1;
+}
 message DigestKeyRequest{}
 message DigestKeyResponse{}
-message DigestFinalRequest{}
-message DigestFinalResponse{}
+message DigestFinalRequest{
+  uint64 sessionHandle = 1;
+}
+message DigestFinalResponse{
+  ReturnValue returnValue = 1;
+  bytes digest = 2;
+}
 
 message SignInitRequest{}
 message SignInitResponse{}

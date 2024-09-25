@@ -6,6 +6,7 @@ import (
 	"crypto/sha1"
 	"crypto/sha256"
 	"crypto/sha512"
+	"errors"
 
 	"github.com/edipermadi/softhsm/pkg/transport/pb"
 	"golang.org/x/crypto/ripemd160"
@@ -81,4 +82,53 @@ func (s *server) Digest(ctx context.Context, request *pb.DigestRequest) (*pb.Dig
 
 	digest := session.hash.Sum(nil)
 	return &pb.DigestResponse{ReturnValue: pb.ReturnValue_OK, Digest: digest}, nil
+}
+
+func (s *server) DigestUpdate(ctx context.Context, request *pb.DigestUpdateRequest) (*pb.DigestUpdateResponse, error) {
+	log := s.logger.WithContext(ctx)
+
+	if request.GetSessionHandle() < 1 {
+		return &pb.DigestUpdateResponse{ReturnValue: pb.ReturnValue_SESSION_HANDLE_INVALID}, nil
+	}
+
+	if !s.sessions.Has(request.GetSessionHandle()) {
+		return &pb.DigestUpdateResponse{ReturnValue: pb.ReturnValue_SESSION_CLOSED}, nil
+	}
+
+	session := s.sessions.Get(request.GetSessionHandle()).Value()
+	if session.hash == nil {
+		return &pb.DigestUpdateResponse{ReturnValue: pb.ReturnValue_OPERATION_NOT_INITIALIZED}, nil
+	}
+
+	_, err := session.hash.Write(request.GetData())
+	if err != nil {
+		log.WithField("session_handle", request.GetSessionHandle()).WithError(err).Error("failed to hash data")
+		return &pb.DigestUpdateResponse{ReturnValue: pb.ReturnValue_GENERAL_ERROR}, err
+	}
+
+	s.sessions.Set(request.GetSessionHandle(), session, s.ttl)
+	return &pb.DigestUpdateResponse{ReturnValue: pb.ReturnValue_OK}, nil
+}
+
+func (s *server) DigestKey(ctx context.Context, request *pb.DigestKeyRequest) (*pb.DigestKeyResponse, error) {
+	// TODO add implementation
+	return nil, errors.New("not implemented")
+}
+
+func (s *server) DigestFinal(ctx context.Context, request *pb.DigestFinalRequest) (*pb.DigestFinalResponse, error) {
+	if request.GetSessionHandle() < 1 {
+		return &pb.DigestFinalResponse{ReturnValue: pb.ReturnValue_SESSION_HANDLE_INVALID}, nil
+	}
+
+	if !s.sessions.Has(request.GetSessionHandle()) {
+		return &pb.DigestFinalResponse{ReturnValue: pb.ReturnValue_SESSION_CLOSED}, nil
+	}
+
+	session := s.sessions.Get(request.GetSessionHandle()).Value()
+	if session.hash == nil {
+		return &pb.DigestFinalResponse{ReturnValue: pb.ReturnValue_OPERATION_NOT_INITIALIZED}, nil
+	}
+
+	digest := session.hash.Sum(nil)
+	return &pb.DigestFinalResponse{ReturnValue: pb.ReturnValue_OK, Digest: digest}, nil
 }
