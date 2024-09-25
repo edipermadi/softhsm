@@ -151,12 +151,8 @@ message OpenSessionRequest {
 }
 
 message OpenSessionResponse {
-  OpenSessionResponseData data = 1;
-  ReturnValue returnValue = 2;
-}
-
-message OpenSessionResponseData {
-  uint64 sessionHandle = 1;
+  ReturnValue returnValue = 1;
+  uint64 sessionHandle = 2;
 }
 
 message CloseSessionRequest {
@@ -728,12 +724,23 @@ message Mechanism {
 }
 
 message DigestInitRequest{
-  uint64 sessionId = 1;
+  uint64 sessionHandle = 1;
   Mechanism mechanism = 2;
 }
-message DigestInitResponse{}
-message DigestRequest{}
-message DigestResponse{}
+
+message DigestInitResponse{
+  ReturnValue returnValue = 1;
+}
+
+message DigestRequest{
+  uint64 sessionHandle = 1;
+  bytes data = 2;
+}
+
+message DigestResponse{
+  ReturnValue returnValue = 1;
+  bytes digest = 2;
+}
 message DigestUpdateRequest{}
 message DigestUpdateResponse{}
 message DigestKeyRequest{}
