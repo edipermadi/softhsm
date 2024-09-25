@@ -19,99 +19,99 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	SessionManagement_Initialize_FullMethodName          = "/pb.SessionManagement/Initialize"
-	SessionManagement_Finalize_FullMethodName            = "/pb.SessionManagement/Finalize"
-	SessionManagement_GetInfo_FullMethodName             = "/pb.SessionManagement/GetInfo"
-	SessionManagement_GetFunctionList_FullMethodName     = "/pb.SessionManagement/GetFunctionList"
-	SessionManagement_GetInterfaceList_FullMethodName    = "/pb.SessionManagement/GetInterfaceList"
-	SessionManagement_GetInterface_FullMethodName        = "/pb.SessionManagement/GetInterface"
-	SessionManagement_GetSlotList_FullMethodName         = "/pb.SessionManagement/GetSlotList"
-	SessionManagement_GetSlotInfo_FullMethodName         = "/pb.SessionManagement/GetSlotInfo"
-	SessionManagement_GetTokenInfo_FullMethodName        = "/pb.SessionManagement/GetTokenInfo"
-	SessionManagement_WaitForSlotEvent_FullMethodName    = "/pb.SessionManagement/WaitForSlotEvent"
-	SessionManagement_GetMechanismList_FullMethodName    = "/pb.SessionManagement/GetMechanismList"
-	SessionManagement_GetMechanismInfo_FullMethodName    = "/pb.SessionManagement/GetMechanismInfo"
-	SessionManagement_InitToken_FullMethodName           = "/pb.SessionManagement/InitToken"
-	SessionManagement_InitPIN_FullMethodName             = "/pb.SessionManagement/InitPIN"
-	SessionManagement_SetPIN_FullMethodName              = "/pb.SessionManagement/SetPIN"
-	SessionManagement_OpenSession_FullMethodName         = "/pb.SessionManagement/OpenSession"
-	SessionManagement_CloseSession_FullMethodName        = "/pb.SessionManagement/CloseSession"
-	SessionManagement_CloseAllSessions_FullMethodName    = "/pb.SessionManagement/CloseAllSessions"
-	SessionManagement_GetSessionInfo_FullMethodName      = "/pb.SessionManagement/GetSessionInfo"
-	SessionManagement_SessionCancel_FullMethodName       = "/pb.SessionManagement/SessionCancel"
-	SessionManagement_CreateObject_FullMethodName        = "/pb.SessionManagement/CreateObject"
-	SessionManagement_CopyObject_FullMethodName          = "/pb.SessionManagement/CopyObject"
-	SessionManagement_DestroyObject_FullMethodName       = "/pb.SessionManagement/DestroyObject"
-	SessionManagement_GetObjectSize_FullMethodName       = "/pb.SessionManagement/GetObjectSize"
-	SessionManagement_GetAttributeValue_FullMethodName   = "/pb.SessionManagement/GetAttributeValue"
-	SessionManagement_SetAttributeValue_FullMethodName   = "/pb.SessionManagement/SetAttributeValue"
-	SessionManagement_FindObjectsInit_FullMethodName     = "/pb.SessionManagement/FindObjectsInit"
-	SessionManagement_FindObjects_FullMethodName         = "/pb.SessionManagement/FindObjects"
-	SessionManagement_FindObjectsFinal_FullMethodName    = "/pb.SessionManagement/FindObjectsFinal"
-	SessionManagement_EncryptInit_FullMethodName         = "/pb.SessionManagement/EncryptInit"
-	SessionManagement_Encrypt_FullMethodName             = "/pb.SessionManagement/Encrypt"
-	SessionManagement_EncryptUpdate_FullMethodName       = "/pb.SessionManagement/EncryptUpdate"
-	SessionManagement_EncryptFinal_FullMethodName        = "/pb.SessionManagement/EncryptFinal"
-	SessionManagement_EncryptMessageInit_FullMethodName  = "/pb.SessionManagement/EncryptMessageInit"
-	SessionManagement_EncryptMessage_FullMethodName      = "/pb.SessionManagement/EncryptMessage"
-	SessionManagement_EncryptMessageBegin_FullMethodName = "/pb.SessionManagement/EncryptMessageBegin"
-	SessionManagement_EncryptMessageNext_FullMethodName  = "/pb.SessionManagement/EncryptMessageNext"
-	SessionManagement_EncryptMessageFinal_FullMethodName = "/pb.SessionManagement/EncryptMessageFinal"
-	SessionManagement_DecryptInit_FullMethodName         = "/pb.SessionManagement/DecryptInit"
-	SessionManagement_Decrypt_FullMethodName             = "/pb.SessionManagement/Decrypt"
-	SessionManagement_DecryptUpdate_FullMethodName       = "/pb.SessionManagement/DecryptUpdate"
-	SessionManagement_DecryptFinal_FullMethodName        = "/pb.SessionManagement/DecryptFinal"
-	SessionManagement_DecryptMessageInit_FullMethodName  = "/pb.SessionManagement/DecryptMessageInit"
-	SessionManagement_DecryptMessage_FullMethodName      = "/pb.SessionManagement/DecryptMessage"
-	SessionManagement_DecryptMessageBegin_FullMethodName = "/pb.SessionManagement/DecryptMessageBegin"
-	SessionManagement_DecryptMessageNext_FullMethodName  = "/pb.SessionManagement/DecryptMessageNext"
-	SessionManagement_MessageDecryptFinal_FullMethodName = "/pb.SessionManagement/MessageDecryptFinal"
-	SessionManagement_DigestInit_FullMethodName          = "/pb.SessionManagement/DigestInit"
-	SessionManagement_Digest_FullMethodName              = "/pb.SessionManagement/Digest"
-	SessionManagement_DigestUpdate_FullMethodName        = "/pb.SessionManagement/DigestUpdate"
-	SessionManagement_DigestKey_FullMethodName           = "/pb.SessionManagement/DigestKey"
-	SessionManagement_DigestFinal_FullMethodName         = "/pb.SessionManagement/DigestFinal"
-	SessionManagement_SignInit_FullMethodName            = "/pb.SessionManagement/SignInit"
-	SessionManagement_Sign_FullMethodName                = "/pb.SessionManagement/Sign"
-	SessionManagement_SignUpdate_FullMethodName          = "/pb.SessionManagement/SignUpdate"
-	SessionManagement_SignFinal_FullMethodName           = "/pb.SessionManagement/SignFinal"
-	SessionManagement_SignRecoverInit_FullMethodName     = "/pb.SessionManagement/SignRecoverInit"
-	SessionManagement_SignRecover_FullMethodName         = "/pb.SessionManagement/SignRecover"
-	SessionManagement_SignMessageInit_FullMethodName     = "/pb.SessionManagement/SignMessageInit"
-	SessionManagement_SignMessage_FullMethodName         = "/pb.SessionManagement/SignMessage"
-	SessionManagement_SignMessageBegin_FullMethodName    = "/pb.SessionManagement/SignMessageBegin"
-	SessionManagement_SignMessageNext_FullMethodName     = "/pb.SessionManagement/SignMessageNext"
-	SessionManagement_SignMessageFinal_FullMethodName    = "/pb.SessionManagement/SignMessageFinal"
-	SessionManagement_VerifyInit_FullMethodName          = "/pb.SessionManagement/VerifyInit"
-	SessionManagement_Verify_FullMethodName              = "/pb.SessionManagement/Verify"
-	SessionManagement_VerifyUpdate_FullMethodName        = "/pb.SessionManagement/VerifyUpdate"
-	SessionManagement_VerifyFinal_FullMethodName         = "/pb.SessionManagement/VerifyFinal"
-	SessionManagement_VerifyRecoverInit_FullMethodName   = "/pb.SessionManagement/VerifyRecoverInit"
-	SessionManagement_VerifyRecover_FullMethodName       = "/pb.SessionManagement/VerifyRecover"
-	SessionManagement_VerifyMessageInit_FullMethodName   = "/pb.SessionManagement/VerifyMessageInit"
-	SessionManagement_VerifyMessage_FullMethodName       = "/pb.SessionManagement/VerifyMessage"
-	SessionManagement_VerifyMessageBegin_FullMethodName  = "/pb.SessionManagement/VerifyMessageBegin"
-	SessionManagement_VerifyMessageNext_FullMethodName   = "/pb.SessionManagement/VerifyMessageNext"
-	SessionManagement_VerifyMessageFinal_FullMethodName  = "/pb.SessionManagement/VerifyMessageFinal"
-	SessionManagement_DigestEncryptUpdate_FullMethodName = "/pb.SessionManagement/DigestEncryptUpdate"
-	SessionManagement_DecryptDigestUpdate_FullMethodName = "/pb.SessionManagement/DecryptDigestUpdate"
-	SessionManagement_SignEncryptUpdate_FullMethodName   = "/pb.SessionManagement/SignEncryptUpdate"
-	SessionManagement_DecryptVerifyUpdate_FullMethodName = "/pb.SessionManagement/DecryptVerifyUpdate"
-	SessionManagement_GenerateKey_FullMethodName         = "/pb.SessionManagement/GenerateKey"
-	SessionManagement_GenerateKeyPair_FullMethodName     = "/pb.SessionManagement/GenerateKeyPair"
-	SessionManagement_WrapKey_FullMethodName             = "/pb.SessionManagement/WrapKey"
-	SessionManagement_UnwrapKey_FullMethodName           = "/pb.SessionManagement/UnwrapKey"
-	SessionManagement_DeriveKey_FullMethodName           = "/pb.SessionManagement/DeriveKey"
-	SessionManagement_SeedRandom_FullMethodName          = "/pb.SessionManagement/SeedRandom"
-	SessionManagement_GenerateRandom_FullMethodName      = "/pb.SessionManagement/GenerateRandom"
-	SessionManagement_GetFunctionStatus_FullMethodName   = "/pb.SessionManagement/GetFunctionStatus"
-	SessionManagement_CancelFunction_FullMethodName      = "/pb.SessionManagement/CancelFunction"
+	CryptographicToken_Initialize_FullMethodName          = "/pb.CryptographicToken/Initialize"
+	CryptographicToken_Finalize_FullMethodName            = "/pb.CryptographicToken/Finalize"
+	CryptographicToken_GetInfo_FullMethodName             = "/pb.CryptographicToken/GetInfo"
+	CryptographicToken_GetFunctionList_FullMethodName     = "/pb.CryptographicToken/GetFunctionList"
+	CryptographicToken_GetInterfaceList_FullMethodName    = "/pb.CryptographicToken/GetInterfaceList"
+	CryptographicToken_GetInterface_FullMethodName        = "/pb.CryptographicToken/GetInterface"
+	CryptographicToken_GetSlotList_FullMethodName         = "/pb.CryptographicToken/GetSlotList"
+	CryptographicToken_GetSlotInfo_FullMethodName         = "/pb.CryptographicToken/GetSlotInfo"
+	CryptographicToken_GetTokenInfo_FullMethodName        = "/pb.CryptographicToken/GetTokenInfo"
+	CryptographicToken_WaitForSlotEvent_FullMethodName    = "/pb.CryptographicToken/WaitForSlotEvent"
+	CryptographicToken_GetMechanismList_FullMethodName    = "/pb.CryptographicToken/GetMechanismList"
+	CryptographicToken_GetMechanismInfo_FullMethodName    = "/pb.CryptographicToken/GetMechanismInfo"
+	CryptographicToken_InitToken_FullMethodName           = "/pb.CryptographicToken/InitToken"
+	CryptographicToken_InitPIN_FullMethodName             = "/pb.CryptographicToken/InitPIN"
+	CryptographicToken_SetPIN_FullMethodName              = "/pb.CryptographicToken/SetPIN"
+	CryptographicToken_OpenSession_FullMethodName         = "/pb.CryptographicToken/OpenSession"
+	CryptographicToken_CloseSession_FullMethodName        = "/pb.CryptographicToken/CloseSession"
+	CryptographicToken_CloseAllSessions_FullMethodName    = "/pb.CryptographicToken/CloseAllSessions"
+	CryptographicToken_GetSessionInfo_FullMethodName      = "/pb.CryptographicToken/GetSessionInfo"
+	CryptographicToken_SessionCancel_FullMethodName       = "/pb.CryptographicToken/SessionCancel"
+	CryptographicToken_CreateObject_FullMethodName        = "/pb.CryptographicToken/CreateObject"
+	CryptographicToken_CopyObject_FullMethodName          = "/pb.CryptographicToken/CopyObject"
+	CryptographicToken_DestroyObject_FullMethodName       = "/pb.CryptographicToken/DestroyObject"
+	CryptographicToken_GetObjectSize_FullMethodName       = "/pb.CryptographicToken/GetObjectSize"
+	CryptographicToken_GetAttributeValue_FullMethodName   = "/pb.CryptographicToken/GetAttributeValue"
+	CryptographicToken_SetAttributeValue_FullMethodName   = "/pb.CryptographicToken/SetAttributeValue"
+	CryptographicToken_FindObjectsInit_FullMethodName     = "/pb.CryptographicToken/FindObjectsInit"
+	CryptographicToken_FindObjects_FullMethodName         = "/pb.CryptographicToken/FindObjects"
+	CryptographicToken_FindObjectsFinal_FullMethodName    = "/pb.CryptographicToken/FindObjectsFinal"
+	CryptographicToken_EncryptInit_FullMethodName         = "/pb.CryptographicToken/EncryptInit"
+	CryptographicToken_Encrypt_FullMethodName             = "/pb.CryptographicToken/Encrypt"
+	CryptographicToken_EncryptUpdate_FullMethodName       = "/pb.CryptographicToken/EncryptUpdate"
+	CryptographicToken_EncryptFinal_FullMethodName        = "/pb.CryptographicToken/EncryptFinal"
+	CryptographicToken_EncryptMessageInit_FullMethodName  = "/pb.CryptographicToken/EncryptMessageInit"
+	CryptographicToken_EncryptMessage_FullMethodName      = "/pb.CryptographicToken/EncryptMessage"
+	CryptographicToken_EncryptMessageBegin_FullMethodName = "/pb.CryptographicToken/EncryptMessageBegin"
+	CryptographicToken_EncryptMessageNext_FullMethodName  = "/pb.CryptographicToken/EncryptMessageNext"
+	CryptographicToken_EncryptMessageFinal_FullMethodName = "/pb.CryptographicToken/EncryptMessageFinal"
+	CryptographicToken_DecryptInit_FullMethodName         = "/pb.CryptographicToken/DecryptInit"
+	CryptographicToken_Decrypt_FullMethodName             = "/pb.CryptographicToken/Decrypt"
+	CryptographicToken_DecryptUpdate_FullMethodName       = "/pb.CryptographicToken/DecryptUpdate"
+	CryptographicToken_DecryptFinal_FullMethodName        = "/pb.CryptographicToken/DecryptFinal"
+	CryptographicToken_DecryptMessageInit_FullMethodName  = "/pb.CryptographicToken/DecryptMessageInit"
+	CryptographicToken_DecryptMessage_FullMethodName      = "/pb.CryptographicToken/DecryptMessage"
+	CryptographicToken_DecryptMessageBegin_FullMethodName = "/pb.CryptographicToken/DecryptMessageBegin"
+	CryptographicToken_DecryptMessageNext_FullMethodName  = "/pb.CryptographicToken/DecryptMessageNext"
+	CryptographicToken_MessageDecryptFinal_FullMethodName = "/pb.CryptographicToken/MessageDecryptFinal"
+	CryptographicToken_DigestInit_FullMethodName          = "/pb.CryptographicToken/DigestInit"
+	CryptographicToken_Digest_FullMethodName              = "/pb.CryptographicToken/Digest"
+	CryptographicToken_DigestUpdate_FullMethodName        = "/pb.CryptographicToken/DigestUpdate"
+	CryptographicToken_DigestKey_FullMethodName           = "/pb.CryptographicToken/DigestKey"
+	CryptographicToken_DigestFinal_FullMethodName         = "/pb.CryptographicToken/DigestFinal"
+	CryptographicToken_SignInit_FullMethodName            = "/pb.CryptographicToken/SignInit"
+	CryptographicToken_Sign_FullMethodName                = "/pb.CryptographicToken/Sign"
+	CryptographicToken_SignUpdate_FullMethodName          = "/pb.CryptographicToken/SignUpdate"
+	CryptographicToken_SignFinal_FullMethodName           = "/pb.CryptographicToken/SignFinal"
+	CryptographicToken_SignRecoverInit_FullMethodName     = "/pb.CryptographicToken/SignRecoverInit"
+	CryptographicToken_SignRecover_FullMethodName         = "/pb.CryptographicToken/SignRecover"
+	CryptographicToken_SignMessageInit_FullMethodName     = "/pb.CryptographicToken/SignMessageInit"
+	CryptographicToken_SignMessage_FullMethodName         = "/pb.CryptographicToken/SignMessage"
+	CryptographicToken_SignMessageBegin_FullMethodName    = "/pb.CryptographicToken/SignMessageBegin"
+	CryptographicToken_SignMessageNext_FullMethodName     = "/pb.CryptographicToken/SignMessageNext"
+	CryptographicToken_SignMessageFinal_FullMethodName    = "/pb.CryptographicToken/SignMessageFinal"
+	CryptographicToken_VerifyInit_FullMethodName          = "/pb.CryptographicToken/VerifyInit"
+	CryptographicToken_Verify_FullMethodName              = "/pb.CryptographicToken/Verify"
+	CryptographicToken_VerifyUpdate_FullMethodName        = "/pb.CryptographicToken/VerifyUpdate"
+	CryptographicToken_VerifyFinal_FullMethodName         = "/pb.CryptographicToken/VerifyFinal"
+	CryptographicToken_VerifyRecoverInit_FullMethodName   = "/pb.CryptographicToken/VerifyRecoverInit"
+	CryptographicToken_VerifyRecover_FullMethodName       = "/pb.CryptographicToken/VerifyRecover"
+	CryptographicToken_VerifyMessageInit_FullMethodName   = "/pb.CryptographicToken/VerifyMessageInit"
+	CryptographicToken_VerifyMessage_FullMethodName       = "/pb.CryptographicToken/VerifyMessage"
+	CryptographicToken_VerifyMessageBegin_FullMethodName  = "/pb.CryptographicToken/VerifyMessageBegin"
+	CryptographicToken_VerifyMessageNext_FullMethodName   = "/pb.CryptographicToken/VerifyMessageNext"
+	CryptographicToken_VerifyMessageFinal_FullMethodName  = "/pb.CryptographicToken/VerifyMessageFinal"
+	CryptographicToken_DigestEncryptUpdate_FullMethodName = "/pb.CryptographicToken/DigestEncryptUpdate"
+	CryptographicToken_DecryptDigestUpdate_FullMethodName = "/pb.CryptographicToken/DecryptDigestUpdate"
+	CryptographicToken_SignEncryptUpdate_FullMethodName   = "/pb.CryptographicToken/SignEncryptUpdate"
+	CryptographicToken_DecryptVerifyUpdate_FullMethodName = "/pb.CryptographicToken/DecryptVerifyUpdate"
+	CryptographicToken_GenerateKey_FullMethodName         = "/pb.CryptographicToken/GenerateKey"
+	CryptographicToken_GenerateKeyPair_FullMethodName     = "/pb.CryptographicToken/GenerateKeyPair"
+	CryptographicToken_WrapKey_FullMethodName             = "/pb.CryptographicToken/WrapKey"
+	CryptographicToken_UnwrapKey_FullMethodName           = "/pb.CryptographicToken/UnwrapKey"
+	CryptographicToken_DeriveKey_FullMethodName           = "/pb.CryptographicToken/DeriveKey"
+	CryptographicToken_SeedRandom_FullMethodName          = "/pb.CryptographicToken/SeedRandom"
+	CryptographicToken_GenerateRandom_FullMethodName      = "/pb.CryptographicToken/GenerateRandom"
+	CryptographicToken_GetFunctionStatus_FullMethodName   = "/pb.CryptographicToken/GetFunctionStatus"
+	CryptographicToken_CancelFunction_FullMethodName      = "/pb.CryptographicToken/CancelFunction"
 )
 
-// SessionManagementClient is the client API for SessionManagement service.
+// CryptographicTokenClient is the client API for CryptographicToken service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type SessionManagementClient interface {
+type CryptographicTokenClient interface {
 	Initialize(ctx context.Context, in *InitializeRequest, opts ...grpc.CallOption) (*InitializeResponse, error)
 	Finalize(ctx context.Context, in *FinalizeRequest, opts ...grpc.CallOption) (*FinalizeResponse, error)
 	GetInfo(ctx context.Context, in *GetInfoRequest, opts ...grpc.CallOption) (*GetInfoResponse, error)
@@ -201,888 +201,888 @@ type SessionManagementClient interface {
 	CancelFunction(ctx context.Context, in *CancelFunctionRequest, opts ...grpc.CallOption) (*CancelFunctionResponse, error)
 }
 
-type sessionManagementClient struct {
+type cryptographicTokenClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewSessionManagementClient(cc grpc.ClientConnInterface) SessionManagementClient {
-	return &sessionManagementClient{cc}
+func NewCryptographicTokenClient(cc grpc.ClientConnInterface) CryptographicTokenClient {
+	return &cryptographicTokenClient{cc}
 }
 
-func (c *sessionManagementClient) Initialize(ctx context.Context, in *InitializeRequest, opts ...grpc.CallOption) (*InitializeResponse, error) {
+func (c *cryptographicTokenClient) Initialize(ctx context.Context, in *InitializeRequest, opts ...grpc.CallOption) (*InitializeResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(InitializeResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_Initialize_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_Initialize_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) Finalize(ctx context.Context, in *FinalizeRequest, opts ...grpc.CallOption) (*FinalizeResponse, error) {
+func (c *cryptographicTokenClient) Finalize(ctx context.Context, in *FinalizeRequest, opts ...grpc.CallOption) (*FinalizeResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(FinalizeResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_Finalize_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_Finalize_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) GetInfo(ctx context.Context, in *GetInfoRequest, opts ...grpc.CallOption) (*GetInfoResponse, error) {
+func (c *cryptographicTokenClient) GetInfo(ctx context.Context, in *GetInfoRequest, opts ...grpc.CallOption) (*GetInfoResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetInfoResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_GetInfo_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_GetInfo_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) GetFunctionList(ctx context.Context, in *GetFunctionListRequest, opts ...grpc.CallOption) (*GetFunctionListResponse, error) {
+func (c *cryptographicTokenClient) GetFunctionList(ctx context.Context, in *GetFunctionListRequest, opts ...grpc.CallOption) (*GetFunctionListResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetFunctionListResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_GetFunctionList_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_GetFunctionList_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) GetInterfaceList(ctx context.Context, in *GetInterfaceListRequest, opts ...grpc.CallOption) (*GetInterfaceListResponse, error) {
+func (c *cryptographicTokenClient) GetInterfaceList(ctx context.Context, in *GetInterfaceListRequest, opts ...grpc.CallOption) (*GetInterfaceListResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetInterfaceListResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_GetInterfaceList_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_GetInterfaceList_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) GetInterface(ctx context.Context, in *GetInterfaceRequest, opts ...grpc.CallOption) (*GetInterfaceResponse, error) {
+func (c *cryptographicTokenClient) GetInterface(ctx context.Context, in *GetInterfaceRequest, opts ...grpc.CallOption) (*GetInterfaceResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetInterfaceResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_GetInterface_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_GetInterface_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) GetSlotList(ctx context.Context, in *GetSlotListRequest, opts ...grpc.CallOption) (*GetSlotListResponse, error) {
+func (c *cryptographicTokenClient) GetSlotList(ctx context.Context, in *GetSlotListRequest, opts ...grpc.CallOption) (*GetSlotListResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetSlotListResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_GetSlotList_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_GetSlotList_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) GetSlotInfo(ctx context.Context, in *GetSlotInfoRequest, opts ...grpc.CallOption) (*GetSlotInfoResponse, error) {
+func (c *cryptographicTokenClient) GetSlotInfo(ctx context.Context, in *GetSlotInfoRequest, opts ...grpc.CallOption) (*GetSlotInfoResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetSlotInfoResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_GetSlotInfo_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_GetSlotInfo_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) GetTokenInfo(ctx context.Context, in *GetTokenInfoRequest, opts ...grpc.CallOption) (*GetTokenInfoResponse, error) {
+func (c *cryptographicTokenClient) GetTokenInfo(ctx context.Context, in *GetTokenInfoRequest, opts ...grpc.CallOption) (*GetTokenInfoResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetTokenInfoResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_GetTokenInfo_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_GetTokenInfo_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) WaitForSlotEvent(ctx context.Context, in *WaitForSlotEventRequest, opts ...grpc.CallOption) (*WaitForSlotEventResponse, error) {
+func (c *cryptographicTokenClient) WaitForSlotEvent(ctx context.Context, in *WaitForSlotEventRequest, opts ...grpc.CallOption) (*WaitForSlotEventResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(WaitForSlotEventResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_WaitForSlotEvent_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_WaitForSlotEvent_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) GetMechanismList(ctx context.Context, in *GetMechanismListRequest, opts ...grpc.CallOption) (*GetMechanismListResponse, error) {
+func (c *cryptographicTokenClient) GetMechanismList(ctx context.Context, in *GetMechanismListRequest, opts ...grpc.CallOption) (*GetMechanismListResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetMechanismListResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_GetMechanismList_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_GetMechanismList_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) GetMechanismInfo(ctx context.Context, in *GetMechanismInfoRequest, opts ...grpc.CallOption) (*GetMechanismInfoResponse, error) {
+func (c *cryptographicTokenClient) GetMechanismInfo(ctx context.Context, in *GetMechanismInfoRequest, opts ...grpc.CallOption) (*GetMechanismInfoResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetMechanismInfoResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_GetMechanismInfo_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_GetMechanismInfo_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) InitToken(ctx context.Context, in *InitTokenRequest, opts ...grpc.CallOption) (*InitTokenResponse, error) {
+func (c *cryptographicTokenClient) InitToken(ctx context.Context, in *InitTokenRequest, opts ...grpc.CallOption) (*InitTokenResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(InitTokenResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_InitToken_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_InitToken_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) InitPIN(ctx context.Context, in *InitPINRequest, opts ...grpc.CallOption) (*InitPINResponse, error) {
+func (c *cryptographicTokenClient) InitPIN(ctx context.Context, in *InitPINRequest, opts ...grpc.CallOption) (*InitPINResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(InitPINResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_InitPIN_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_InitPIN_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) SetPIN(ctx context.Context, in *SetPINRequest, opts ...grpc.CallOption) (*SetPINResponse, error) {
+func (c *cryptographicTokenClient) SetPIN(ctx context.Context, in *SetPINRequest, opts ...grpc.CallOption) (*SetPINResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SetPINResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_SetPIN_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_SetPIN_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) OpenSession(ctx context.Context, in *OpenSessionRequest, opts ...grpc.CallOption) (*OpenSessionResponse, error) {
+func (c *cryptographicTokenClient) OpenSession(ctx context.Context, in *OpenSessionRequest, opts ...grpc.CallOption) (*OpenSessionResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(OpenSessionResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_OpenSession_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_OpenSession_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) CloseSession(ctx context.Context, in *CloseSessionRequest, opts ...grpc.CallOption) (*CloseSessionResponse, error) {
+func (c *cryptographicTokenClient) CloseSession(ctx context.Context, in *CloseSessionRequest, opts ...grpc.CallOption) (*CloseSessionResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CloseSessionResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_CloseSession_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_CloseSession_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) CloseAllSessions(ctx context.Context, in *CloseAllSessionsRequest, opts ...grpc.CallOption) (*CloseAllSessionsResponse, error) {
+func (c *cryptographicTokenClient) CloseAllSessions(ctx context.Context, in *CloseAllSessionsRequest, opts ...grpc.CallOption) (*CloseAllSessionsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CloseAllSessionsResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_CloseAllSessions_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_CloseAllSessions_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) GetSessionInfo(ctx context.Context, in *GetSessionInfoRequest, opts ...grpc.CallOption) (*GetSessionInfoResponse, error) {
+func (c *cryptographicTokenClient) GetSessionInfo(ctx context.Context, in *GetSessionInfoRequest, opts ...grpc.CallOption) (*GetSessionInfoResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetSessionInfoResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_GetSessionInfo_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_GetSessionInfo_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) SessionCancel(ctx context.Context, in *SessionCancelRequest, opts ...grpc.CallOption) (*SessionCancelResponse, error) {
+func (c *cryptographicTokenClient) SessionCancel(ctx context.Context, in *SessionCancelRequest, opts ...grpc.CallOption) (*SessionCancelResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SessionCancelResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_SessionCancel_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_SessionCancel_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) CreateObject(ctx context.Context, in *CreateObjectRequest, opts ...grpc.CallOption) (*CreateObjectResponse, error) {
+func (c *cryptographicTokenClient) CreateObject(ctx context.Context, in *CreateObjectRequest, opts ...grpc.CallOption) (*CreateObjectResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateObjectResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_CreateObject_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_CreateObject_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) CopyObject(ctx context.Context, in *CopyObjectRequest, opts ...grpc.CallOption) (*CopyObjectResponse, error) {
+func (c *cryptographicTokenClient) CopyObject(ctx context.Context, in *CopyObjectRequest, opts ...grpc.CallOption) (*CopyObjectResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CopyObjectResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_CopyObject_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_CopyObject_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) DestroyObject(ctx context.Context, in *DestroyObjectRequest, opts ...grpc.CallOption) (*DestroyObjectResponse, error) {
+func (c *cryptographicTokenClient) DestroyObject(ctx context.Context, in *DestroyObjectRequest, opts ...grpc.CallOption) (*DestroyObjectResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DestroyObjectResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_DestroyObject_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_DestroyObject_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) GetObjectSize(ctx context.Context, in *GetObjectSizeRequest, opts ...grpc.CallOption) (*GetObjectSizeResponse, error) {
+func (c *cryptographicTokenClient) GetObjectSize(ctx context.Context, in *GetObjectSizeRequest, opts ...grpc.CallOption) (*GetObjectSizeResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetObjectSizeResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_GetObjectSize_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_GetObjectSize_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) GetAttributeValue(ctx context.Context, in *GetAttributeValueRequest, opts ...grpc.CallOption) (*GetAttributeValueResponse, error) {
+func (c *cryptographicTokenClient) GetAttributeValue(ctx context.Context, in *GetAttributeValueRequest, opts ...grpc.CallOption) (*GetAttributeValueResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetAttributeValueResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_GetAttributeValue_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_GetAttributeValue_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) SetAttributeValue(ctx context.Context, in *SetAttributeValueRequest, opts ...grpc.CallOption) (*SetAttributeValueResponse, error) {
+func (c *cryptographicTokenClient) SetAttributeValue(ctx context.Context, in *SetAttributeValueRequest, opts ...grpc.CallOption) (*SetAttributeValueResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SetAttributeValueResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_SetAttributeValue_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_SetAttributeValue_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) FindObjectsInit(ctx context.Context, in *FindObjectsInitRequest, opts ...grpc.CallOption) (*FindObjectsInitResponse, error) {
+func (c *cryptographicTokenClient) FindObjectsInit(ctx context.Context, in *FindObjectsInitRequest, opts ...grpc.CallOption) (*FindObjectsInitResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(FindObjectsInitResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_FindObjectsInit_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_FindObjectsInit_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) FindObjects(ctx context.Context, in *FindObjectsRequest, opts ...grpc.CallOption) (*FindObjectsResponse, error) {
+func (c *cryptographicTokenClient) FindObjects(ctx context.Context, in *FindObjectsRequest, opts ...grpc.CallOption) (*FindObjectsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(FindObjectsResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_FindObjects_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_FindObjects_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) FindObjectsFinal(ctx context.Context, in *FindObjectsFinalRequest, opts ...grpc.CallOption) (*FindObjectsFinalResponse, error) {
+func (c *cryptographicTokenClient) FindObjectsFinal(ctx context.Context, in *FindObjectsFinalRequest, opts ...grpc.CallOption) (*FindObjectsFinalResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(FindObjectsFinalResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_FindObjectsFinal_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_FindObjectsFinal_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) EncryptInit(ctx context.Context, in *EncryptInitRequest, opts ...grpc.CallOption) (*EncryptInitResponse, error) {
+func (c *cryptographicTokenClient) EncryptInit(ctx context.Context, in *EncryptInitRequest, opts ...grpc.CallOption) (*EncryptInitResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(EncryptInitResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_EncryptInit_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_EncryptInit_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) Encrypt(ctx context.Context, in *EncryptRequest, opts ...grpc.CallOption) (*EncryptResponse, error) {
+func (c *cryptographicTokenClient) Encrypt(ctx context.Context, in *EncryptRequest, opts ...grpc.CallOption) (*EncryptResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(EncryptResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_Encrypt_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_Encrypt_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) EncryptUpdate(ctx context.Context, in *EncryptUpdateRequest, opts ...grpc.CallOption) (*EncryptUpdateResponse, error) {
+func (c *cryptographicTokenClient) EncryptUpdate(ctx context.Context, in *EncryptUpdateRequest, opts ...grpc.CallOption) (*EncryptUpdateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(EncryptUpdateResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_EncryptUpdate_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_EncryptUpdate_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) EncryptFinal(ctx context.Context, in *EncryptFinalRequest, opts ...grpc.CallOption) (*EncryptFinalResponse, error) {
+func (c *cryptographicTokenClient) EncryptFinal(ctx context.Context, in *EncryptFinalRequest, opts ...grpc.CallOption) (*EncryptFinalResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(EncryptFinalResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_EncryptFinal_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_EncryptFinal_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) EncryptMessageInit(ctx context.Context, in *EncryptMessageInitRequest, opts ...grpc.CallOption) (*EncryptMessageInitResponse, error) {
+func (c *cryptographicTokenClient) EncryptMessageInit(ctx context.Context, in *EncryptMessageInitRequest, opts ...grpc.CallOption) (*EncryptMessageInitResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(EncryptMessageInitResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_EncryptMessageInit_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_EncryptMessageInit_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) EncryptMessage(ctx context.Context, in *EncryptMessageRequest, opts ...grpc.CallOption) (*EncryptMessageResponse, error) {
+func (c *cryptographicTokenClient) EncryptMessage(ctx context.Context, in *EncryptMessageRequest, opts ...grpc.CallOption) (*EncryptMessageResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(EncryptMessageResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_EncryptMessage_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_EncryptMessage_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) EncryptMessageBegin(ctx context.Context, in *EncryptMessageBeginRequest, opts ...grpc.CallOption) (*EncryptMessageBeginResponse, error) {
+func (c *cryptographicTokenClient) EncryptMessageBegin(ctx context.Context, in *EncryptMessageBeginRequest, opts ...grpc.CallOption) (*EncryptMessageBeginResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(EncryptMessageBeginResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_EncryptMessageBegin_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_EncryptMessageBegin_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) EncryptMessageNext(ctx context.Context, in *EncryptMessageNextRequest, opts ...grpc.CallOption) (*EncryptMessageNextResponse, error) {
+func (c *cryptographicTokenClient) EncryptMessageNext(ctx context.Context, in *EncryptMessageNextRequest, opts ...grpc.CallOption) (*EncryptMessageNextResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(EncryptMessageNextResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_EncryptMessageNext_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_EncryptMessageNext_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) EncryptMessageFinal(ctx context.Context, in *EncryptMessageFinalRequest, opts ...grpc.CallOption) (*EncryptMessageFinalResponse, error) {
+func (c *cryptographicTokenClient) EncryptMessageFinal(ctx context.Context, in *EncryptMessageFinalRequest, opts ...grpc.CallOption) (*EncryptMessageFinalResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(EncryptMessageFinalResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_EncryptMessageFinal_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_EncryptMessageFinal_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) DecryptInit(ctx context.Context, in *DecryptInitRequest, opts ...grpc.CallOption) (*DecryptInitResponse, error) {
+func (c *cryptographicTokenClient) DecryptInit(ctx context.Context, in *DecryptInitRequest, opts ...grpc.CallOption) (*DecryptInitResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DecryptInitResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_DecryptInit_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_DecryptInit_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) Decrypt(ctx context.Context, in *DecryptRequest, opts ...grpc.CallOption) (*DecryptResponse, error) {
+func (c *cryptographicTokenClient) Decrypt(ctx context.Context, in *DecryptRequest, opts ...grpc.CallOption) (*DecryptResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DecryptResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_Decrypt_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_Decrypt_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) DecryptUpdate(ctx context.Context, in *DecryptUpdateRequest, opts ...grpc.CallOption) (*DecryptUpdateResponse, error) {
+func (c *cryptographicTokenClient) DecryptUpdate(ctx context.Context, in *DecryptUpdateRequest, opts ...grpc.CallOption) (*DecryptUpdateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DecryptUpdateResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_DecryptUpdate_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_DecryptUpdate_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) DecryptFinal(ctx context.Context, in *DecryptFinalRequest, opts ...grpc.CallOption) (*DecryptFinalResponse, error) {
+func (c *cryptographicTokenClient) DecryptFinal(ctx context.Context, in *DecryptFinalRequest, opts ...grpc.CallOption) (*DecryptFinalResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DecryptFinalResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_DecryptFinal_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_DecryptFinal_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) DecryptMessageInit(ctx context.Context, in *DecryptMessageInitRequest, opts ...grpc.CallOption) (*DecryptMessageInitResponse, error) {
+func (c *cryptographicTokenClient) DecryptMessageInit(ctx context.Context, in *DecryptMessageInitRequest, opts ...grpc.CallOption) (*DecryptMessageInitResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DecryptMessageInitResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_DecryptMessageInit_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_DecryptMessageInit_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) DecryptMessage(ctx context.Context, in *DecryptMessageRequest, opts ...grpc.CallOption) (*DecryptMessageResponse, error) {
+func (c *cryptographicTokenClient) DecryptMessage(ctx context.Context, in *DecryptMessageRequest, opts ...grpc.CallOption) (*DecryptMessageResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DecryptMessageResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_DecryptMessage_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_DecryptMessage_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) DecryptMessageBegin(ctx context.Context, in *DecryptMessageBeginRequest, opts ...grpc.CallOption) (*DecryptMessageBeginResponse, error) {
+func (c *cryptographicTokenClient) DecryptMessageBegin(ctx context.Context, in *DecryptMessageBeginRequest, opts ...grpc.CallOption) (*DecryptMessageBeginResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DecryptMessageBeginResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_DecryptMessageBegin_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_DecryptMessageBegin_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) DecryptMessageNext(ctx context.Context, in *DecryptMessageNextRequest, opts ...grpc.CallOption) (*DecryptMessageNextResponse, error) {
+func (c *cryptographicTokenClient) DecryptMessageNext(ctx context.Context, in *DecryptMessageNextRequest, opts ...grpc.CallOption) (*DecryptMessageNextResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DecryptMessageNextResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_DecryptMessageNext_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_DecryptMessageNext_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) MessageDecryptFinal(ctx context.Context, in *MessageDecryptFinalRequest, opts ...grpc.CallOption) (*MessageDecryptFinalResponse, error) {
+func (c *cryptographicTokenClient) MessageDecryptFinal(ctx context.Context, in *MessageDecryptFinalRequest, opts ...grpc.CallOption) (*MessageDecryptFinalResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(MessageDecryptFinalResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_MessageDecryptFinal_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_MessageDecryptFinal_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) DigestInit(ctx context.Context, in *DigestInitRequest, opts ...grpc.CallOption) (*DigestInitResponse, error) {
+func (c *cryptographicTokenClient) DigestInit(ctx context.Context, in *DigestInitRequest, opts ...grpc.CallOption) (*DigestInitResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DigestInitResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_DigestInit_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_DigestInit_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) Digest(ctx context.Context, in *DigestRequest, opts ...grpc.CallOption) (*DigestResponse, error) {
+func (c *cryptographicTokenClient) Digest(ctx context.Context, in *DigestRequest, opts ...grpc.CallOption) (*DigestResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DigestResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_Digest_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_Digest_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) DigestUpdate(ctx context.Context, in *DigestUpdateRequest, opts ...grpc.CallOption) (*DigestUpdateResponse, error) {
+func (c *cryptographicTokenClient) DigestUpdate(ctx context.Context, in *DigestUpdateRequest, opts ...grpc.CallOption) (*DigestUpdateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DigestUpdateResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_DigestUpdate_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_DigestUpdate_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) DigestKey(ctx context.Context, in *DigestKeyRequest, opts ...grpc.CallOption) (*DigestKeyResponse, error) {
+func (c *cryptographicTokenClient) DigestKey(ctx context.Context, in *DigestKeyRequest, opts ...grpc.CallOption) (*DigestKeyResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DigestKeyResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_DigestKey_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_DigestKey_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) DigestFinal(ctx context.Context, in *DigestFinalRequest, opts ...grpc.CallOption) (*DigestFinalResponse, error) {
+func (c *cryptographicTokenClient) DigestFinal(ctx context.Context, in *DigestFinalRequest, opts ...grpc.CallOption) (*DigestFinalResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DigestFinalResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_DigestFinal_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_DigestFinal_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) SignInit(ctx context.Context, in *SignInitRequest, opts ...grpc.CallOption) (*SignInitResponse, error) {
+func (c *cryptographicTokenClient) SignInit(ctx context.Context, in *SignInitRequest, opts ...grpc.CallOption) (*SignInitResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SignInitResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_SignInit_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_SignInit_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) Sign(ctx context.Context, in *SignRequest, opts ...grpc.CallOption) (*SignResponse, error) {
+func (c *cryptographicTokenClient) Sign(ctx context.Context, in *SignRequest, opts ...grpc.CallOption) (*SignResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SignResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_Sign_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_Sign_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) SignUpdate(ctx context.Context, in *SignUpdateRequest, opts ...grpc.CallOption) (*SignUpdateResponse, error) {
+func (c *cryptographicTokenClient) SignUpdate(ctx context.Context, in *SignUpdateRequest, opts ...grpc.CallOption) (*SignUpdateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SignUpdateResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_SignUpdate_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_SignUpdate_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) SignFinal(ctx context.Context, in *SignFinalRequest, opts ...grpc.CallOption) (*SignFinalResponse, error) {
+func (c *cryptographicTokenClient) SignFinal(ctx context.Context, in *SignFinalRequest, opts ...grpc.CallOption) (*SignFinalResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SignFinalResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_SignFinal_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_SignFinal_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) SignRecoverInit(ctx context.Context, in *SignRecoverInitRequest, opts ...grpc.CallOption) (*SignRecoverInitResponse, error) {
+func (c *cryptographicTokenClient) SignRecoverInit(ctx context.Context, in *SignRecoverInitRequest, opts ...grpc.CallOption) (*SignRecoverInitResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SignRecoverInitResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_SignRecoverInit_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_SignRecoverInit_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) SignRecover(ctx context.Context, in *SignRecoverRequest, opts ...grpc.CallOption) (*SignRecoverResponse, error) {
+func (c *cryptographicTokenClient) SignRecover(ctx context.Context, in *SignRecoverRequest, opts ...grpc.CallOption) (*SignRecoverResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SignRecoverResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_SignRecover_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_SignRecover_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) SignMessageInit(ctx context.Context, in *SignMessageInitRequest, opts ...grpc.CallOption) (*SignMessageInitResponse, error) {
+func (c *cryptographicTokenClient) SignMessageInit(ctx context.Context, in *SignMessageInitRequest, opts ...grpc.CallOption) (*SignMessageInitResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SignMessageInitResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_SignMessageInit_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_SignMessageInit_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) SignMessage(ctx context.Context, in *SignMessageRequest, opts ...grpc.CallOption) (*SignMessageResponse, error) {
+func (c *cryptographicTokenClient) SignMessage(ctx context.Context, in *SignMessageRequest, opts ...grpc.CallOption) (*SignMessageResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SignMessageResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_SignMessage_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_SignMessage_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) SignMessageBegin(ctx context.Context, in *SignMessageBeginRequest, opts ...grpc.CallOption) (*SignMessageBeginResponse, error) {
+func (c *cryptographicTokenClient) SignMessageBegin(ctx context.Context, in *SignMessageBeginRequest, opts ...grpc.CallOption) (*SignMessageBeginResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SignMessageBeginResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_SignMessageBegin_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_SignMessageBegin_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) SignMessageNext(ctx context.Context, in *SignMessageNextRequest, opts ...grpc.CallOption) (*SignMessageNextResponse, error) {
+func (c *cryptographicTokenClient) SignMessageNext(ctx context.Context, in *SignMessageNextRequest, opts ...grpc.CallOption) (*SignMessageNextResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SignMessageNextResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_SignMessageNext_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_SignMessageNext_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) SignMessageFinal(ctx context.Context, in *SignMessageFinalRequest, opts ...grpc.CallOption) (*SignMessageFinalResponse, error) {
+func (c *cryptographicTokenClient) SignMessageFinal(ctx context.Context, in *SignMessageFinalRequest, opts ...grpc.CallOption) (*SignMessageFinalResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SignMessageFinalResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_SignMessageFinal_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_SignMessageFinal_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) VerifyInit(ctx context.Context, in *VerifyInitRequest, opts ...grpc.CallOption) (*VerifyInitResponse, error) {
+func (c *cryptographicTokenClient) VerifyInit(ctx context.Context, in *VerifyInitRequest, opts ...grpc.CallOption) (*VerifyInitResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(VerifyInitResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_VerifyInit_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_VerifyInit_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) Verify(ctx context.Context, in *VerifyRequest, opts ...grpc.CallOption) (*VerifyResponse, error) {
+func (c *cryptographicTokenClient) Verify(ctx context.Context, in *VerifyRequest, opts ...grpc.CallOption) (*VerifyResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(VerifyResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_Verify_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_Verify_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) VerifyUpdate(ctx context.Context, in *VerifyUpdateRequest, opts ...grpc.CallOption) (*VerifyUpdateResponse, error) {
+func (c *cryptographicTokenClient) VerifyUpdate(ctx context.Context, in *VerifyUpdateRequest, opts ...grpc.CallOption) (*VerifyUpdateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(VerifyUpdateResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_VerifyUpdate_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_VerifyUpdate_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) VerifyFinal(ctx context.Context, in *VerifyFinalRequest, opts ...grpc.CallOption) (*VerifyFinalResponse, error) {
+func (c *cryptographicTokenClient) VerifyFinal(ctx context.Context, in *VerifyFinalRequest, opts ...grpc.CallOption) (*VerifyFinalResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(VerifyFinalResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_VerifyFinal_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_VerifyFinal_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) VerifyRecoverInit(ctx context.Context, in *VerifyRecoverInitRequest, opts ...grpc.CallOption) (*VerifyRecoverInitResponse, error) {
+func (c *cryptographicTokenClient) VerifyRecoverInit(ctx context.Context, in *VerifyRecoverInitRequest, opts ...grpc.CallOption) (*VerifyRecoverInitResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(VerifyRecoverInitResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_VerifyRecoverInit_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_VerifyRecoverInit_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) VerifyRecover(ctx context.Context, in *VerifyRecoverRequest, opts ...grpc.CallOption) (*VerifyRecoverResponse, error) {
+func (c *cryptographicTokenClient) VerifyRecover(ctx context.Context, in *VerifyRecoverRequest, opts ...grpc.CallOption) (*VerifyRecoverResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(VerifyRecoverResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_VerifyRecover_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_VerifyRecover_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) VerifyMessageInit(ctx context.Context, in *VerifyMessageInitRequest, opts ...grpc.CallOption) (*VerifyMessageInitResponse, error) {
+func (c *cryptographicTokenClient) VerifyMessageInit(ctx context.Context, in *VerifyMessageInitRequest, opts ...grpc.CallOption) (*VerifyMessageInitResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(VerifyMessageInitResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_VerifyMessageInit_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_VerifyMessageInit_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) VerifyMessage(ctx context.Context, in *VerifyMessageRequest, opts ...grpc.CallOption) (*VerifyMessageResponse, error) {
+func (c *cryptographicTokenClient) VerifyMessage(ctx context.Context, in *VerifyMessageRequest, opts ...grpc.CallOption) (*VerifyMessageResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(VerifyMessageResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_VerifyMessage_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_VerifyMessage_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) VerifyMessageBegin(ctx context.Context, in *VerifyMessageBeginRequest, opts ...grpc.CallOption) (*VerifyMessageBeginResponse, error) {
+func (c *cryptographicTokenClient) VerifyMessageBegin(ctx context.Context, in *VerifyMessageBeginRequest, opts ...grpc.CallOption) (*VerifyMessageBeginResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(VerifyMessageBeginResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_VerifyMessageBegin_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_VerifyMessageBegin_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) VerifyMessageNext(ctx context.Context, in *VerifyMessageNextRequest, opts ...grpc.CallOption) (*VerifyMessageNextResponse, error) {
+func (c *cryptographicTokenClient) VerifyMessageNext(ctx context.Context, in *VerifyMessageNextRequest, opts ...grpc.CallOption) (*VerifyMessageNextResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(VerifyMessageNextResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_VerifyMessageNext_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_VerifyMessageNext_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) VerifyMessageFinal(ctx context.Context, in *VerifyMessageFinalRequest, opts ...grpc.CallOption) (*VerifyMessageFinalResponse, error) {
+func (c *cryptographicTokenClient) VerifyMessageFinal(ctx context.Context, in *VerifyMessageFinalRequest, opts ...grpc.CallOption) (*VerifyMessageFinalResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(VerifyMessageFinalResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_VerifyMessageFinal_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_VerifyMessageFinal_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) DigestEncryptUpdate(ctx context.Context, in *DigestEncryptUpdateRequest, opts ...grpc.CallOption) (*DigestEncryptUpdateResponse, error) {
+func (c *cryptographicTokenClient) DigestEncryptUpdate(ctx context.Context, in *DigestEncryptUpdateRequest, opts ...grpc.CallOption) (*DigestEncryptUpdateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DigestEncryptUpdateResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_DigestEncryptUpdate_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_DigestEncryptUpdate_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) DecryptDigestUpdate(ctx context.Context, in *DecryptDigestUpdateRequest, opts ...grpc.CallOption) (*DecryptDigestUpdateResponse, error) {
+func (c *cryptographicTokenClient) DecryptDigestUpdate(ctx context.Context, in *DecryptDigestUpdateRequest, opts ...grpc.CallOption) (*DecryptDigestUpdateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DecryptDigestUpdateResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_DecryptDigestUpdate_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_DecryptDigestUpdate_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) SignEncryptUpdate(ctx context.Context, in *SignEncryptUpdateRequest, opts ...grpc.CallOption) (*SignEncryptUpdateResponse, error) {
+func (c *cryptographicTokenClient) SignEncryptUpdate(ctx context.Context, in *SignEncryptUpdateRequest, opts ...grpc.CallOption) (*SignEncryptUpdateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SignEncryptUpdateResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_SignEncryptUpdate_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_SignEncryptUpdate_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) DecryptVerifyUpdate(ctx context.Context, in *DecryptVerifyUpdateRequest, opts ...grpc.CallOption) (*DecryptVerifyUpdateResponse, error) {
+func (c *cryptographicTokenClient) DecryptVerifyUpdate(ctx context.Context, in *DecryptVerifyUpdateRequest, opts ...grpc.CallOption) (*DecryptVerifyUpdateResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DecryptVerifyUpdateResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_DecryptVerifyUpdate_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_DecryptVerifyUpdate_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) GenerateKey(ctx context.Context, in *GenerateKeyRequest, opts ...grpc.CallOption) (*GenerateKeyResponse, error) {
+func (c *cryptographicTokenClient) GenerateKey(ctx context.Context, in *GenerateKeyRequest, opts ...grpc.CallOption) (*GenerateKeyResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GenerateKeyResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_GenerateKey_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_GenerateKey_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) GenerateKeyPair(ctx context.Context, in *GenerateKeyPairRequest, opts ...grpc.CallOption) (*GenerateKeyPairResponse, error) {
+func (c *cryptographicTokenClient) GenerateKeyPair(ctx context.Context, in *GenerateKeyPairRequest, opts ...grpc.CallOption) (*GenerateKeyPairResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GenerateKeyPairResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_GenerateKeyPair_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_GenerateKeyPair_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) WrapKey(ctx context.Context, in *WrapKeyRequest, opts ...grpc.CallOption) (*WrapKeyResponse, error) {
+func (c *cryptographicTokenClient) WrapKey(ctx context.Context, in *WrapKeyRequest, opts ...grpc.CallOption) (*WrapKeyResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(WrapKeyResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_WrapKey_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_WrapKey_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) UnwrapKey(ctx context.Context, in *UnwrapKeyRequest, opts ...grpc.CallOption) (*UnwrapKeyResponse, error) {
+func (c *cryptographicTokenClient) UnwrapKey(ctx context.Context, in *UnwrapKeyRequest, opts ...grpc.CallOption) (*UnwrapKeyResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(UnwrapKeyResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_UnwrapKey_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_UnwrapKey_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) DeriveKey(ctx context.Context, in *DeriveKeyRequest, opts ...grpc.CallOption) (*DeriveKeyResponse, error) {
+func (c *cryptographicTokenClient) DeriveKey(ctx context.Context, in *DeriveKeyRequest, opts ...grpc.CallOption) (*DeriveKeyResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(DeriveKeyResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_DeriveKey_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_DeriveKey_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) SeedRandom(ctx context.Context, in *SeedRandomRequest, opts ...grpc.CallOption) (*SeedRandomResponse, error) {
+func (c *cryptographicTokenClient) SeedRandom(ctx context.Context, in *SeedRandomRequest, opts ...grpc.CallOption) (*SeedRandomResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SeedRandomResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_SeedRandom_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_SeedRandom_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) GenerateRandom(ctx context.Context, in *GenerateRandomRequest, opts ...grpc.CallOption) (*GenerateRandomResponse, error) {
+func (c *cryptographicTokenClient) GenerateRandom(ctx context.Context, in *GenerateRandomRequest, opts ...grpc.CallOption) (*GenerateRandomResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GenerateRandomResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_GenerateRandom_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_GenerateRandom_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) GetFunctionStatus(ctx context.Context, in *GetFunctionStatusRequest, opts ...grpc.CallOption) (*GetFunctionStatusResponse, error) {
+func (c *cryptographicTokenClient) GetFunctionStatus(ctx context.Context, in *GetFunctionStatusRequest, opts ...grpc.CallOption) (*GetFunctionStatusResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetFunctionStatusResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_GetFunctionStatus_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_GetFunctionStatus_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *sessionManagementClient) CancelFunction(ctx context.Context, in *CancelFunctionRequest, opts ...grpc.CallOption) (*CancelFunctionResponse, error) {
+func (c *cryptographicTokenClient) CancelFunction(ctx context.Context, in *CancelFunctionRequest, opts ...grpc.CallOption) (*CancelFunctionResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CancelFunctionResponse)
-	err := c.cc.Invoke(ctx, SessionManagement_CancelFunction_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CryptographicToken_CancelFunction_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// SessionManagementServer is the server API for SessionManagement service.
-// All implementations must embed UnimplementedSessionManagementServer
+// CryptographicTokenServer is the server API for CryptographicToken service.
+// All implementations must embed UnimplementedCryptographicTokenServer
 // for forward compatibility.
-type SessionManagementServer interface {
+type CryptographicTokenServer interface {
 	Initialize(context.Context, *InitializeRequest) (*InitializeResponse, error)
 	Finalize(context.Context, *FinalizeRequest) (*FinalizeResponse, error)
 	GetInfo(context.Context, *GetInfoRequest) (*GetInfoResponse, error)
@@ -1170,2218 +1170,2218 @@ type SessionManagementServer interface {
 	GenerateRandom(context.Context, *GenerateRandomRequest) (*GenerateRandomResponse, error)
 	GetFunctionStatus(context.Context, *GetFunctionStatusRequest) (*GetFunctionStatusResponse, error)
 	CancelFunction(context.Context, *CancelFunctionRequest) (*CancelFunctionResponse, error)
-	mustEmbedUnimplementedSessionManagementServer()
+	mustEmbedUnimplementedCryptographicTokenServer()
 }
 
-// UnimplementedSessionManagementServer must be embedded to have
+// UnimplementedCryptographicTokenServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedSessionManagementServer struct{}
+type UnimplementedCryptographicTokenServer struct{}
 
-func (UnimplementedSessionManagementServer) Initialize(context.Context, *InitializeRequest) (*InitializeResponse, error) {
+func (UnimplementedCryptographicTokenServer) Initialize(context.Context, *InitializeRequest) (*InitializeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Initialize not implemented")
 }
-func (UnimplementedSessionManagementServer) Finalize(context.Context, *FinalizeRequest) (*FinalizeResponse, error) {
+func (UnimplementedCryptographicTokenServer) Finalize(context.Context, *FinalizeRequest) (*FinalizeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Finalize not implemented")
 }
-func (UnimplementedSessionManagementServer) GetInfo(context.Context, *GetInfoRequest) (*GetInfoResponse, error) {
+func (UnimplementedCryptographicTokenServer) GetInfo(context.Context, *GetInfoRequest) (*GetInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetInfo not implemented")
 }
-func (UnimplementedSessionManagementServer) GetFunctionList(context.Context, *GetFunctionListRequest) (*GetFunctionListResponse, error) {
+func (UnimplementedCryptographicTokenServer) GetFunctionList(context.Context, *GetFunctionListRequest) (*GetFunctionListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetFunctionList not implemented")
 }
-func (UnimplementedSessionManagementServer) GetInterfaceList(context.Context, *GetInterfaceListRequest) (*GetInterfaceListResponse, error) {
+func (UnimplementedCryptographicTokenServer) GetInterfaceList(context.Context, *GetInterfaceListRequest) (*GetInterfaceListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetInterfaceList not implemented")
 }
-func (UnimplementedSessionManagementServer) GetInterface(context.Context, *GetInterfaceRequest) (*GetInterfaceResponse, error) {
+func (UnimplementedCryptographicTokenServer) GetInterface(context.Context, *GetInterfaceRequest) (*GetInterfaceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetInterface not implemented")
 }
-func (UnimplementedSessionManagementServer) GetSlotList(context.Context, *GetSlotListRequest) (*GetSlotListResponse, error) {
+func (UnimplementedCryptographicTokenServer) GetSlotList(context.Context, *GetSlotListRequest) (*GetSlotListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetSlotList not implemented")
 }
-func (UnimplementedSessionManagementServer) GetSlotInfo(context.Context, *GetSlotInfoRequest) (*GetSlotInfoResponse, error) {
+func (UnimplementedCryptographicTokenServer) GetSlotInfo(context.Context, *GetSlotInfoRequest) (*GetSlotInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetSlotInfo not implemented")
 }
-func (UnimplementedSessionManagementServer) GetTokenInfo(context.Context, *GetTokenInfoRequest) (*GetTokenInfoResponse, error) {
+func (UnimplementedCryptographicTokenServer) GetTokenInfo(context.Context, *GetTokenInfoRequest) (*GetTokenInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTokenInfo not implemented")
 }
-func (UnimplementedSessionManagementServer) WaitForSlotEvent(context.Context, *WaitForSlotEventRequest) (*WaitForSlotEventResponse, error) {
+func (UnimplementedCryptographicTokenServer) WaitForSlotEvent(context.Context, *WaitForSlotEventRequest) (*WaitForSlotEventResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method WaitForSlotEvent not implemented")
 }
-func (UnimplementedSessionManagementServer) GetMechanismList(context.Context, *GetMechanismListRequest) (*GetMechanismListResponse, error) {
+func (UnimplementedCryptographicTokenServer) GetMechanismList(context.Context, *GetMechanismListRequest) (*GetMechanismListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetMechanismList not implemented")
 }
-func (UnimplementedSessionManagementServer) GetMechanismInfo(context.Context, *GetMechanismInfoRequest) (*GetMechanismInfoResponse, error) {
+func (UnimplementedCryptographicTokenServer) GetMechanismInfo(context.Context, *GetMechanismInfoRequest) (*GetMechanismInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetMechanismInfo not implemented")
 }
-func (UnimplementedSessionManagementServer) InitToken(context.Context, *InitTokenRequest) (*InitTokenResponse, error) {
+func (UnimplementedCryptographicTokenServer) InitToken(context.Context, *InitTokenRequest) (*InitTokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method InitToken not implemented")
 }
-func (UnimplementedSessionManagementServer) InitPIN(context.Context, *InitPINRequest) (*InitPINResponse, error) {
+func (UnimplementedCryptographicTokenServer) InitPIN(context.Context, *InitPINRequest) (*InitPINResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method InitPIN not implemented")
 }
-func (UnimplementedSessionManagementServer) SetPIN(context.Context, *SetPINRequest) (*SetPINResponse, error) {
+func (UnimplementedCryptographicTokenServer) SetPIN(context.Context, *SetPINRequest) (*SetPINResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetPIN not implemented")
 }
-func (UnimplementedSessionManagementServer) OpenSession(context.Context, *OpenSessionRequest) (*OpenSessionResponse, error) {
+func (UnimplementedCryptographicTokenServer) OpenSession(context.Context, *OpenSessionRequest) (*OpenSessionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method OpenSession not implemented")
 }
-func (UnimplementedSessionManagementServer) CloseSession(context.Context, *CloseSessionRequest) (*CloseSessionResponse, error) {
+func (UnimplementedCryptographicTokenServer) CloseSession(context.Context, *CloseSessionRequest) (*CloseSessionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CloseSession not implemented")
 }
-func (UnimplementedSessionManagementServer) CloseAllSessions(context.Context, *CloseAllSessionsRequest) (*CloseAllSessionsResponse, error) {
+func (UnimplementedCryptographicTokenServer) CloseAllSessions(context.Context, *CloseAllSessionsRequest) (*CloseAllSessionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CloseAllSessions not implemented")
 }
-func (UnimplementedSessionManagementServer) GetSessionInfo(context.Context, *GetSessionInfoRequest) (*GetSessionInfoResponse, error) {
+func (UnimplementedCryptographicTokenServer) GetSessionInfo(context.Context, *GetSessionInfoRequest) (*GetSessionInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetSessionInfo not implemented")
 }
-func (UnimplementedSessionManagementServer) SessionCancel(context.Context, *SessionCancelRequest) (*SessionCancelResponse, error) {
+func (UnimplementedCryptographicTokenServer) SessionCancel(context.Context, *SessionCancelRequest) (*SessionCancelResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SessionCancel not implemented")
 }
-func (UnimplementedSessionManagementServer) CreateObject(context.Context, *CreateObjectRequest) (*CreateObjectResponse, error) {
+func (UnimplementedCryptographicTokenServer) CreateObject(context.Context, *CreateObjectRequest) (*CreateObjectResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateObject not implemented")
 }
-func (UnimplementedSessionManagementServer) CopyObject(context.Context, *CopyObjectRequest) (*CopyObjectResponse, error) {
+func (UnimplementedCryptographicTokenServer) CopyObject(context.Context, *CopyObjectRequest) (*CopyObjectResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CopyObject not implemented")
 }
-func (UnimplementedSessionManagementServer) DestroyObject(context.Context, *DestroyObjectRequest) (*DestroyObjectResponse, error) {
+func (UnimplementedCryptographicTokenServer) DestroyObject(context.Context, *DestroyObjectRequest) (*DestroyObjectResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DestroyObject not implemented")
 }
-func (UnimplementedSessionManagementServer) GetObjectSize(context.Context, *GetObjectSizeRequest) (*GetObjectSizeResponse, error) {
+func (UnimplementedCryptographicTokenServer) GetObjectSize(context.Context, *GetObjectSizeRequest) (*GetObjectSizeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetObjectSize not implemented")
 }
-func (UnimplementedSessionManagementServer) GetAttributeValue(context.Context, *GetAttributeValueRequest) (*GetAttributeValueResponse, error) {
+func (UnimplementedCryptographicTokenServer) GetAttributeValue(context.Context, *GetAttributeValueRequest) (*GetAttributeValueResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAttributeValue not implemented")
 }
-func (UnimplementedSessionManagementServer) SetAttributeValue(context.Context, *SetAttributeValueRequest) (*SetAttributeValueResponse, error) {
+func (UnimplementedCryptographicTokenServer) SetAttributeValue(context.Context, *SetAttributeValueRequest) (*SetAttributeValueResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetAttributeValue not implemented")
 }
-func (UnimplementedSessionManagementServer) FindObjectsInit(context.Context, *FindObjectsInitRequest) (*FindObjectsInitResponse, error) {
+func (UnimplementedCryptographicTokenServer) FindObjectsInit(context.Context, *FindObjectsInitRequest) (*FindObjectsInitResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FindObjectsInit not implemented")
 }
-func (UnimplementedSessionManagementServer) FindObjects(context.Context, *FindObjectsRequest) (*FindObjectsResponse, error) {
+func (UnimplementedCryptographicTokenServer) FindObjects(context.Context, *FindObjectsRequest) (*FindObjectsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FindObjects not implemented")
 }
-func (UnimplementedSessionManagementServer) FindObjectsFinal(context.Context, *FindObjectsFinalRequest) (*FindObjectsFinalResponse, error) {
+func (UnimplementedCryptographicTokenServer) FindObjectsFinal(context.Context, *FindObjectsFinalRequest) (*FindObjectsFinalResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FindObjectsFinal not implemented")
 }
-func (UnimplementedSessionManagementServer) EncryptInit(context.Context, *EncryptInitRequest) (*EncryptInitResponse, error) {
+func (UnimplementedCryptographicTokenServer) EncryptInit(context.Context, *EncryptInitRequest) (*EncryptInitResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method EncryptInit not implemented")
 }
-func (UnimplementedSessionManagementServer) Encrypt(context.Context, *EncryptRequest) (*EncryptResponse, error) {
+func (UnimplementedCryptographicTokenServer) Encrypt(context.Context, *EncryptRequest) (*EncryptResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Encrypt not implemented")
 }
-func (UnimplementedSessionManagementServer) EncryptUpdate(context.Context, *EncryptUpdateRequest) (*EncryptUpdateResponse, error) {
+func (UnimplementedCryptographicTokenServer) EncryptUpdate(context.Context, *EncryptUpdateRequest) (*EncryptUpdateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method EncryptUpdate not implemented")
 }
-func (UnimplementedSessionManagementServer) EncryptFinal(context.Context, *EncryptFinalRequest) (*EncryptFinalResponse, error) {
+func (UnimplementedCryptographicTokenServer) EncryptFinal(context.Context, *EncryptFinalRequest) (*EncryptFinalResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method EncryptFinal not implemented")
 }
-func (UnimplementedSessionManagementServer) EncryptMessageInit(context.Context, *EncryptMessageInitRequest) (*EncryptMessageInitResponse, error) {
+func (UnimplementedCryptographicTokenServer) EncryptMessageInit(context.Context, *EncryptMessageInitRequest) (*EncryptMessageInitResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method EncryptMessageInit not implemented")
 }
-func (UnimplementedSessionManagementServer) EncryptMessage(context.Context, *EncryptMessageRequest) (*EncryptMessageResponse, error) {
+func (UnimplementedCryptographicTokenServer) EncryptMessage(context.Context, *EncryptMessageRequest) (*EncryptMessageResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method EncryptMessage not implemented")
 }
-func (UnimplementedSessionManagementServer) EncryptMessageBegin(context.Context, *EncryptMessageBeginRequest) (*EncryptMessageBeginResponse, error) {
+func (UnimplementedCryptographicTokenServer) EncryptMessageBegin(context.Context, *EncryptMessageBeginRequest) (*EncryptMessageBeginResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method EncryptMessageBegin not implemented")
 }
-func (UnimplementedSessionManagementServer) EncryptMessageNext(context.Context, *EncryptMessageNextRequest) (*EncryptMessageNextResponse, error) {
+func (UnimplementedCryptographicTokenServer) EncryptMessageNext(context.Context, *EncryptMessageNextRequest) (*EncryptMessageNextResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method EncryptMessageNext not implemented")
 }
-func (UnimplementedSessionManagementServer) EncryptMessageFinal(context.Context, *EncryptMessageFinalRequest) (*EncryptMessageFinalResponse, error) {
+func (UnimplementedCryptographicTokenServer) EncryptMessageFinal(context.Context, *EncryptMessageFinalRequest) (*EncryptMessageFinalResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method EncryptMessageFinal not implemented")
 }
-func (UnimplementedSessionManagementServer) DecryptInit(context.Context, *DecryptInitRequest) (*DecryptInitResponse, error) {
+func (UnimplementedCryptographicTokenServer) DecryptInit(context.Context, *DecryptInitRequest) (*DecryptInitResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DecryptInit not implemented")
 }
-func (UnimplementedSessionManagementServer) Decrypt(context.Context, *DecryptRequest) (*DecryptResponse, error) {
+func (UnimplementedCryptographicTokenServer) Decrypt(context.Context, *DecryptRequest) (*DecryptResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Decrypt not implemented")
 }
-func (UnimplementedSessionManagementServer) DecryptUpdate(context.Context, *DecryptUpdateRequest) (*DecryptUpdateResponse, error) {
+func (UnimplementedCryptographicTokenServer) DecryptUpdate(context.Context, *DecryptUpdateRequest) (*DecryptUpdateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DecryptUpdate not implemented")
 }
-func (UnimplementedSessionManagementServer) DecryptFinal(context.Context, *DecryptFinalRequest) (*DecryptFinalResponse, error) {
+func (UnimplementedCryptographicTokenServer) DecryptFinal(context.Context, *DecryptFinalRequest) (*DecryptFinalResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DecryptFinal not implemented")
 }
-func (UnimplementedSessionManagementServer) DecryptMessageInit(context.Context, *DecryptMessageInitRequest) (*DecryptMessageInitResponse, error) {
+func (UnimplementedCryptographicTokenServer) DecryptMessageInit(context.Context, *DecryptMessageInitRequest) (*DecryptMessageInitResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DecryptMessageInit not implemented")
 }
-func (UnimplementedSessionManagementServer) DecryptMessage(context.Context, *DecryptMessageRequest) (*DecryptMessageResponse, error) {
+func (UnimplementedCryptographicTokenServer) DecryptMessage(context.Context, *DecryptMessageRequest) (*DecryptMessageResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DecryptMessage not implemented")
 }
-func (UnimplementedSessionManagementServer) DecryptMessageBegin(context.Context, *DecryptMessageBeginRequest) (*DecryptMessageBeginResponse, error) {
+func (UnimplementedCryptographicTokenServer) DecryptMessageBegin(context.Context, *DecryptMessageBeginRequest) (*DecryptMessageBeginResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DecryptMessageBegin not implemented")
 }
-func (UnimplementedSessionManagementServer) DecryptMessageNext(context.Context, *DecryptMessageNextRequest) (*DecryptMessageNextResponse, error) {
+func (UnimplementedCryptographicTokenServer) DecryptMessageNext(context.Context, *DecryptMessageNextRequest) (*DecryptMessageNextResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DecryptMessageNext not implemented")
 }
-func (UnimplementedSessionManagementServer) MessageDecryptFinal(context.Context, *MessageDecryptFinalRequest) (*MessageDecryptFinalResponse, error) {
+func (UnimplementedCryptographicTokenServer) MessageDecryptFinal(context.Context, *MessageDecryptFinalRequest) (*MessageDecryptFinalResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessageDecryptFinal not implemented")
 }
-func (UnimplementedSessionManagementServer) DigestInit(context.Context, *DigestInitRequest) (*DigestInitResponse, error) {
+func (UnimplementedCryptographicTokenServer) DigestInit(context.Context, *DigestInitRequest) (*DigestInitResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DigestInit not implemented")
 }
-func (UnimplementedSessionManagementServer) Digest(context.Context, *DigestRequest) (*DigestResponse, error) {
+func (UnimplementedCryptographicTokenServer) Digest(context.Context, *DigestRequest) (*DigestResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Digest not implemented")
 }
-func (UnimplementedSessionManagementServer) DigestUpdate(context.Context, *DigestUpdateRequest) (*DigestUpdateResponse, error) {
+func (UnimplementedCryptographicTokenServer) DigestUpdate(context.Context, *DigestUpdateRequest) (*DigestUpdateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DigestUpdate not implemented")
 }
-func (UnimplementedSessionManagementServer) DigestKey(context.Context, *DigestKeyRequest) (*DigestKeyResponse, error) {
+func (UnimplementedCryptographicTokenServer) DigestKey(context.Context, *DigestKeyRequest) (*DigestKeyResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DigestKey not implemented")
 }
-func (UnimplementedSessionManagementServer) DigestFinal(context.Context, *DigestFinalRequest) (*DigestFinalResponse, error) {
+func (UnimplementedCryptographicTokenServer) DigestFinal(context.Context, *DigestFinalRequest) (*DigestFinalResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DigestFinal not implemented")
 }
-func (UnimplementedSessionManagementServer) SignInit(context.Context, *SignInitRequest) (*SignInitResponse, error) {
+func (UnimplementedCryptographicTokenServer) SignInit(context.Context, *SignInitRequest) (*SignInitResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SignInit not implemented")
 }
-func (UnimplementedSessionManagementServer) Sign(context.Context, *SignRequest) (*SignResponse, error) {
+func (UnimplementedCryptographicTokenServer) Sign(context.Context, *SignRequest) (*SignResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Sign not implemented")
 }
-func (UnimplementedSessionManagementServer) SignUpdate(context.Context, *SignUpdateRequest) (*SignUpdateResponse, error) {
+func (UnimplementedCryptographicTokenServer) SignUpdate(context.Context, *SignUpdateRequest) (*SignUpdateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SignUpdate not implemented")
 }
-func (UnimplementedSessionManagementServer) SignFinal(context.Context, *SignFinalRequest) (*SignFinalResponse, error) {
+func (UnimplementedCryptographicTokenServer) SignFinal(context.Context, *SignFinalRequest) (*SignFinalResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SignFinal not implemented")
 }
-func (UnimplementedSessionManagementServer) SignRecoverInit(context.Context, *SignRecoverInitRequest) (*SignRecoverInitResponse, error) {
+func (UnimplementedCryptographicTokenServer) SignRecoverInit(context.Context, *SignRecoverInitRequest) (*SignRecoverInitResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SignRecoverInit not implemented")
 }
-func (UnimplementedSessionManagementServer) SignRecover(context.Context, *SignRecoverRequest) (*SignRecoverResponse, error) {
+func (UnimplementedCryptographicTokenServer) SignRecover(context.Context, *SignRecoverRequest) (*SignRecoverResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SignRecover not implemented")
 }
-func (UnimplementedSessionManagementServer) SignMessageInit(context.Context, *SignMessageInitRequest) (*SignMessageInitResponse, error) {
+func (UnimplementedCryptographicTokenServer) SignMessageInit(context.Context, *SignMessageInitRequest) (*SignMessageInitResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SignMessageInit not implemented")
 }
-func (UnimplementedSessionManagementServer) SignMessage(context.Context, *SignMessageRequest) (*SignMessageResponse, error) {
+func (UnimplementedCryptographicTokenServer) SignMessage(context.Context, *SignMessageRequest) (*SignMessageResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SignMessage not implemented")
 }
-func (UnimplementedSessionManagementServer) SignMessageBegin(context.Context, *SignMessageBeginRequest) (*SignMessageBeginResponse, error) {
+func (UnimplementedCryptographicTokenServer) SignMessageBegin(context.Context, *SignMessageBeginRequest) (*SignMessageBeginResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SignMessageBegin not implemented")
 }
-func (UnimplementedSessionManagementServer) SignMessageNext(context.Context, *SignMessageNextRequest) (*SignMessageNextResponse, error) {
+func (UnimplementedCryptographicTokenServer) SignMessageNext(context.Context, *SignMessageNextRequest) (*SignMessageNextResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SignMessageNext not implemented")
 }
-func (UnimplementedSessionManagementServer) SignMessageFinal(context.Context, *SignMessageFinalRequest) (*SignMessageFinalResponse, error) {
+func (UnimplementedCryptographicTokenServer) SignMessageFinal(context.Context, *SignMessageFinalRequest) (*SignMessageFinalResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SignMessageFinal not implemented")
 }
-func (UnimplementedSessionManagementServer) VerifyInit(context.Context, *VerifyInitRequest) (*VerifyInitResponse, error) {
+func (UnimplementedCryptographicTokenServer) VerifyInit(context.Context, *VerifyInitRequest) (*VerifyInitResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VerifyInit not implemented")
 }
-func (UnimplementedSessionManagementServer) Verify(context.Context, *VerifyRequest) (*VerifyResponse, error) {
+func (UnimplementedCryptographicTokenServer) Verify(context.Context, *VerifyRequest) (*VerifyResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Verify not implemented")
 }
-func (UnimplementedSessionManagementServer) VerifyUpdate(context.Context, *VerifyUpdateRequest) (*VerifyUpdateResponse, error) {
+func (UnimplementedCryptographicTokenServer) VerifyUpdate(context.Context, *VerifyUpdateRequest) (*VerifyUpdateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VerifyUpdate not implemented")
 }
-func (UnimplementedSessionManagementServer) VerifyFinal(context.Context, *VerifyFinalRequest) (*VerifyFinalResponse, error) {
+func (UnimplementedCryptographicTokenServer) VerifyFinal(context.Context, *VerifyFinalRequest) (*VerifyFinalResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VerifyFinal not implemented")
 }
-func (UnimplementedSessionManagementServer) VerifyRecoverInit(context.Context, *VerifyRecoverInitRequest) (*VerifyRecoverInitResponse, error) {
+func (UnimplementedCryptographicTokenServer) VerifyRecoverInit(context.Context, *VerifyRecoverInitRequest) (*VerifyRecoverInitResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VerifyRecoverInit not implemented")
 }
-func (UnimplementedSessionManagementServer) VerifyRecover(context.Context, *VerifyRecoverRequest) (*VerifyRecoverResponse, error) {
+func (UnimplementedCryptographicTokenServer) VerifyRecover(context.Context, *VerifyRecoverRequest) (*VerifyRecoverResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VerifyRecover not implemented")
 }
-func (UnimplementedSessionManagementServer) VerifyMessageInit(context.Context, *VerifyMessageInitRequest) (*VerifyMessageInitResponse, error) {
+func (UnimplementedCryptographicTokenServer) VerifyMessageInit(context.Context, *VerifyMessageInitRequest) (*VerifyMessageInitResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VerifyMessageInit not implemented")
 }
-func (UnimplementedSessionManagementServer) VerifyMessage(context.Context, *VerifyMessageRequest) (*VerifyMessageResponse, error) {
+func (UnimplementedCryptographicTokenServer) VerifyMessage(context.Context, *VerifyMessageRequest) (*VerifyMessageResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VerifyMessage not implemented")
 }
-func (UnimplementedSessionManagementServer) VerifyMessageBegin(context.Context, *VerifyMessageBeginRequest) (*VerifyMessageBeginResponse, error) {
+func (UnimplementedCryptographicTokenServer) VerifyMessageBegin(context.Context, *VerifyMessageBeginRequest) (*VerifyMessageBeginResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VerifyMessageBegin not implemented")
 }
-func (UnimplementedSessionManagementServer) VerifyMessageNext(context.Context, *VerifyMessageNextRequest) (*VerifyMessageNextResponse, error) {
+func (UnimplementedCryptographicTokenServer) VerifyMessageNext(context.Context, *VerifyMessageNextRequest) (*VerifyMessageNextResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VerifyMessageNext not implemented")
 }
-func (UnimplementedSessionManagementServer) VerifyMessageFinal(context.Context, *VerifyMessageFinalRequest) (*VerifyMessageFinalResponse, error) {
+func (UnimplementedCryptographicTokenServer) VerifyMessageFinal(context.Context, *VerifyMessageFinalRequest) (*VerifyMessageFinalResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VerifyMessageFinal not implemented")
 }
-func (UnimplementedSessionManagementServer) DigestEncryptUpdate(context.Context, *DigestEncryptUpdateRequest) (*DigestEncryptUpdateResponse, error) {
+func (UnimplementedCryptographicTokenServer) DigestEncryptUpdate(context.Context, *DigestEncryptUpdateRequest) (*DigestEncryptUpdateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DigestEncryptUpdate not implemented")
 }
-func (UnimplementedSessionManagementServer) DecryptDigestUpdate(context.Context, *DecryptDigestUpdateRequest) (*DecryptDigestUpdateResponse, error) {
+func (UnimplementedCryptographicTokenServer) DecryptDigestUpdate(context.Context, *DecryptDigestUpdateRequest) (*DecryptDigestUpdateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DecryptDigestUpdate not implemented")
 }
-func (UnimplementedSessionManagementServer) SignEncryptUpdate(context.Context, *SignEncryptUpdateRequest) (*SignEncryptUpdateResponse, error) {
+func (UnimplementedCryptographicTokenServer) SignEncryptUpdate(context.Context, *SignEncryptUpdateRequest) (*SignEncryptUpdateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SignEncryptUpdate not implemented")
 }
-func (UnimplementedSessionManagementServer) DecryptVerifyUpdate(context.Context, *DecryptVerifyUpdateRequest) (*DecryptVerifyUpdateResponse, error) {
+func (UnimplementedCryptographicTokenServer) DecryptVerifyUpdate(context.Context, *DecryptVerifyUpdateRequest) (*DecryptVerifyUpdateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DecryptVerifyUpdate not implemented")
 }
-func (UnimplementedSessionManagementServer) GenerateKey(context.Context, *GenerateKeyRequest) (*GenerateKeyResponse, error) {
+func (UnimplementedCryptographicTokenServer) GenerateKey(context.Context, *GenerateKeyRequest) (*GenerateKeyResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GenerateKey not implemented")
 }
-func (UnimplementedSessionManagementServer) GenerateKeyPair(context.Context, *GenerateKeyPairRequest) (*GenerateKeyPairResponse, error) {
+func (UnimplementedCryptographicTokenServer) GenerateKeyPair(context.Context, *GenerateKeyPairRequest) (*GenerateKeyPairResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GenerateKeyPair not implemented")
 }
-func (UnimplementedSessionManagementServer) WrapKey(context.Context, *WrapKeyRequest) (*WrapKeyResponse, error) {
+func (UnimplementedCryptographicTokenServer) WrapKey(context.Context, *WrapKeyRequest) (*WrapKeyResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method WrapKey not implemented")
 }
-func (UnimplementedSessionManagementServer) UnwrapKey(context.Context, *UnwrapKeyRequest) (*UnwrapKeyResponse, error) {
+func (UnimplementedCryptographicTokenServer) UnwrapKey(context.Context, *UnwrapKeyRequest) (*UnwrapKeyResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UnwrapKey not implemented")
 }
-func (UnimplementedSessionManagementServer) DeriveKey(context.Context, *DeriveKeyRequest) (*DeriveKeyResponse, error) {
+func (UnimplementedCryptographicTokenServer) DeriveKey(context.Context, *DeriveKeyRequest) (*DeriveKeyResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeriveKey not implemented")
 }
-func (UnimplementedSessionManagementServer) SeedRandom(context.Context, *SeedRandomRequest) (*SeedRandomResponse, error) {
+func (UnimplementedCryptographicTokenServer) SeedRandom(context.Context, *SeedRandomRequest) (*SeedRandomResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SeedRandom not implemented")
 }
-func (UnimplementedSessionManagementServer) GenerateRandom(context.Context, *GenerateRandomRequest) (*GenerateRandomResponse, error) {
+func (UnimplementedCryptographicTokenServer) GenerateRandom(context.Context, *GenerateRandomRequest) (*GenerateRandomResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GenerateRandom not implemented")
 }
-func (UnimplementedSessionManagementServer) GetFunctionStatus(context.Context, *GetFunctionStatusRequest) (*GetFunctionStatusResponse, error) {
+func (UnimplementedCryptographicTokenServer) GetFunctionStatus(context.Context, *GetFunctionStatusRequest) (*GetFunctionStatusResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetFunctionStatus not implemented")
 }
-func (UnimplementedSessionManagementServer) CancelFunction(context.Context, *CancelFunctionRequest) (*CancelFunctionResponse, error) {
+func (UnimplementedCryptographicTokenServer) CancelFunction(context.Context, *CancelFunctionRequest) (*CancelFunctionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CancelFunction not implemented")
 }
-func (UnimplementedSessionManagementServer) mustEmbedUnimplementedSessionManagementServer() {}
-func (UnimplementedSessionManagementServer) testEmbeddedByValue()                           {}
+func (UnimplementedCryptographicTokenServer) mustEmbedUnimplementedCryptographicTokenServer() {}
+func (UnimplementedCryptographicTokenServer) testEmbeddedByValue()                            {}
 
-// UnsafeSessionManagementServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to SessionManagementServer will
+// UnsafeCryptographicTokenServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to CryptographicTokenServer will
 // result in compilation errors.
-type UnsafeSessionManagementServer interface {
-	mustEmbedUnimplementedSessionManagementServer()
+type UnsafeCryptographicTokenServer interface {
+	mustEmbedUnimplementedCryptographicTokenServer()
 }
 
-func RegisterSessionManagementServer(s grpc.ServiceRegistrar, srv SessionManagementServer) {
-	// If the following call pancis, it indicates UnimplementedSessionManagementServer was
+func RegisterCryptographicTokenServer(s grpc.ServiceRegistrar, srv CryptographicTokenServer) {
+	// If the following call pancis, it indicates UnimplementedCryptographicTokenServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&SessionManagement_ServiceDesc, srv)
+	s.RegisterService(&CryptographicToken_ServiceDesc, srv)
 }
 
-func _SessionManagement_Initialize_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_Initialize_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(InitializeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).Initialize(ctx, in)
+		return srv.(CryptographicTokenServer).Initialize(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_Initialize_FullMethodName,
+		FullMethod: CryptographicToken_Initialize_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).Initialize(ctx, req.(*InitializeRequest))
+		return srv.(CryptographicTokenServer).Initialize(ctx, req.(*InitializeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_Finalize_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_Finalize_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(FinalizeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).Finalize(ctx, in)
+		return srv.(CryptographicTokenServer).Finalize(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_Finalize_FullMethodName,
+		FullMethod: CryptographicToken_Finalize_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).Finalize(ctx, req.(*FinalizeRequest))
+		return srv.(CryptographicTokenServer).Finalize(ctx, req.(*FinalizeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_GetInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_GetInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetInfoRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).GetInfo(ctx, in)
+		return srv.(CryptographicTokenServer).GetInfo(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_GetInfo_FullMethodName,
+		FullMethod: CryptographicToken_GetInfo_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).GetInfo(ctx, req.(*GetInfoRequest))
+		return srv.(CryptographicTokenServer).GetInfo(ctx, req.(*GetInfoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_GetFunctionList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_GetFunctionList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetFunctionListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).GetFunctionList(ctx, in)
+		return srv.(CryptographicTokenServer).GetFunctionList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_GetFunctionList_FullMethodName,
+		FullMethod: CryptographicToken_GetFunctionList_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).GetFunctionList(ctx, req.(*GetFunctionListRequest))
+		return srv.(CryptographicTokenServer).GetFunctionList(ctx, req.(*GetFunctionListRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_GetInterfaceList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_GetInterfaceList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetInterfaceListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).GetInterfaceList(ctx, in)
+		return srv.(CryptographicTokenServer).GetInterfaceList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_GetInterfaceList_FullMethodName,
+		FullMethod: CryptographicToken_GetInterfaceList_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).GetInterfaceList(ctx, req.(*GetInterfaceListRequest))
+		return srv.(CryptographicTokenServer).GetInterfaceList(ctx, req.(*GetInterfaceListRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_GetInterface_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_GetInterface_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetInterfaceRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).GetInterface(ctx, in)
+		return srv.(CryptographicTokenServer).GetInterface(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_GetInterface_FullMethodName,
+		FullMethod: CryptographicToken_GetInterface_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).GetInterface(ctx, req.(*GetInterfaceRequest))
+		return srv.(CryptographicTokenServer).GetInterface(ctx, req.(*GetInterfaceRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_GetSlotList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_GetSlotList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetSlotListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).GetSlotList(ctx, in)
+		return srv.(CryptographicTokenServer).GetSlotList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_GetSlotList_FullMethodName,
+		FullMethod: CryptographicToken_GetSlotList_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).GetSlotList(ctx, req.(*GetSlotListRequest))
+		return srv.(CryptographicTokenServer).GetSlotList(ctx, req.(*GetSlotListRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_GetSlotInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_GetSlotInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetSlotInfoRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).GetSlotInfo(ctx, in)
+		return srv.(CryptographicTokenServer).GetSlotInfo(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_GetSlotInfo_FullMethodName,
+		FullMethod: CryptographicToken_GetSlotInfo_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).GetSlotInfo(ctx, req.(*GetSlotInfoRequest))
+		return srv.(CryptographicTokenServer).GetSlotInfo(ctx, req.(*GetSlotInfoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_GetTokenInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_GetTokenInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetTokenInfoRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).GetTokenInfo(ctx, in)
+		return srv.(CryptographicTokenServer).GetTokenInfo(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_GetTokenInfo_FullMethodName,
+		FullMethod: CryptographicToken_GetTokenInfo_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).GetTokenInfo(ctx, req.(*GetTokenInfoRequest))
+		return srv.(CryptographicTokenServer).GetTokenInfo(ctx, req.(*GetTokenInfoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_WaitForSlotEvent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_WaitForSlotEvent_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(WaitForSlotEventRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).WaitForSlotEvent(ctx, in)
+		return srv.(CryptographicTokenServer).WaitForSlotEvent(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_WaitForSlotEvent_FullMethodName,
+		FullMethod: CryptographicToken_WaitForSlotEvent_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).WaitForSlotEvent(ctx, req.(*WaitForSlotEventRequest))
+		return srv.(CryptographicTokenServer).WaitForSlotEvent(ctx, req.(*WaitForSlotEventRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_GetMechanismList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_GetMechanismList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetMechanismListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).GetMechanismList(ctx, in)
+		return srv.(CryptographicTokenServer).GetMechanismList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_GetMechanismList_FullMethodName,
+		FullMethod: CryptographicToken_GetMechanismList_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).GetMechanismList(ctx, req.(*GetMechanismListRequest))
+		return srv.(CryptographicTokenServer).GetMechanismList(ctx, req.(*GetMechanismListRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_GetMechanismInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_GetMechanismInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetMechanismInfoRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).GetMechanismInfo(ctx, in)
+		return srv.(CryptographicTokenServer).GetMechanismInfo(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_GetMechanismInfo_FullMethodName,
+		FullMethod: CryptographicToken_GetMechanismInfo_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).GetMechanismInfo(ctx, req.(*GetMechanismInfoRequest))
+		return srv.(CryptographicTokenServer).GetMechanismInfo(ctx, req.(*GetMechanismInfoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_InitToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_InitToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(InitTokenRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).InitToken(ctx, in)
+		return srv.(CryptographicTokenServer).InitToken(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_InitToken_FullMethodName,
+		FullMethod: CryptographicToken_InitToken_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).InitToken(ctx, req.(*InitTokenRequest))
+		return srv.(CryptographicTokenServer).InitToken(ctx, req.(*InitTokenRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_InitPIN_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_InitPIN_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(InitPINRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).InitPIN(ctx, in)
+		return srv.(CryptographicTokenServer).InitPIN(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_InitPIN_FullMethodName,
+		FullMethod: CryptographicToken_InitPIN_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).InitPIN(ctx, req.(*InitPINRequest))
+		return srv.(CryptographicTokenServer).InitPIN(ctx, req.(*InitPINRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_SetPIN_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_SetPIN_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SetPINRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).SetPIN(ctx, in)
+		return srv.(CryptographicTokenServer).SetPIN(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_SetPIN_FullMethodName,
+		FullMethod: CryptographicToken_SetPIN_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).SetPIN(ctx, req.(*SetPINRequest))
+		return srv.(CryptographicTokenServer).SetPIN(ctx, req.(*SetPINRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_OpenSession_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_OpenSession_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(OpenSessionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).OpenSession(ctx, in)
+		return srv.(CryptographicTokenServer).OpenSession(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_OpenSession_FullMethodName,
+		FullMethod: CryptographicToken_OpenSession_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).OpenSession(ctx, req.(*OpenSessionRequest))
+		return srv.(CryptographicTokenServer).OpenSession(ctx, req.(*OpenSessionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_CloseSession_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_CloseSession_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CloseSessionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).CloseSession(ctx, in)
+		return srv.(CryptographicTokenServer).CloseSession(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_CloseSession_FullMethodName,
+		FullMethod: CryptographicToken_CloseSession_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).CloseSession(ctx, req.(*CloseSessionRequest))
+		return srv.(CryptographicTokenServer).CloseSession(ctx, req.(*CloseSessionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_CloseAllSessions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_CloseAllSessions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CloseAllSessionsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).CloseAllSessions(ctx, in)
+		return srv.(CryptographicTokenServer).CloseAllSessions(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_CloseAllSessions_FullMethodName,
+		FullMethod: CryptographicToken_CloseAllSessions_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).CloseAllSessions(ctx, req.(*CloseAllSessionsRequest))
+		return srv.(CryptographicTokenServer).CloseAllSessions(ctx, req.(*CloseAllSessionsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_GetSessionInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_GetSessionInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetSessionInfoRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).GetSessionInfo(ctx, in)
+		return srv.(CryptographicTokenServer).GetSessionInfo(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_GetSessionInfo_FullMethodName,
+		FullMethod: CryptographicToken_GetSessionInfo_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).GetSessionInfo(ctx, req.(*GetSessionInfoRequest))
+		return srv.(CryptographicTokenServer).GetSessionInfo(ctx, req.(*GetSessionInfoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_SessionCancel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_SessionCancel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SessionCancelRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).SessionCancel(ctx, in)
+		return srv.(CryptographicTokenServer).SessionCancel(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_SessionCancel_FullMethodName,
+		FullMethod: CryptographicToken_SessionCancel_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).SessionCancel(ctx, req.(*SessionCancelRequest))
+		return srv.(CryptographicTokenServer).SessionCancel(ctx, req.(*SessionCancelRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_CreateObject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_CreateObject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateObjectRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).CreateObject(ctx, in)
+		return srv.(CryptographicTokenServer).CreateObject(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_CreateObject_FullMethodName,
+		FullMethod: CryptographicToken_CreateObject_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).CreateObject(ctx, req.(*CreateObjectRequest))
+		return srv.(CryptographicTokenServer).CreateObject(ctx, req.(*CreateObjectRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_CopyObject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_CopyObject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CopyObjectRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).CopyObject(ctx, in)
+		return srv.(CryptographicTokenServer).CopyObject(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_CopyObject_FullMethodName,
+		FullMethod: CryptographicToken_CopyObject_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).CopyObject(ctx, req.(*CopyObjectRequest))
+		return srv.(CryptographicTokenServer).CopyObject(ctx, req.(*CopyObjectRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_DestroyObject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_DestroyObject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DestroyObjectRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).DestroyObject(ctx, in)
+		return srv.(CryptographicTokenServer).DestroyObject(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_DestroyObject_FullMethodName,
+		FullMethod: CryptographicToken_DestroyObject_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).DestroyObject(ctx, req.(*DestroyObjectRequest))
+		return srv.(CryptographicTokenServer).DestroyObject(ctx, req.(*DestroyObjectRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_GetObjectSize_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_GetObjectSize_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetObjectSizeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).GetObjectSize(ctx, in)
+		return srv.(CryptographicTokenServer).GetObjectSize(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_GetObjectSize_FullMethodName,
+		FullMethod: CryptographicToken_GetObjectSize_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).GetObjectSize(ctx, req.(*GetObjectSizeRequest))
+		return srv.(CryptographicTokenServer).GetObjectSize(ctx, req.(*GetObjectSizeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_GetAttributeValue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_GetAttributeValue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetAttributeValueRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).GetAttributeValue(ctx, in)
+		return srv.(CryptographicTokenServer).GetAttributeValue(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_GetAttributeValue_FullMethodName,
+		FullMethod: CryptographicToken_GetAttributeValue_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).GetAttributeValue(ctx, req.(*GetAttributeValueRequest))
+		return srv.(CryptographicTokenServer).GetAttributeValue(ctx, req.(*GetAttributeValueRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_SetAttributeValue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_SetAttributeValue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SetAttributeValueRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).SetAttributeValue(ctx, in)
+		return srv.(CryptographicTokenServer).SetAttributeValue(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_SetAttributeValue_FullMethodName,
+		FullMethod: CryptographicToken_SetAttributeValue_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).SetAttributeValue(ctx, req.(*SetAttributeValueRequest))
+		return srv.(CryptographicTokenServer).SetAttributeValue(ctx, req.(*SetAttributeValueRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_FindObjectsInit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_FindObjectsInit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(FindObjectsInitRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).FindObjectsInit(ctx, in)
+		return srv.(CryptographicTokenServer).FindObjectsInit(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_FindObjectsInit_FullMethodName,
+		FullMethod: CryptographicToken_FindObjectsInit_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).FindObjectsInit(ctx, req.(*FindObjectsInitRequest))
+		return srv.(CryptographicTokenServer).FindObjectsInit(ctx, req.(*FindObjectsInitRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_FindObjects_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_FindObjects_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(FindObjectsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).FindObjects(ctx, in)
+		return srv.(CryptographicTokenServer).FindObjects(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_FindObjects_FullMethodName,
+		FullMethod: CryptographicToken_FindObjects_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).FindObjects(ctx, req.(*FindObjectsRequest))
+		return srv.(CryptographicTokenServer).FindObjects(ctx, req.(*FindObjectsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_FindObjectsFinal_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_FindObjectsFinal_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(FindObjectsFinalRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).FindObjectsFinal(ctx, in)
+		return srv.(CryptographicTokenServer).FindObjectsFinal(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_FindObjectsFinal_FullMethodName,
+		FullMethod: CryptographicToken_FindObjectsFinal_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).FindObjectsFinal(ctx, req.(*FindObjectsFinalRequest))
+		return srv.(CryptographicTokenServer).FindObjectsFinal(ctx, req.(*FindObjectsFinalRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_EncryptInit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_EncryptInit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(EncryptInitRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).EncryptInit(ctx, in)
+		return srv.(CryptographicTokenServer).EncryptInit(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_EncryptInit_FullMethodName,
+		FullMethod: CryptographicToken_EncryptInit_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).EncryptInit(ctx, req.(*EncryptInitRequest))
+		return srv.(CryptographicTokenServer).EncryptInit(ctx, req.(*EncryptInitRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_Encrypt_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_Encrypt_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(EncryptRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).Encrypt(ctx, in)
+		return srv.(CryptographicTokenServer).Encrypt(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_Encrypt_FullMethodName,
+		FullMethod: CryptographicToken_Encrypt_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).Encrypt(ctx, req.(*EncryptRequest))
+		return srv.(CryptographicTokenServer).Encrypt(ctx, req.(*EncryptRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_EncryptUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_EncryptUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(EncryptUpdateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).EncryptUpdate(ctx, in)
+		return srv.(CryptographicTokenServer).EncryptUpdate(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_EncryptUpdate_FullMethodName,
+		FullMethod: CryptographicToken_EncryptUpdate_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).EncryptUpdate(ctx, req.(*EncryptUpdateRequest))
+		return srv.(CryptographicTokenServer).EncryptUpdate(ctx, req.(*EncryptUpdateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_EncryptFinal_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_EncryptFinal_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(EncryptFinalRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).EncryptFinal(ctx, in)
+		return srv.(CryptographicTokenServer).EncryptFinal(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_EncryptFinal_FullMethodName,
+		FullMethod: CryptographicToken_EncryptFinal_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).EncryptFinal(ctx, req.(*EncryptFinalRequest))
+		return srv.(CryptographicTokenServer).EncryptFinal(ctx, req.(*EncryptFinalRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_EncryptMessageInit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_EncryptMessageInit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(EncryptMessageInitRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).EncryptMessageInit(ctx, in)
+		return srv.(CryptographicTokenServer).EncryptMessageInit(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_EncryptMessageInit_FullMethodName,
+		FullMethod: CryptographicToken_EncryptMessageInit_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).EncryptMessageInit(ctx, req.(*EncryptMessageInitRequest))
+		return srv.(CryptographicTokenServer).EncryptMessageInit(ctx, req.(*EncryptMessageInitRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_EncryptMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_EncryptMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(EncryptMessageRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).EncryptMessage(ctx, in)
+		return srv.(CryptographicTokenServer).EncryptMessage(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_EncryptMessage_FullMethodName,
+		FullMethod: CryptographicToken_EncryptMessage_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).EncryptMessage(ctx, req.(*EncryptMessageRequest))
+		return srv.(CryptographicTokenServer).EncryptMessage(ctx, req.(*EncryptMessageRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_EncryptMessageBegin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_EncryptMessageBegin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(EncryptMessageBeginRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).EncryptMessageBegin(ctx, in)
+		return srv.(CryptographicTokenServer).EncryptMessageBegin(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_EncryptMessageBegin_FullMethodName,
+		FullMethod: CryptographicToken_EncryptMessageBegin_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).EncryptMessageBegin(ctx, req.(*EncryptMessageBeginRequest))
+		return srv.(CryptographicTokenServer).EncryptMessageBegin(ctx, req.(*EncryptMessageBeginRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_EncryptMessageNext_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_EncryptMessageNext_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(EncryptMessageNextRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).EncryptMessageNext(ctx, in)
+		return srv.(CryptographicTokenServer).EncryptMessageNext(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_EncryptMessageNext_FullMethodName,
+		FullMethod: CryptographicToken_EncryptMessageNext_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).EncryptMessageNext(ctx, req.(*EncryptMessageNextRequest))
+		return srv.(CryptographicTokenServer).EncryptMessageNext(ctx, req.(*EncryptMessageNextRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_EncryptMessageFinal_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_EncryptMessageFinal_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(EncryptMessageFinalRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).EncryptMessageFinal(ctx, in)
+		return srv.(CryptographicTokenServer).EncryptMessageFinal(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_EncryptMessageFinal_FullMethodName,
+		FullMethod: CryptographicToken_EncryptMessageFinal_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).EncryptMessageFinal(ctx, req.(*EncryptMessageFinalRequest))
+		return srv.(CryptographicTokenServer).EncryptMessageFinal(ctx, req.(*EncryptMessageFinalRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_DecryptInit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_DecryptInit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DecryptInitRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).DecryptInit(ctx, in)
+		return srv.(CryptographicTokenServer).DecryptInit(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_DecryptInit_FullMethodName,
+		FullMethod: CryptographicToken_DecryptInit_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).DecryptInit(ctx, req.(*DecryptInitRequest))
+		return srv.(CryptographicTokenServer).DecryptInit(ctx, req.(*DecryptInitRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_Decrypt_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_Decrypt_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DecryptRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).Decrypt(ctx, in)
+		return srv.(CryptographicTokenServer).Decrypt(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_Decrypt_FullMethodName,
+		FullMethod: CryptographicToken_Decrypt_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).Decrypt(ctx, req.(*DecryptRequest))
+		return srv.(CryptographicTokenServer).Decrypt(ctx, req.(*DecryptRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_DecryptUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_DecryptUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DecryptUpdateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).DecryptUpdate(ctx, in)
+		return srv.(CryptographicTokenServer).DecryptUpdate(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_DecryptUpdate_FullMethodName,
+		FullMethod: CryptographicToken_DecryptUpdate_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).DecryptUpdate(ctx, req.(*DecryptUpdateRequest))
+		return srv.(CryptographicTokenServer).DecryptUpdate(ctx, req.(*DecryptUpdateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_DecryptFinal_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_DecryptFinal_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DecryptFinalRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).DecryptFinal(ctx, in)
+		return srv.(CryptographicTokenServer).DecryptFinal(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_DecryptFinal_FullMethodName,
+		FullMethod: CryptographicToken_DecryptFinal_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).DecryptFinal(ctx, req.(*DecryptFinalRequest))
+		return srv.(CryptographicTokenServer).DecryptFinal(ctx, req.(*DecryptFinalRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_DecryptMessageInit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_DecryptMessageInit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DecryptMessageInitRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).DecryptMessageInit(ctx, in)
+		return srv.(CryptographicTokenServer).DecryptMessageInit(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_DecryptMessageInit_FullMethodName,
+		FullMethod: CryptographicToken_DecryptMessageInit_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).DecryptMessageInit(ctx, req.(*DecryptMessageInitRequest))
+		return srv.(CryptographicTokenServer).DecryptMessageInit(ctx, req.(*DecryptMessageInitRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_DecryptMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_DecryptMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DecryptMessageRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).DecryptMessage(ctx, in)
+		return srv.(CryptographicTokenServer).DecryptMessage(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_DecryptMessage_FullMethodName,
+		FullMethod: CryptographicToken_DecryptMessage_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).DecryptMessage(ctx, req.(*DecryptMessageRequest))
+		return srv.(CryptographicTokenServer).DecryptMessage(ctx, req.(*DecryptMessageRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_DecryptMessageBegin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_DecryptMessageBegin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DecryptMessageBeginRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).DecryptMessageBegin(ctx, in)
+		return srv.(CryptographicTokenServer).DecryptMessageBegin(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_DecryptMessageBegin_FullMethodName,
+		FullMethod: CryptographicToken_DecryptMessageBegin_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).DecryptMessageBegin(ctx, req.(*DecryptMessageBeginRequest))
+		return srv.(CryptographicTokenServer).DecryptMessageBegin(ctx, req.(*DecryptMessageBeginRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_DecryptMessageNext_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_DecryptMessageNext_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DecryptMessageNextRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).DecryptMessageNext(ctx, in)
+		return srv.(CryptographicTokenServer).DecryptMessageNext(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_DecryptMessageNext_FullMethodName,
+		FullMethod: CryptographicToken_DecryptMessageNext_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).DecryptMessageNext(ctx, req.(*DecryptMessageNextRequest))
+		return srv.(CryptographicTokenServer).DecryptMessageNext(ctx, req.(*DecryptMessageNextRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_MessageDecryptFinal_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_MessageDecryptFinal_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(MessageDecryptFinalRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).MessageDecryptFinal(ctx, in)
+		return srv.(CryptographicTokenServer).MessageDecryptFinal(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_MessageDecryptFinal_FullMethodName,
+		FullMethod: CryptographicToken_MessageDecryptFinal_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).MessageDecryptFinal(ctx, req.(*MessageDecryptFinalRequest))
+		return srv.(CryptographicTokenServer).MessageDecryptFinal(ctx, req.(*MessageDecryptFinalRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_DigestInit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_DigestInit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DigestInitRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).DigestInit(ctx, in)
+		return srv.(CryptographicTokenServer).DigestInit(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_DigestInit_FullMethodName,
+		FullMethod: CryptographicToken_DigestInit_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).DigestInit(ctx, req.(*DigestInitRequest))
+		return srv.(CryptographicTokenServer).DigestInit(ctx, req.(*DigestInitRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_Digest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_Digest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DigestRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).Digest(ctx, in)
+		return srv.(CryptographicTokenServer).Digest(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_Digest_FullMethodName,
+		FullMethod: CryptographicToken_Digest_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).Digest(ctx, req.(*DigestRequest))
+		return srv.(CryptographicTokenServer).Digest(ctx, req.(*DigestRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_DigestUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_DigestUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DigestUpdateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).DigestUpdate(ctx, in)
+		return srv.(CryptographicTokenServer).DigestUpdate(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_DigestUpdate_FullMethodName,
+		FullMethod: CryptographicToken_DigestUpdate_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).DigestUpdate(ctx, req.(*DigestUpdateRequest))
+		return srv.(CryptographicTokenServer).DigestUpdate(ctx, req.(*DigestUpdateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_DigestKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_DigestKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DigestKeyRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).DigestKey(ctx, in)
+		return srv.(CryptographicTokenServer).DigestKey(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_DigestKey_FullMethodName,
+		FullMethod: CryptographicToken_DigestKey_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).DigestKey(ctx, req.(*DigestKeyRequest))
+		return srv.(CryptographicTokenServer).DigestKey(ctx, req.(*DigestKeyRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_DigestFinal_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_DigestFinal_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DigestFinalRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).DigestFinal(ctx, in)
+		return srv.(CryptographicTokenServer).DigestFinal(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_DigestFinal_FullMethodName,
+		FullMethod: CryptographicToken_DigestFinal_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).DigestFinal(ctx, req.(*DigestFinalRequest))
+		return srv.(CryptographicTokenServer).DigestFinal(ctx, req.(*DigestFinalRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_SignInit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_SignInit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SignInitRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).SignInit(ctx, in)
+		return srv.(CryptographicTokenServer).SignInit(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_SignInit_FullMethodName,
+		FullMethod: CryptographicToken_SignInit_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).SignInit(ctx, req.(*SignInitRequest))
+		return srv.(CryptographicTokenServer).SignInit(ctx, req.(*SignInitRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_Sign_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_Sign_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SignRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).Sign(ctx, in)
+		return srv.(CryptographicTokenServer).Sign(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_Sign_FullMethodName,
+		FullMethod: CryptographicToken_Sign_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).Sign(ctx, req.(*SignRequest))
+		return srv.(CryptographicTokenServer).Sign(ctx, req.(*SignRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_SignUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_SignUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SignUpdateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).SignUpdate(ctx, in)
+		return srv.(CryptographicTokenServer).SignUpdate(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_SignUpdate_FullMethodName,
+		FullMethod: CryptographicToken_SignUpdate_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).SignUpdate(ctx, req.(*SignUpdateRequest))
+		return srv.(CryptographicTokenServer).SignUpdate(ctx, req.(*SignUpdateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_SignFinal_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_SignFinal_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SignFinalRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).SignFinal(ctx, in)
+		return srv.(CryptographicTokenServer).SignFinal(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_SignFinal_FullMethodName,
+		FullMethod: CryptographicToken_SignFinal_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).SignFinal(ctx, req.(*SignFinalRequest))
+		return srv.(CryptographicTokenServer).SignFinal(ctx, req.(*SignFinalRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_SignRecoverInit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_SignRecoverInit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SignRecoverInitRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).SignRecoverInit(ctx, in)
+		return srv.(CryptographicTokenServer).SignRecoverInit(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_SignRecoverInit_FullMethodName,
+		FullMethod: CryptographicToken_SignRecoverInit_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).SignRecoverInit(ctx, req.(*SignRecoverInitRequest))
+		return srv.(CryptographicTokenServer).SignRecoverInit(ctx, req.(*SignRecoverInitRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_SignRecover_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_SignRecover_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SignRecoverRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).SignRecover(ctx, in)
+		return srv.(CryptographicTokenServer).SignRecover(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_SignRecover_FullMethodName,
+		FullMethod: CryptographicToken_SignRecover_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).SignRecover(ctx, req.(*SignRecoverRequest))
+		return srv.(CryptographicTokenServer).SignRecover(ctx, req.(*SignRecoverRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_SignMessageInit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_SignMessageInit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SignMessageInitRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).SignMessageInit(ctx, in)
+		return srv.(CryptographicTokenServer).SignMessageInit(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_SignMessageInit_FullMethodName,
+		FullMethod: CryptographicToken_SignMessageInit_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).SignMessageInit(ctx, req.(*SignMessageInitRequest))
+		return srv.(CryptographicTokenServer).SignMessageInit(ctx, req.(*SignMessageInitRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_SignMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_SignMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SignMessageRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).SignMessage(ctx, in)
+		return srv.(CryptographicTokenServer).SignMessage(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_SignMessage_FullMethodName,
+		FullMethod: CryptographicToken_SignMessage_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).SignMessage(ctx, req.(*SignMessageRequest))
+		return srv.(CryptographicTokenServer).SignMessage(ctx, req.(*SignMessageRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_SignMessageBegin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_SignMessageBegin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SignMessageBeginRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).SignMessageBegin(ctx, in)
+		return srv.(CryptographicTokenServer).SignMessageBegin(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_SignMessageBegin_FullMethodName,
+		FullMethod: CryptographicToken_SignMessageBegin_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).SignMessageBegin(ctx, req.(*SignMessageBeginRequest))
+		return srv.(CryptographicTokenServer).SignMessageBegin(ctx, req.(*SignMessageBeginRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_SignMessageNext_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_SignMessageNext_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SignMessageNextRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).SignMessageNext(ctx, in)
+		return srv.(CryptographicTokenServer).SignMessageNext(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_SignMessageNext_FullMethodName,
+		FullMethod: CryptographicToken_SignMessageNext_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).SignMessageNext(ctx, req.(*SignMessageNextRequest))
+		return srv.(CryptographicTokenServer).SignMessageNext(ctx, req.(*SignMessageNextRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_SignMessageFinal_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_SignMessageFinal_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SignMessageFinalRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).SignMessageFinal(ctx, in)
+		return srv.(CryptographicTokenServer).SignMessageFinal(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_SignMessageFinal_FullMethodName,
+		FullMethod: CryptographicToken_SignMessageFinal_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).SignMessageFinal(ctx, req.(*SignMessageFinalRequest))
+		return srv.(CryptographicTokenServer).SignMessageFinal(ctx, req.(*SignMessageFinalRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_VerifyInit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_VerifyInit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(VerifyInitRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).VerifyInit(ctx, in)
+		return srv.(CryptographicTokenServer).VerifyInit(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_VerifyInit_FullMethodName,
+		FullMethod: CryptographicToken_VerifyInit_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).VerifyInit(ctx, req.(*VerifyInitRequest))
+		return srv.(CryptographicTokenServer).VerifyInit(ctx, req.(*VerifyInitRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_Verify_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_Verify_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(VerifyRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).Verify(ctx, in)
+		return srv.(CryptographicTokenServer).Verify(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_Verify_FullMethodName,
+		FullMethod: CryptographicToken_Verify_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).Verify(ctx, req.(*VerifyRequest))
+		return srv.(CryptographicTokenServer).Verify(ctx, req.(*VerifyRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_VerifyUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_VerifyUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(VerifyUpdateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).VerifyUpdate(ctx, in)
+		return srv.(CryptographicTokenServer).VerifyUpdate(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_VerifyUpdate_FullMethodName,
+		FullMethod: CryptographicToken_VerifyUpdate_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).VerifyUpdate(ctx, req.(*VerifyUpdateRequest))
+		return srv.(CryptographicTokenServer).VerifyUpdate(ctx, req.(*VerifyUpdateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_VerifyFinal_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_VerifyFinal_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(VerifyFinalRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).VerifyFinal(ctx, in)
+		return srv.(CryptographicTokenServer).VerifyFinal(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_VerifyFinal_FullMethodName,
+		FullMethod: CryptographicToken_VerifyFinal_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).VerifyFinal(ctx, req.(*VerifyFinalRequest))
+		return srv.(CryptographicTokenServer).VerifyFinal(ctx, req.(*VerifyFinalRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_VerifyRecoverInit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_VerifyRecoverInit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(VerifyRecoverInitRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).VerifyRecoverInit(ctx, in)
+		return srv.(CryptographicTokenServer).VerifyRecoverInit(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_VerifyRecoverInit_FullMethodName,
+		FullMethod: CryptographicToken_VerifyRecoverInit_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).VerifyRecoverInit(ctx, req.(*VerifyRecoverInitRequest))
+		return srv.(CryptographicTokenServer).VerifyRecoverInit(ctx, req.(*VerifyRecoverInitRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_VerifyRecover_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_VerifyRecover_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(VerifyRecoverRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).VerifyRecover(ctx, in)
+		return srv.(CryptographicTokenServer).VerifyRecover(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_VerifyRecover_FullMethodName,
+		FullMethod: CryptographicToken_VerifyRecover_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).VerifyRecover(ctx, req.(*VerifyRecoverRequest))
+		return srv.(CryptographicTokenServer).VerifyRecover(ctx, req.(*VerifyRecoverRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_VerifyMessageInit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_VerifyMessageInit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(VerifyMessageInitRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).VerifyMessageInit(ctx, in)
+		return srv.(CryptographicTokenServer).VerifyMessageInit(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_VerifyMessageInit_FullMethodName,
+		FullMethod: CryptographicToken_VerifyMessageInit_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).VerifyMessageInit(ctx, req.(*VerifyMessageInitRequest))
+		return srv.(CryptographicTokenServer).VerifyMessageInit(ctx, req.(*VerifyMessageInitRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_VerifyMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_VerifyMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(VerifyMessageRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).VerifyMessage(ctx, in)
+		return srv.(CryptographicTokenServer).VerifyMessage(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_VerifyMessage_FullMethodName,
+		FullMethod: CryptographicToken_VerifyMessage_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).VerifyMessage(ctx, req.(*VerifyMessageRequest))
+		return srv.(CryptographicTokenServer).VerifyMessage(ctx, req.(*VerifyMessageRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_VerifyMessageBegin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_VerifyMessageBegin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(VerifyMessageBeginRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).VerifyMessageBegin(ctx, in)
+		return srv.(CryptographicTokenServer).VerifyMessageBegin(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_VerifyMessageBegin_FullMethodName,
+		FullMethod: CryptographicToken_VerifyMessageBegin_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).VerifyMessageBegin(ctx, req.(*VerifyMessageBeginRequest))
+		return srv.(CryptographicTokenServer).VerifyMessageBegin(ctx, req.(*VerifyMessageBeginRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_VerifyMessageNext_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_VerifyMessageNext_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(VerifyMessageNextRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).VerifyMessageNext(ctx, in)
+		return srv.(CryptographicTokenServer).VerifyMessageNext(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_VerifyMessageNext_FullMethodName,
+		FullMethod: CryptographicToken_VerifyMessageNext_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).VerifyMessageNext(ctx, req.(*VerifyMessageNextRequest))
+		return srv.(CryptographicTokenServer).VerifyMessageNext(ctx, req.(*VerifyMessageNextRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_VerifyMessageFinal_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_VerifyMessageFinal_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(VerifyMessageFinalRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).VerifyMessageFinal(ctx, in)
+		return srv.(CryptographicTokenServer).VerifyMessageFinal(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_VerifyMessageFinal_FullMethodName,
+		FullMethod: CryptographicToken_VerifyMessageFinal_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).VerifyMessageFinal(ctx, req.(*VerifyMessageFinalRequest))
+		return srv.(CryptographicTokenServer).VerifyMessageFinal(ctx, req.(*VerifyMessageFinalRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_DigestEncryptUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_DigestEncryptUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DigestEncryptUpdateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).DigestEncryptUpdate(ctx, in)
+		return srv.(CryptographicTokenServer).DigestEncryptUpdate(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_DigestEncryptUpdate_FullMethodName,
+		FullMethod: CryptographicToken_DigestEncryptUpdate_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).DigestEncryptUpdate(ctx, req.(*DigestEncryptUpdateRequest))
+		return srv.(CryptographicTokenServer).DigestEncryptUpdate(ctx, req.(*DigestEncryptUpdateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_DecryptDigestUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_DecryptDigestUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DecryptDigestUpdateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).DecryptDigestUpdate(ctx, in)
+		return srv.(CryptographicTokenServer).DecryptDigestUpdate(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_DecryptDigestUpdate_FullMethodName,
+		FullMethod: CryptographicToken_DecryptDigestUpdate_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).DecryptDigestUpdate(ctx, req.(*DecryptDigestUpdateRequest))
+		return srv.(CryptographicTokenServer).DecryptDigestUpdate(ctx, req.(*DecryptDigestUpdateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_SignEncryptUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_SignEncryptUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SignEncryptUpdateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).SignEncryptUpdate(ctx, in)
+		return srv.(CryptographicTokenServer).SignEncryptUpdate(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_SignEncryptUpdate_FullMethodName,
+		FullMethod: CryptographicToken_SignEncryptUpdate_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).SignEncryptUpdate(ctx, req.(*SignEncryptUpdateRequest))
+		return srv.(CryptographicTokenServer).SignEncryptUpdate(ctx, req.(*SignEncryptUpdateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_DecryptVerifyUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_DecryptVerifyUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DecryptVerifyUpdateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).DecryptVerifyUpdate(ctx, in)
+		return srv.(CryptographicTokenServer).DecryptVerifyUpdate(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_DecryptVerifyUpdate_FullMethodName,
+		FullMethod: CryptographicToken_DecryptVerifyUpdate_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).DecryptVerifyUpdate(ctx, req.(*DecryptVerifyUpdateRequest))
+		return srv.(CryptographicTokenServer).DecryptVerifyUpdate(ctx, req.(*DecryptVerifyUpdateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_GenerateKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_GenerateKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GenerateKeyRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).GenerateKey(ctx, in)
+		return srv.(CryptographicTokenServer).GenerateKey(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_GenerateKey_FullMethodName,
+		FullMethod: CryptographicToken_GenerateKey_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).GenerateKey(ctx, req.(*GenerateKeyRequest))
+		return srv.(CryptographicTokenServer).GenerateKey(ctx, req.(*GenerateKeyRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_GenerateKeyPair_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_GenerateKeyPair_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GenerateKeyPairRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).GenerateKeyPair(ctx, in)
+		return srv.(CryptographicTokenServer).GenerateKeyPair(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_GenerateKeyPair_FullMethodName,
+		FullMethod: CryptographicToken_GenerateKeyPair_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).GenerateKeyPair(ctx, req.(*GenerateKeyPairRequest))
+		return srv.(CryptographicTokenServer).GenerateKeyPair(ctx, req.(*GenerateKeyPairRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_WrapKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_WrapKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(WrapKeyRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).WrapKey(ctx, in)
+		return srv.(CryptographicTokenServer).WrapKey(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_WrapKey_FullMethodName,
+		FullMethod: CryptographicToken_WrapKey_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).WrapKey(ctx, req.(*WrapKeyRequest))
+		return srv.(CryptographicTokenServer).WrapKey(ctx, req.(*WrapKeyRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_UnwrapKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_UnwrapKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UnwrapKeyRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).UnwrapKey(ctx, in)
+		return srv.(CryptographicTokenServer).UnwrapKey(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_UnwrapKey_FullMethodName,
+		FullMethod: CryptographicToken_UnwrapKey_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).UnwrapKey(ctx, req.(*UnwrapKeyRequest))
+		return srv.(CryptographicTokenServer).UnwrapKey(ctx, req.(*UnwrapKeyRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_DeriveKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_DeriveKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeriveKeyRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).DeriveKey(ctx, in)
+		return srv.(CryptographicTokenServer).DeriveKey(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_DeriveKey_FullMethodName,
+		FullMethod: CryptographicToken_DeriveKey_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).DeriveKey(ctx, req.(*DeriveKeyRequest))
+		return srv.(CryptographicTokenServer).DeriveKey(ctx, req.(*DeriveKeyRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_SeedRandom_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_SeedRandom_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SeedRandomRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).SeedRandom(ctx, in)
+		return srv.(CryptographicTokenServer).SeedRandom(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_SeedRandom_FullMethodName,
+		FullMethod: CryptographicToken_SeedRandom_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).SeedRandom(ctx, req.(*SeedRandomRequest))
+		return srv.(CryptographicTokenServer).SeedRandom(ctx, req.(*SeedRandomRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_GenerateRandom_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_GenerateRandom_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GenerateRandomRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).GenerateRandom(ctx, in)
+		return srv.(CryptographicTokenServer).GenerateRandom(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_GenerateRandom_FullMethodName,
+		FullMethod: CryptographicToken_GenerateRandom_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).GenerateRandom(ctx, req.(*GenerateRandomRequest))
+		return srv.(CryptographicTokenServer).GenerateRandom(ctx, req.(*GenerateRandomRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_GetFunctionStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_GetFunctionStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetFunctionStatusRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).GetFunctionStatus(ctx, in)
+		return srv.(CryptographicTokenServer).GetFunctionStatus(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_GetFunctionStatus_FullMethodName,
+		FullMethod: CryptographicToken_GetFunctionStatus_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).GetFunctionStatus(ctx, req.(*GetFunctionStatusRequest))
+		return srv.(CryptographicTokenServer).GetFunctionStatus(ctx, req.(*GetFunctionStatusRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SessionManagement_CancelFunction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CryptographicToken_CancelFunction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CancelFunctionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SessionManagementServer).CancelFunction(ctx, in)
+		return srv.(CryptographicTokenServer).CancelFunction(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SessionManagement_CancelFunction_FullMethodName,
+		FullMethod: CryptographicToken_CancelFunction_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SessionManagementServer).CancelFunction(ctx, req.(*CancelFunctionRequest))
+		return srv.(CryptographicTokenServer).CancelFunction(ctx, req.(*CancelFunctionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// SessionManagement_ServiceDesc is the grpc.ServiceDesc for SessionManagement service.
+// CryptographicToken_ServiceDesc is the grpc.ServiceDesc for CryptographicToken service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var SessionManagement_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "pb.SessionManagement",
-	HandlerType: (*SessionManagementServer)(nil),
+var CryptographicToken_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "pb.CryptographicToken",
+	HandlerType: (*CryptographicTokenServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Initialize",
-			Handler:    _SessionManagement_Initialize_Handler,
+			Handler:    _CryptographicToken_Initialize_Handler,
 		},
 		{
 			MethodName: "Finalize",
-			Handler:    _SessionManagement_Finalize_Handler,
+			Handler:    _CryptographicToken_Finalize_Handler,
 		},
 		{
 			MethodName: "GetInfo",
-			Handler:    _SessionManagement_GetInfo_Handler,
+			Handler:    _CryptographicToken_GetInfo_Handler,
 		},
 		{
 			MethodName: "GetFunctionList",
-			Handler:    _SessionManagement_GetFunctionList_Handler,
+			Handler:    _CryptographicToken_GetFunctionList_Handler,
 		},
 		{
 			MethodName: "GetInterfaceList",
-			Handler:    _SessionManagement_GetInterfaceList_Handler,
+			Handler:    _CryptographicToken_GetInterfaceList_Handler,
 		},
 		{
 			MethodName: "GetInterface",
-			Handler:    _SessionManagement_GetInterface_Handler,
+			Handler:    _CryptographicToken_GetInterface_Handler,
 		},
 		{
 			MethodName: "GetSlotList",
-			Handler:    _SessionManagement_GetSlotList_Handler,
+			Handler:    _CryptographicToken_GetSlotList_Handler,
 		},
 		{
 			MethodName: "GetSlotInfo",
-			Handler:    _SessionManagement_GetSlotInfo_Handler,
+			Handler:    _CryptographicToken_GetSlotInfo_Handler,
 		},
 		{
 			MethodName: "GetTokenInfo",
-			Handler:    _SessionManagement_GetTokenInfo_Handler,
+			Handler:    _CryptographicToken_GetTokenInfo_Handler,
 		},
 		{
 			MethodName: "WaitForSlotEvent",
-			Handler:    _SessionManagement_WaitForSlotEvent_Handler,
+			Handler:    _CryptographicToken_WaitForSlotEvent_Handler,
 		},
 		{
 			MethodName: "GetMechanismList",
-			Handler:    _SessionManagement_GetMechanismList_Handler,
+			Handler:    _CryptographicToken_GetMechanismList_Handler,
 		},
 		{
 			MethodName: "GetMechanismInfo",
-			Handler:    _SessionManagement_GetMechanismInfo_Handler,
+			Handler:    _CryptographicToken_GetMechanismInfo_Handler,
 		},
 		{
 			MethodName: "InitToken",
-			Handler:    _SessionManagement_InitToken_Handler,
+			Handler:    _CryptographicToken_InitToken_Handler,
 		},
 		{
 			MethodName: "InitPIN",
-			Handler:    _SessionManagement_InitPIN_Handler,
+			Handler:    _CryptographicToken_InitPIN_Handler,
 		},
 		{
 			MethodName: "SetPIN",
-			Handler:    _SessionManagement_SetPIN_Handler,
+			Handler:    _CryptographicToken_SetPIN_Handler,
 		},
 		{
 			MethodName: "OpenSession",
-			Handler:    _SessionManagement_OpenSession_Handler,
+			Handler:    _CryptographicToken_OpenSession_Handler,
 		},
 		{
 			MethodName: "CloseSession",
-			Handler:    _SessionManagement_CloseSession_Handler,
+			Handler:    _CryptographicToken_CloseSession_Handler,
 		},
 		{
 			MethodName: "CloseAllSessions",
-			Handler:    _SessionManagement_CloseAllSessions_Handler,
+			Handler:    _CryptographicToken_CloseAllSessions_Handler,
 		},
 		{
 			MethodName: "GetSessionInfo",
-			Handler:    _SessionManagement_GetSessionInfo_Handler,
+			Handler:    _CryptographicToken_GetSessionInfo_Handler,
 		},
 		{
 			MethodName: "SessionCancel",
-			Handler:    _SessionManagement_SessionCancel_Handler,
+			Handler:    _CryptographicToken_SessionCancel_Handler,
 		},
 		{
 			MethodName: "CreateObject",
-			Handler:    _SessionManagement_CreateObject_Handler,
+			Handler:    _CryptographicToken_CreateObject_Handler,
 		},
 		{
 			MethodName: "CopyObject",
-			Handler:    _SessionManagement_CopyObject_Handler,
+			Handler:    _CryptographicToken_CopyObject_Handler,
 		},
 		{
 			MethodName: "DestroyObject",
-			Handler:    _SessionManagement_DestroyObject_Handler,
+			Handler:    _CryptographicToken_DestroyObject_Handler,
 		},
 		{
 			MethodName: "GetObjectSize",
-			Handler:    _SessionManagement_GetObjectSize_Handler,
+			Handler:    _CryptographicToken_GetObjectSize_Handler,
 		},
 		{
 			MethodName: "GetAttributeValue",
-			Handler:    _SessionManagement_GetAttributeValue_Handler,
+			Handler:    _CryptographicToken_GetAttributeValue_Handler,
 		},
 		{
 			MethodName: "SetAttributeValue",
-			Handler:    _SessionManagement_SetAttributeValue_Handler,
+			Handler:    _CryptographicToken_SetAttributeValue_Handler,
 		},
 		{
 			MethodName: "FindObjectsInit",
-			Handler:    _SessionManagement_FindObjectsInit_Handler,
+			Handler:    _CryptographicToken_FindObjectsInit_Handler,
 		},
 		{
 			MethodName: "FindObjects",
-			Handler:    _SessionManagement_FindObjects_Handler,
+			Handler:    _CryptographicToken_FindObjects_Handler,
 		},
 		{
 			MethodName: "FindObjectsFinal",
-			Handler:    _SessionManagement_FindObjectsFinal_Handler,
+			Handler:    _CryptographicToken_FindObjectsFinal_Handler,
 		},
 		{
 			MethodName: "EncryptInit",
-			Handler:    _SessionManagement_EncryptInit_Handler,
+			Handler:    _CryptographicToken_EncryptInit_Handler,
 		},
 		{
 			MethodName: "Encrypt",
-			Handler:    _SessionManagement_Encrypt_Handler,
+			Handler:    _CryptographicToken_Encrypt_Handler,
 		},
 		{
 			MethodName: "EncryptUpdate",
-			Handler:    _SessionManagement_EncryptUpdate_Handler,
+			Handler:    _CryptographicToken_EncryptUpdate_Handler,
 		},
 		{
 			MethodName: "EncryptFinal",
-			Handler:    _SessionManagement_EncryptFinal_Handler,
+			Handler:    _CryptographicToken_EncryptFinal_Handler,
 		},
 		{
 			MethodName: "EncryptMessageInit",
-			Handler:    _SessionManagement_EncryptMessageInit_Handler,
+			Handler:    _CryptographicToken_EncryptMessageInit_Handler,
 		},
 		{
 			MethodName: "EncryptMessage",
-			Handler:    _SessionManagement_EncryptMessage_Handler,
+			Handler:    _CryptographicToken_EncryptMessage_Handler,
 		},
 		{
 			MethodName: "EncryptMessageBegin",
-			Handler:    _SessionManagement_EncryptMessageBegin_Handler,
+			Handler:    _CryptographicToken_EncryptMessageBegin_Handler,
 		},
 		{
 			MethodName: "EncryptMessageNext",
-			Handler:    _SessionManagement_EncryptMessageNext_Handler,
+			Handler:    _CryptographicToken_EncryptMessageNext_Handler,
 		},
 		{
 			MethodName: "EncryptMessageFinal",
-			Handler:    _SessionManagement_EncryptMessageFinal_Handler,
+			Handler:    _CryptographicToken_EncryptMessageFinal_Handler,
 		},
 		{
 			MethodName: "DecryptInit",
-			Handler:    _SessionManagement_DecryptInit_Handler,
+			Handler:    _CryptographicToken_DecryptInit_Handler,
 		},
 		{
 			MethodName: "Decrypt",
-			Handler:    _SessionManagement_Decrypt_Handler,
+			Handler:    _CryptographicToken_Decrypt_Handler,
 		},
 		{
 			MethodName: "DecryptUpdate",
-			Handler:    _SessionManagement_DecryptUpdate_Handler,
+			Handler:    _CryptographicToken_DecryptUpdate_Handler,
 		},
 		{
 			MethodName: "DecryptFinal",
-			Handler:    _SessionManagement_DecryptFinal_Handler,
+			Handler:    _CryptographicToken_DecryptFinal_Handler,
 		},
 		{
 			MethodName: "DecryptMessageInit",
-			Handler:    _SessionManagement_DecryptMessageInit_Handler,
+			Handler:    _CryptographicToken_DecryptMessageInit_Handler,
 		},
 		{
 			MethodName: "DecryptMessage",
-			Handler:    _SessionManagement_DecryptMessage_Handler,
+			Handler:    _CryptographicToken_DecryptMessage_Handler,
 		},
 		{
 			MethodName: "DecryptMessageBegin",
-			Handler:    _SessionManagement_DecryptMessageBegin_Handler,
+			Handler:    _CryptographicToken_DecryptMessageBegin_Handler,
 		},
 		{
 			MethodName: "DecryptMessageNext",
-			Handler:    _SessionManagement_DecryptMessageNext_Handler,
+			Handler:    _CryptographicToken_DecryptMessageNext_Handler,
 		},
 		{
 			MethodName: "MessageDecryptFinal",
-			Handler:    _SessionManagement_MessageDecryptFinal_Handler,
+			Handler:    _CryptographicToken_MessageDecryptFinal_Handler,
 		},
 		{
 			MethodName: "DigestInit",
-			Handler:    _SessionManagement_DigestInit_Handler,
+			Handler:    _CryptographicToken_DigestInit_Handler,
 		},
 		{
 			MethodName: "Digest",
-			Handler:    _SessionManagement_Digest_Handler,
+			Handler:    _CryptographicToken_Digest_Handler,
 		},
 		{
 			MethodName: "DigestUpdate",
-			Handler:    _SessionManagement_DigestUpdate_Handler,
+			Handler:    _CryptographicToken_DigestUpdate_Handler,
 		},
 		{
 			MethodName: "DigestKey",
-			Handler:    _SessionManagement_DigestKey_Handler,
+			Handler:    _CryptographicToken_DigestKey_Handler,
 		},
 		{
 			MethodName: "DigestFinal",
-			Handler:    _SessionManagement_DigestFinal_Handler,
+			Handler:    _CryptographicToken_DigestFinal_Handler,
 		},
 		{
 			MethodName: "SignInit",
-			Handler:    _SessionManagement_SignInit_Handler,
+			Handler:    _CryptographicToken_SignInit_Handler,
 		},
 		{
 			MethodName: "Sign",
-			Handler:    _SessionManagement_Sign_Handler,
+			Handler:    _CryptographicToken_Sign_Handler,
 		},
 		{
 			MethodName: "SignUpdate",
-			Handler:    _SessionManagement_SignUpdate_Handler,
+			Handler:    _CryptographicToken_SignUpdate_Handler,
 		},
 		{
 			MethodName: "SignFinal",
-			Handler:    _SessionManagement_SignFinal_Handler,
+			Handler:    _CryptographicToken_SignFinal_Handler,
 		},
 		{
 			MethodName: "SignRecoverInit",
-			Handler:    _SessionManagement_SignRecoverInit_Handler,
+			Handler:    _CryptographicToken_SignRecoverInit_Handler,
 		},
 		{
 			MethodName: "SignRecover",
-			Handler:    _SessionManagement_SignRecover_Handler,
+			Handler:    _CryptographicToken_SignRecover_Handler,
 		},
 		{
 			MethodName: "SignMessageInit",
-			Handler:    _SessionManagement_SignMessageInit_Handler,
+			Handler:    _CryptographicToken_SignMessageInit_Handler,
 		},
 		{
 			MethodName: "SignMessage",
-			Handler:    _SessionManagement_SignMessage_Handler,
+			Handler:    _CryptographicToken_SignMessage_Handler,
 		},
 		{
 			MethodName: "SignMessageBegin",
-			Handler:    _SessionManagement_SignMessageBegin_Handler,
+			Handler:    _CryptographicToken_SignMessageBegin_Handler,
 		},
 		{
 			MethodName: "SignMessageNext",
-			Handler:    _SessionManagement_SignMessageNext_Handler,
+			Handler:    _CryptographicToken_SignMessageNext_Handler,
 		},
 		{
 			MethodName: "SignMessageFinal",
-			Handler:    _SessionManagement_SignMessageFinal_Handler,
+			Handler:    _CryptographicToken_SignMessageFinal_Handler,
 		},
 		{
 			MethodName: "VerifyInit",
-			Handler:    _SessionManagement_VerifyInit_Handler,
+			Handler:    _CryptographicToken_VerifyInit_Handler,
 		},
 		{
 			MethodName: "Verify",
-			Handler:    _SessionManagement_Verify_Handler,
+			Handler:    _CryptographicToken_Verify_Handler,
 		},
 		{
 			MethodName: "VerifyUpdate",
-			Handler:    _SessionManagement_VerifyUpdate_Handler,
+			Handler:    _CryptographicToken_VerifyUpdate_Handler,
 		},
 		{
 			MethodName: "VerifyFinal",
-			Handler:    _SessionManagement_VerifyFinal_Handler,
+			Handler:    _CryptographicToken_VerifyFinal_Handler,
 		},
 		{
 			MethodName: "VerifyRecoverInit",
-			Handler:    _SessionManagement_VerifyRecoverInit_Handler,
+			Handler:    _CryptographicToken_VerifyRecoverInit_Handler,
 		},
 		{
 			MethodName: "VerifyRecover",
-			Handler:    _SessionManagement_VerifyRecover_Handler,
+			Handler:    _CryptographicToken_VerifyRecover_Handler,
 		},
 		{
 			MethodName: "VerifyMessageInit",
-			Handler:    _SessionManagement_VerifyMessageInit_Handler,
+			Handler:    _CryptographicToken_VerifyMessageInit_Handler,
 		},
 		{
 			MethodName: "VerifyMessage",
-			Handler:    _SessionManagement_VerifyMessage_Handler,
+			Handler:    _CryptographicToken_VerifyMessage_Handler,
 		},
 		{
 			MethodName: "VerifyMessageBegin",
-			Handler:    _SessionManagement_VerifyMessageBegin_Handler,
+			Handler:    _CryptographicToken_VerifyMessageBegin_Handler,
 		},
 		{
 			MethodName: "VerifyMessageNext",
-			Handler:    _SessionManagement_VerifyMessageNext_Handler,
+			Handler:    _CryptographicToken_VerifyMessageNext_Handler,
 		},
 		{
 			MethodName: "VerifyMessageFinal",
-			Handler:    _SessionManagement_VerifyMessageFinal_Handler,
+			Handler:    _CryptographicToken_VerifyMessageFinal_Handler,
 		},
 		{
 			MethodName: "DigestEncryptUpdate",
-			Handler:    _SessionManagement_DigestEncryptUpdate_Handler,
+			Handler:    _CryptographicToken_DigestEncryptUpdate_Handler,
 		},
 		{
 			MethodName: "DecryptDigestUpdate",
-			Handler:    _SessionManagement_DecryptDigestUpdate_Handler,
+			Handler:    _CryptographicToken_DecryptDigestUpdate_Handler,
 		},
 		{
 			MethodName: "SignEncryptUpdate",
-			Handler:    _SessionManagement_SignEncryptUpdate_Handler,
+			Handler:    _CryptographicToken_SignEncryptUpdate_Handler,
 		},
 		{
 			MethodName: "DecryptVerifyUpdate",
-			Handler:    _SessionManagement_DecryptVerifyUpdate_Handler,
+			Handler:    _CryptographicToken_DecryptVerifyUpdate_Handler,
 		},
 		{
 			MethodName: "GenerateKey",
-			Handler:    _SessionManagement_GenerateKey_Handler,
+			Handler:    _CryptographicToken_GenerateKey_Handler,
 		},
 		{
 			MethodName: "GenerateKeyPair",
-			Handler:    _SessionManagement_GenerateKeyPair_Handler,
+			Handler:    _CryptographicToken_GenerateKeyPair_Handler,
 		},
 		{
 			MethodName: "WrapKey",
-			Handler:    _SessionManagement_WrapKey_Handler,
+			Handler:    _CryptographicToken_WrapKey_Handler,
 		},
 		{
 			MethodName: "UnwrapKey",
-			Handler:    _SessionManagement_UnwrapKey_Handler,
+			Handler:    _CryptographicToken_UnwrapKey_Handler,
 		},
 		{
 			MethodName: "DeriveKey",
-			Handler:    _SessionManagement_DeriveKey_Handler,
+			Handler:    _CryptographicToken_DeriveKey_Handler,
 		},
 		{
 			MethodName: "SeedRandom",
-			Handler:    _SessionManagement_SeedRandom_Handler,
+			Handler:    _CryptographicToken_SeedRandom_Handler,
 		},
 		{
 			MethodName: "GenerateRandom",
-			Handler:    _SessionManagement_GenerateRandom_Handler,
+			Handler:    _CryptographicToken_GenerateRandom_Handler,
 		},
 		{
 			MethodName: "GetFunctionStatus",
-			Handler:    _SessionManagement_GetFunctionStatus_Handler,
+			Handler:    _CryptographicToken_GetFunctionStatus_Handler,
 		},
 		{
 			MethodName: "CancelFunction",
-			Handler:    _SessionManagement_CancelFunction_Handler,
+			Handler:    _CryptographicToken_CancelFunction_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
