@@ -7,6 +7,7 @@ import (
 	"crypto/sha256"
 	"crypto/sha512"
 	"errors"
+	"github.com/sirupsen/logrus"
 
 	"github.com/edipermadi/softhsm/pkg/transport/pb"
 	"golang.org/x/crypto/ripemd160"
@@ -14,19 +15,30 @@ import (
 )
 
 func (s *server) DigestInit(ctx context.Context, request *pb.DigestInitRequest) (*pb.DigestInitResponse, error) {
+	logger := s.logger.WithContext(ctx).WithFields(logrus.Fields{
+		"action":         "DigestInit",
+		"session_handle": request.SessionHandle,
+	})
+
+	logger.Debug("initializing digest")
+
 	if request.GetSessionHandle() < 1 {
 		return &pb.DigestInitResponse{ReturnValue: pb.ReturnValue_SESSION_HANDLE_INVALID}, nil
-	}
-
-	if !s.sessions.Has(request.GetSessionHandle()) {
-		return &pb.DigestInitResponse{ReturnValue: pb.ReturnValue_SESSION_CLOSED}, nil
 	}
 
 	if request.GetMechanism() == nil {
 		return &pb.DigestInitResponse{ReturnValue: pb.ReturnValue_ARGUMENTS_BAD}, nil
 	}
 
+	if !s.sessions.Has(request.GetSessionHandle()) {
+		return &pb.DigestInitResponse{ReturnValue: pb.ReturnValue_SESSION_CLOSED}, nil
+	}
+
 	session := s.sessions.Get(request.GetSessionHandle()).Value()
+	if !session.isLoggedIn {
+		return &pb.DigestInitResponse{ReturnValue: pb.ReturnValue_USER_NOT_LOGGED_IN}, nil
+	}
+
 	switch request.GetMechanism().Mechanism {
 	case pb.MechanismType_RIPEMD160:
 		session.hash = ripemd160.New()
@@ -59,6 +71,12 @@ func (s *server) DigestInit(ctx context.Context, request *pb.DigestInitRequest) 
 }
 
 func (s *server) Digest(ctx context.Context, request *pb.DigestRequest) (*pb.DigestResponse, error) {
+	logger := s.logger.WithContext(ctx).WithFields(logrus.Fields{
+		"action":         "Digest",
+		"session_handle": request.SessionHandle,
+	})
+
+	logger.Debug("initializing digest")
 	log := s.logger.WithContext(ctx)
 
 	if request.GetSessionHandle() < 1 {
@@ -70,7 +88,10 @@ func (s *server) Digest(ctx context.Context, request *pb.DigestRequest) (*pb.Dig
 	}
 
 	session := s.sessions.Get(request.GetSessionHandle()).Value()
-	if session.hash == nil {
+	switch {
+	case !session.isLoggedIn:
+		return &pb.DigestResponse{ReturnValue: pb.ReturnValue_USER_NOT_LOGGED_IN}, nil
+	case session.hash == nil:
 		return &pb.DigestResponse{ReturnValue: pb.ReturnValue_OPERATION_NOT_INITIALIZED}, nil
 	}
 
@@ -85,7 +106,12 @@ func (s *server) Digest(ctx context.Context, request *pb.DigestRequest) (*pb.Dig
 }
 
 func (s *server) DigestUpdate(ctx context.Context, request *pb.DigestUpdateRequest) (*pb.DigestUpdateResponse, error) {
-	log := s.logger.WithContext(ctx)
+	logger := s.logger.WithContext(ctx).WithFields(logrus.Fields{
+		"action":         "DigestUpdate",
+		"session_handle": request.SessionHandle,
+	})
+
+	logger.Debug("updating digest")
 
 	if request.GetSessionHandle() < 1 {
 		return &pb.DigestUpdateResponse{ReturnValue: pb.ReturnValue_SESSION_HANDLE_INVALID}, nil
@@ -96,13 +122,16 @@ func (s *server) DigestUpdate(ctx context.Context, request *pb.DigestUpdateReque
 	}
 
 	session := s.sessions.Get(request.GetSessionHandle()).Value()
-	if session.hash == nil {
+	switch {
+	case !session.isLoggedIn:
+		return &pb.DigestUpdateResponse{ReturnValue: pb.ReturnValue_USER_NOT_LOGGED_IN}, nil
+	case session.hash == nil:
 		return &pb.DigestUpdateResponse{ReturnValue: pb.ReturnValue_OPERATION_NOT_INITIALIZED}, nil
 	}
 
 	_, err := session.hash.Write(request.GetData())
 	if err != nil {
-		log.WithField("session_handle", request.GetSessionHandle()).WithError(err).Error("failed to hash data")
+		logger.WithError(err).Error("failed to hash data")
 		return &pb.DigestUpdateResponse{ReturnValue: pb.ReturnValue_GENERAL_ERROR}, err
 	}
 
@@ -111,11 +140,24 @@ func (s *server) DigestUpdate(ctx context.Context, request *pb.DigestUpdateReque
 }
 
 func (s *server) DigestKey(ctx context.Context, request *pb.DigestKeyRequest) (*pb.DigestKeyResponse, error) {
+	logger := s.logger.WithContext(ctx).WithFields(logrus.Fields{
+		"action":         "DigestKey",
+		"session_handle": request.SessionHandle,
+	})
+
+	logger.Debug("finalizing digest")
+
 	// TODO add implementation
 	return nil, errors.New("not implemented")
 }
 
 func (s *server) DigestFinal(ctx context.Context, request *pb.DigestFinalRequest) (*pb.DigestFinalResponse, error) {
+	logger := s.logger.WithContext(ctx).WithFields(logrus.Fields{
+		"action":         "DigestFinal",
+		"session_handle": request.SessionHandle,
+	})
+
+	logger.Debug("finalizing digest")
 	if request.GetSessionHandle() < 1 {
 		return &pb.DigestFinalResponse{ReturnValue: pb.ReturnValue_SESSION_HANDLE_INVALID}, nil
 	}
@@ -125,7 +167,10 @@ func (s *server) DigestFinal(ctx context.Context, request *pb.DigestFinalRequest
 	}
 
 	session := s.sessions.Get(request.GetSessionHandle()).Value()
-	if session.hash == nil {
+	switch {
+	case !session.isLoggedIn:
+		return &pb.DigestFinalResponse{ReturnValue: pb.ReturnValue_USER_NOT_LOGGED_IN}, nil
+	case session.hash == nil:
 		return &pb.DigestFinalResponse{ReturnValue: pb.ReturnValue_OPERATION_NOT_INITIALIZED}, nil
 	}
 

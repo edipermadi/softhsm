@@ -39,6 +39,11 @@ const (
 	CryptographicToken_CloseAllSessions_FullMethodName    = "/pb.CryptographicToken/CloseAllSessions"
 	CryptographicToken_GetSessionInfo_FullMethodName      = "/pb.CryptographicToken/GetSessionInfo"
 	CryptographicToken_SessionCancel_FullMethodName       = "/pb.CryptographicToken/SessionCancel"
+	CryptographicToken_GetOperationState_FullMethodName   = "/pb.CryptographicToken/GetOperationState"
+	CryptographicToken_SetOperationState_FullMethodName   = "/pb.CryptographicToken/SetOperationState"
+	CryptographicToken_Login_FullMethodName               = "/pb.CryptographicToken/Login"
+	CryptographicToken_LoginUser_FullMethodName           = "/pb.CryptographicToken/LoginUser"
+	CryptographicToken_Logout_FullMethodName              = "/pb.CryptographicToken/Logout"
 	CryptographicToken_CreateObject_FullMethodName        = "/pb.CryptographicToken/CreateObject"
 	CryptographicToken_CopyObject_FullMethodName          = "/pb.CryptographicToken/CopyObject"
 	CryptographicToken_DestroyObject_FullMethodName       = "/pb.CryptographicToken/DestroyObject"
@@ -132,6 +137,11 @@ type CryptographicTokenClient interface {
 	CloseAllSessions(ctx context.Context, in *CloseAllSessionsRequest, opts ...grpc.CallOption) (*CloseAllSessionsResponse, error)
 	GetSessionInfo(ctx context.Context, in *GetSessionInfoRequest, opts ...grpc.CallOption) (*GetSessionInfoResponse, error)
 	SessionCancel(ctx context.Context, in *SessionCancelRequest, opts ...grpc.CallOption) (*SessionCancelResponse, error)
+	GetOperationState(ctx context.Context, in *GetOperationStateRequest, opts ...grpc.CallOption) (*GetOperationStateResponse, error)
+	SetOperationState(ctx context.Context, in *SetOperationStateRequest, opts ...grpc.CallOption) (*SetOperationStateResponse, error)
+	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
+	LoginUser(ctx context.Context, in *LoginUserRequest, opts ...grpc.CallOption) (*LoginUserResponse, error)
+	Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error)
 	CreateObject(ctx context.Context, in *CreateObjectRequest, opts ...grpc.CallOption) (*CreateObjectResponse, error)
 	CopyObject(ctx context.Context, in *CopyObjectRequest, opts ...grpc.CallOption) (*CopyObjectResponse, error)
 	DestroyObject(ctx context.Context, in *DestroyObjectRequest, opts ...grpc.CallOption) (*DestroyObjectResponse, error)
@@ -403,6 +413,56 @@ func (c *cryptographicTokenClient) SessionCancel(ctx context.Context, in *Sessio
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SessionCancelResponse)
 	err := c.cc.Invoke(ctx, CryptographicToken_SessionCancel_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cryptographicTokenClient) GetOperationState(ctx context.Context, in *GetOperationStateRequest, opts ...grpc.CallOption) (*GetOperationStateResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetOperationStateResponse)
+	err := c.cc.Invoke(ctx, CryptographicToken_GetOperationState_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cryptographicTokenClient) SetOperationState(ctx context.Context, in *SetOperationStateRequest, opts ...grpc.CallOption) (*SetOperationStateResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SetOperationStateResponse)
+	err := c.cc.Invoke(ctx, CryptographicToken_SetOperationState_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cryptographicTokenClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(LoginResponse)
+	err := c.cc.Invoke(ctx, CryptographicToken_Login_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cryptographicTokenClient) LoginUser(ctx context.Context, in *LoginUserRequest, opts ...grpc.CallOption) (*LoginUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(LoginUserResponse)
+	err := c.cc.Invoke(ctx, CryptographicToken_LoginUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cryptographicTokenClient) Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(LogoutResponse)
+	err := c.cc.Invoke(ctx, CryptographicToken_Logout_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1103,6 +1163,11 @@ type CryptographicTokenServer interface {
 	CloseAllSessions(context.Context, *CloseAllSessionsRequest) (*CloseAllSessionsResponse, error)
 	GetSessionInfo(context.Context, *GetSessionInfoRequest) (*GetSessionInfoResponse, error)
 	SessionCancel(context.Context, *SessionCancelRequest) (*SessionCancelResponse, error)
+	GetOperationState(context.Context, *GetOperationStateRequest) (*GetOperationStateResponse, error)
+	SetOperationState(context.Context, *SetOperationStateRequest) (*SetOperationStateResponse, error)
+	Login(context.Context, *LoginRequest) (*LoginResponse, error)
+	LoginUser(context.Context, *LoginUserRequest) (*LoginUserResponse, error)
+	Logout(context.Context, *LogoutRequest) (*LogoutResponse, error)
 	CreateObject(context.Context, *CreateObjectRequest) (*CreateObjectResponse, error)
 	CopyObject(context.Context, *CopyObjectRequest) (*CopyObjectResponse, error)
 	DestroyObject(context.Context, *DestroyObjectRequest) (*DestroyObjectResponse, error)
@@ -1239,6 +1304,21 @@ func (UnimplementedCryptographicTokenServer) GetSessionInfo(context.Context, *Ge
 }
 func (UnimplementedCryptographicTokenServer) SessionCancel(context.Context, *SessionCancelRequest) (*SessionCancelResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SessionCancel not implemented")
+}
+func (UnimplementedCryptographicTokenServer) GetOperationState(context.Context, *GetOperationStateRequest) (*GetOperationStateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetOperationState not implemented")
+}
+func (UnimplementedCryptographicTokenServer) SetOperationState(context.Context, *SetOperationStateRequest) (*SetOperationStateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetOperationState not implemented")
+}
+func (UnimplementedCryptographicTokenServer) Login(context.Context, *LoginRequest) (*LoginResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
+}
+func (UnimplementedCryptographicTokenServer) LoginUser(context.Context, *LoginUserRequest) (*LoginUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LoginUser not implemented")
+}
+func (UnimplementedCryptographicTokenServer) Logout(context.Context, *LogoutRequest) (*LogoutResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Logout not implemented")
 }
 func (UnimplementedCryptographicTokenServer) CreateObject(context.Context, *CreateObjectRequest) (*CreateObjectResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateObject not implemented")
@@ -1818,6 +1898,96 @@ func _CryptographicToken_SessionCancel_Handler(srv interface{}, ctx context.Cont
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CryptographicTokenServer).SessionCancel(ctx, req.(*SessionCancelRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CryptographicToken_GetOperationState_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetOperationStateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CryptographicTokenServer).GetOperationState(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CryptographicToken_GetOperationState_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CryptographicTokenServer).GetOperationState(ctx, req.(*GetOperationStateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CryptographicToken_SetOperationState_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetOperationStateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CryptographicTokenServer).SetOperationState(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CryptographicToken_SetOperationState_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CryptographicTokenServer).SetOperationState(ctx, req.(*SetOperationStateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CryptographicToken_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LoginRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CryptographicTokenServer).Login(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CryptographicToken_Login_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CryptographicTokenServer).Login(ctx, req.(*LoginRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CryptographicToken_LoginUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LoginUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CryptographicTokenServer).LoginUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CryptographicToken_LoginUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CryptographicTokenServer).LoginUser(ctx, req.(*LoginUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CryptographicToken_Logout_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LogoutRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CryptographicTokenServer).Logout(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CryptographicToken_Logout_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CryptographicTokenServer).Logout(ctx, req.(*LogoutRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -3114,6 +3284,26 @@ var CryptographicToken_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SessionCancel",
 			Handler:    _CryptographicToken_SessionCancel_Handler,
+		},
+		{
+			MethodName: "GetOperationState",
+			Handler:    _CryptographicToken_GetOperationState_Handler,
+		},
+		{
+			MethodName: "SetOperationState",
+			Handler:    _CryptographicToken_SetOperationState_Handler,
+		},
+		{
+			MethodName: "Login",
+			Handler:    _CryptographicToken_Login_Handler,
+		},
+		{
+			MethodName: "LoginUser",
+			Handler:    _CryptographicToken_LoginUser_Handler,
+		},
+		{
+			MethodName: "Logout",
+			Handler:    _CryptographicToken_Logout_Handler,
 		},
 		{
 			MethodName: "CreateObject",

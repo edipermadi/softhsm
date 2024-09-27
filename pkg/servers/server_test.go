@@ -2,25 +2,42 @@ package servers_test
 
 import (
 	"context"
-	"github.com/sirupsen/logrus"
 	"log"
 	"net"
 	"time"
 
 	"github.com/edipermadi/softhsm/pkg/servers"
 	"github.com/edipermadi/softhsm/pkg/transport/pb"
+	"github.com/edipermadi/softhsm/pkg/users"
+	"github.com/sirupsen/logrus"
+	"github.com/stretchr/testify/mock"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/test/bufconn"
 )
 
-func testServer(ctx context.Context) (pb.CryptographicTokenClient, func()) {
+type mockedUserService struct {
+	mock.Mock
+}
+
+func (m *mockedUserService) Authenticate(ctx context.Context, userType users.Type, username string, password string) error {
+	args := m.Called(ctx, userType, username, password)
+	return args.Error(0)
+}
+
+func (m *mockedUserService) RecordLoginAttempt(ctx context.Context, userId int64, succeeded bool) error {
+	args := m.Called(ctx, userId, succeeded)
+	return args.Error(0)
+}
+
+func testServer(ctx context.Context) (*mockedUserService, pb.CryptographicTokenClient, func()) {
 	buffer := 101024 * 1024
 	lis := bufconn.Listen(buffer)
 
+	userService := &mockedUserService{}
 	logger := logrus.New()
 	baseServer := grpc.NewServer()
-	pb.RegisterCryptographicTokenServer(baseServer, servers.NewServer(logger, 30*time.Minute))
+	pb.RegisterCryptographicTokenServer(baseServer, servers.NewServer(logger, 30*time.Minute, userService))
 	go func() {
 		if err := baseServer.Serve(lis); err != nil {
 			log.Printf("error serving server: %v", err)
@@ -45,5 +62,5 @@ func testServer(ctx context.Context) (pb.CryptographicTokenClient, func()) {
 
 	client := pb.NewCryptographicTokenClient(conn)
 
-	return client, closer
+	return userService, client, closer
 }

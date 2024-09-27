@@ -8,149 +8,148 @@ import (
 	"testing"
 
 	"github.com/edipermadi/softhsm/pkg/transport/pb"
+	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 )
 
 func TestServer_DigestInit(t *testing.T) {
+	type sessionMode int
+	const (
+		sessionModeInvalid = sessionMode(iota)
+		sessionModeValid   = sessionMode(iota)
+		sessionModeClosed  = sessionMode(iota)
+	)
 	type testCase struct {
-		Title               string
-		GivenSessionHandle  uint64
-		GivenMechanism      *pb.Mechanism
-		ExpectedReturnValue pb.ReturnValue
+		Title                  string
+		GivenSessionHandleMode sessionMode
+		GivenMechanism         *pb.Mechanism
+		GivenSkipLogin         bool
+		ExpectedReturnValue    pb.ReturnValue
 	}
-
-	ctx := context.TODO()
-	client, closer := testServer(ctx)
-	defer closer()
-
-	// open session
-	openSessionResponse, err := client.OpenSession(ctx, &pb.OpenSessionRequest{SlotId: 1, Flags: 1})
-	require.NoError(t, err)
-	require.Equal(t, pb.ReturnValue_OK, openSessionResponse.GetReturnValue())
-
-	sessionHandle := openSessionResponse.GetSessionHandle()
-
-	defer func() {
-		// close session
-		closeSessionResponse, err := client.CloseSession(ctx, &pb.CloseSessionRequest{SessionHandle: sessionHandle})
-		require.NoError(t, err)
-		require.Equal(t, pb.ReturnValue_OK, closeSessionResponse.GetReturnValue())
-	}()
 
 	testCases := []testCase{
 		{
-			Title:              "InvalidSessionHandle",
-			GivenSessionHandle: 0,
+			Title:                  "InvalidSessionHandle",
+			GivenSessionHandleMode: sessionModeInvalid,
 			GivenMechanism: &pb.Mechanism{
 				Mechanism: pb.MechanismType_MD5,
 			},
 			ExpectedReturnValue: pb.ReturnValue_SESSION_HANDLE_INVALID,
 		},
 		{
-			Title:              "ClosedSessionHandle",
-			GivenSessionHandle: sessionHandle + 1,
+			Title:                  "ClosedSessionHandle",
+			GivenSessionHandleMode: sessionModeClosed,
 			GivenMechanism: &pb.Mechanism{
 				Mechanism: pb.MechanismType_MD5,
 			},
 			ExpectedReturnValue: pb.ReturnValue_SESSION_CLOSED,
 		},
 		{
-			Title:               "MissingMechanism",
-			GivenSessionHandle:  sessionHandle,
-			GivenMechanism:      nil,
-			ExpectedReturnValue: pb.ReturnValue_ARGUMENTS_BAD,
+			Title:                  "MissingMechanism",
+			GivenSessionHandleMode: sessionModeValid,
+			GivenMechanism:         nil,
+			ExpectedReturnValue:    pb.ReturnValue_ARGUMENTS_BAD,
 		},
 		{
-			Title:              "UnknownMechanism",
-			GivenSessionHandle: sessionHandle,
+			Title:                  "UnknownMechanism",
+			GivenSessionHandleMode: sessionModeValid,
 			GivenMechanism: &pb.Mechanism{
 				Mechanism: pb.MechanismType_RIPEMD128,
 			},
 			ExpectedReturnValue: pb.ReturnValue_MECHANISM_INVALID,
 		},
 		{
-			Title:              "MechanismMD5",
-			GivenSessionHandle: sessionHandle,
+			Title:                  "NotLoggedIn",
+			GivenSessionHandleMode: sessionModeValid,
+			GivenMechanism: &pb.Mechanism{
+				Mechanism: pb.MechanismType_MD5,
+			},
+			GivenSkipLogin:      true,
+			ExpectedReturnValue: pb.ReturnValue_USER_NOT_LOGGED_IN,
+		},
+		{
+			Title:                  "MechanismMD5",
+			GivenSessionHandleMode: sessionModeValid,
 			GivenMechanism: &pb.Mechanism{
 				Mechanism: pb.MechanismType_MD5,
 			},
 			ExpectedReturnValue: pb.ReturnValue_OK,
 		},
 		{
-			Title:              "MechanismRIPEMD160",
-			GivenSessionHandle: sessionHandle,
+			Title:                  "MechanismRIPEMD160",
+			GivenSessionHandleMode: sessionModeValid,
 			GivenMechanism: &pb.Mechanism{
 				Mechanism: pb.MechanismType_RIPEMD160,
 			},
 			ExpectedReturnValue: pb.ReturnValue_OK,
 		},
 		{
-			Title:              "MechanismSHA1",
-			GivenSessionHandle: sessionHandle,
+			Title:                  "MechanismSHA1",
+			GivenSessionHandleMode: sessionModeValid,
 			GivenMechanism: &pb.Mechanism{
 				Mechanism: pb.MechanismType_SHA_1,
 			},
 			ExpectedReturnValue: pb.ReturnValue_OK,
 		},
 		{
-			Title:              "MechanismSHA224",
-			GivenSessionHandle: sessionHandle,
+			Title:                  "MechanismSHA224",
+			GivenSessionHandleMode: sessionModeValid,
 			GivenMechanism: &pb.Mechanism{
 				Mechanism: pb.MechanismType_SHA224,
 			},
 			ExpectedReturnValue: pb.ReturnValue_OK,
 		},
 		{
-			Title:              "MechanismSHA256",
-			GivenSessionHandle: sessionHandle,
+			Title:                  "MechanismSHA256",
+			GivenSessionHandleMode: sessionModeValid,
 			GivenMechanism: &pb.Mechanism{
 				Mechanism: pb.MechanismType_SHA256,
 			},
 			ExpectedReturnValue: pb.ReturnValue_OK,
 		},
 		{
-			Title:              "MechanismSHA384",
-			GivenSessionHandle: sessionHandle,
+			Title:                  "MechanismSHA384",
+			GivenSessionHandleMode: sessionModeValid,
 			GivenMechanism: &pb.Mechanism{
 				Mechanism: pb.MechanismType_SHA384,
 			},
 			ExpectedReturnValue: pb.ReturnValue_OK,
 		},
 		{
-			Title:              "MechanismSHA512",
-			GivenSessionHandle: sessionHandle,
+			Title:                  "MechanismSHA512",
+			GivenSessionHandleMode: sessionModeValid,
 			GivenMechanism: &pb.Mechanism{
 				Mechanism: pb.MechanismType_SHA512,
 			},
 			ExpectedReturnValue: pb.ReturnValue_OK,
 		},
 		{
-			Title:              "MechanismSHA3_224",
-			GivenSessionHandle: sessionHandle,
+			Title:                  "MechanismSHA3_224",
+			GivenSessionHandleMode: sessionModeValid,
 			GivenMechanism: &pb.Mechanism{
 				Mechanism: pb.MechanismType_SHA3_224,
 			},
 			ExpectedReturnValue: pb.ReturnValue_OK,
 		},
 		{
-			Title:              "MechanismSHA3_256",
-			GivenSessionHandle: sessionHandle,
+			Title:                  "MechanismSHA3_256",
+			GivenSessionHandleMode: sessionModeValid,
 			GivenMechanism: &pb.Mechanism{
 				Mechanism: pb.MechanismType_SHA3_256,
 			},
 			ExpectedReturnValue: pb.ReturnValue_OK,
 		},
 		{
-			Title:              "MechanismSHA3_384",
-			GivenSessionHandle: sessionHandle,
+			Title:                  "MechanismSHA3_384",
+			GivenSessionHandleMode: sessionModeValid,
 			GivenMechanism: &pb.Mechanism{
 				Mechanism: pb.MechanismType_SHA3_384,
 			},
 			ExpectedReturnValue: pb.ReturnValue_OK,
 		},
 		{
-			Title:              "MechanismSHA3_513",
-			GivenSessionHandle: sessionHandle,
+			Title:                  "MechanismSHA3_513",
+			GivenSessionHandleMode: sessionModeValid,
 			GivenMechanism: &pb.Mechanism{
 				Mechanism: pb.MechanismType_SHA3_512,
 			},
@@ -160,11 +159,50 @@ func TestServer_DigestInit(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.Title, func(t *testing.T) {
+			ctx := context.TODO()
+			userService, client, closer := testServer(ctx)
+			defer closer()
+			userService.On("Authenticate", mock.Anything, mock.Anything, mock.Anything, mock.Anything).Return(nil)
+
+			// open session
+			openSessionResponse, err := client.OpenSession(ctx, &pb.OpenSessionRequest{SlotId: 1, Flags: 1})
+			require.NoError(t, err)
+			require.Equal(t, pb.ReturnValue_OK, openSessionResponse.GetReturnValue())
+			sessionHandle := openSessionResponse.GetSessionHandle()
+
+			defer func() {
+				// close session
+				closeSessionResponse, err := client.CloseSession(ctx, &pb.CloseSessionRequest{SessionHandle: sessionHandle})
+				require.NoError(t, err)
+				require.Equal(t, pb.ReturnValue_OK, closeSessionResponse.GetReturnValue())
+			}()
+
+			if !tc.GivenSkipLogin {
+				// login
+				loginResponse, err := client.LoginUser(ctx, &pb.LoginUserRequest{
+					SessionHandle: sessionHandle,
+					UserType:      pb.UserType_USER,
+					Pin:           "password",
+					Username:      "user",
+				})
+				require.NoError(t, err)
+				require.Equal(t, pb.ReturnValue_OK, loginResponse.GetReturnValue())
+			}
+
+			var digestInitSessionHandle uint64
+			switch tc.GivenSessionHandleMode {
+			case sessionModeInvalid:
+				digestInitSessionHandle = 0
+			case sessionModeValid:
+				digestInitSessionHandle = sessionHandle
+			case sessionModeClosed:
+				digestInitSessionHandle = sessionHandle + 1
+			}
+
 			// digest init
-			digestInitResponse, err := client.DigestInit(ctx, &pb.DigestInitRequest{SessionHandle: tc.GivenSessionHandle, Mechanism: tc.GivenMechanism})
+			digestInitResponse, err := client.DigestInit(ctx, &pb.DigestInitRequest{SessionHandle: digestInitSessionHandle, Mechanism: tc.GivenMechanism})
 			require.NoError(t, err)
 			require.Equal(t, tc.ExpectedReturnValue, digestInitResponse.GetReturnValue())
-
 		})
 	}
 }
@@ -181,6 +219,7 @@ func TestServer_Digest(t *testing.T) {
 		Title                  string
 		GivenSessionHandleMode sessionHandleMode
 		GivenMechanism         *pb.Mechanism
+		GivenSkipLogin         bool
 		GivenData              []byte
 		ExpectedReturnValue    pb.ReturnValue
 	}
@@ -212,8 +251,9 @@ func TestServer_Digest(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.Title, func(t *testing.T) {
 			ctx := context.TODO()
-			client, closer := testServer(ctx)
+			userService, client, closer := testServer(ctx)
 			defer closer()
+			userService.On("Authenticate", mock.Anything, mock.Anything, mock.Anything, mock.Anything).Return(nil)
 
 			// open session
 			openSessionResponse, err := client.OpenSession(ctx, &pb.OpenSessionRequest{SlotId: 1, Flags: 1})
@@ -228,6 +268,18 @@ func TestServer_Digest(t *testing.T) {
 				require.NoError(t, err)
 				require.Equal(t, pb.ReturnValue_OK, closeSessionResponse.GetReturnValue())
 			}()
+
+			// login
+			if !tc.GivenSkipLogin {
+				loginResponse, err := client.LoginUser(ctx, &pb.LoginUserRequest{
+					SessionHandle: sessionHandle,
+					UserType:      pb.UserType_USER,
+					Pin:           "password",
+					Username:      "user",
+				})
+				require.NoError(t, err)
+				require.Equal(t, pb.ReturnValue_OK, loginResponse.GetReturnValue())
+			}
 
 			// digest init
 			if tc.GivenMechanism != nil {
@@ -297,8 +349,9 @@ func TestServer_DigestUpdate(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.Title, func(t *testing.T) {
 			ctx := context.TODO()
-			client, closer := testServer(ctx)
+			userService, client, closer := testServer(ctx)
 			defer closer()
+			userService.On("Authenticate", mock.Anything, mock.Anything, mock.Anything, mock.Anything).Return(nil)
 
 			// open session
 			openSessionResponse, err := client.OpenSession(ctx, &pb.OpenSessionRequest{SlotId: 1, Flags: 1})
@@ -313,6 +366,16 @@ func TestServer_DigestUpdate(t *testing.T) {
 				require.NoError(t, err)
 				require.Equal(t, pb.ReturnValue_OK, closeSessionResponse.GetReturnValue())
 			}()
+
+			// login
+			loginResponse, err := client.LoginUser(ctx, &pb.LoginUserRequest{
+				SessionHandle: sessionHandle,
+				UserType:      pb.UserType_USER,
+				Pin:           "password",
+				Username:      "user",
+			})
+			require.NoError(t, err)
+			require.Equal(t, pb.ReturnValue_OK, loginResponse.GetReturnValue())
 
 			// digest init
 			if tc.GivenMechanism != nil {
@@ -382,8 +445,9 @@ func TestServer_DigestFinal(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.Title, func(t *testing.T) {
 			ctx := context.TODO()
-			client, closer := testServer(ctx)
+			userService, client, closer := testServer(ctx)
 			defer closer()
+			userService.On("Authenticate", mock.Anything, mock.Anything, mock.Anything, mock.Anything).Return(nil)
 
 			// open session
 			openSessionResponse, err := client.OpenSession(ctx, &pb.OpenSessionRequest{SlotId: 1, Flags: 1})
@@ -398,6 +462,16 @@ func TestServer_DigestFinal(t *testing.T) {
 				require.NoError(t, err)
 				require.Equal(t, pb.ReturnValue_OK, closeSessionResponse.GetReturnValue())
 			}()
+
+			// login
+			loginResponse, err := client.LoginUser(ctx, &pb.LoginUserRequest{
+				SessionHandle: sessionHandle,
+				UserType:      pb.UserType_USER,
+				Pin:           "password",
+				Username:      "user",
+			})
+			require.NoError(t, err)
+			require.Equal(t, pb.ReturnValue_OK, loginResponse.GetReturnValue())
 
 			// digest init
 			if tc.GivenMechanism != nil {
@@ -677,8 +751,9 @@ func TestServer_Digest_TestVector_SingleRun(t *testing.T) {
 			for idx, tv := range tc.TestVectors {
 				t.Run(fmt.Sprintf("TestVector%d", idx+1), func(t *testing.T) {
 					ctx := context.TODO()
-					client, closer := testServer(ctx)
+					userService, client, closer := testServer(ctx)
 					defer closer()
+					userService.On("Authenticate", mock.Anything, mock.Anything, mock.Anything, mock.Anything).Return(nil)
 
 					// open session
 					openSessionResponse, err := client.OpenSession(ctx, &pb.OpenSessionRequest{SlotId: 1, Flags: 1})
@@ -693,6 +768,16 @@ func TestServer_Digest_TestVector_SingleRun(t *testing.T) {
 						require.NoError(t, err)
 						require.Equal(t, pb.ReturnValue_OK, closeSessionResponse.GetReturnValue())
 					}()
+
+					// login
+					loginResponse, err := client.LoginUser(ctx, &pb.LoginUserRequest{
+						SessionHandle: sessionHandle,
+						UserType:      pb.UserType_USER,
+						Pin:           "password",
+						Username:      "user",
+					})
+					require.NoError(t, err)
+					require.Equal(t, pb.ReturnValue_OK, loginResponse.GetReturnValue())
 
 					// digest init
 					digestInitResponse, err := client.DigestInit(ctx, &pb.DigestInitRequest{SessionHandle: sessionHandle, Mechanism: &pb.Mechanism{Mechanism: tc.GivenMechanismType}})
@@ -983,8 +1068,9 @@ func TestServer_Digest_TestVector_MultipleRun(t *testing.T) {
 			for idx, tv := range tc.TestVectors {
 				t.Run(fmt.Sprintf("TestVector%d", idx+1), func(t *testing.T) {
 					ctx := context.TODO()
-					client, closer := testServer(ctx)
+					userService, client, closer := testServer(ctx)
 					defer closer()
+					userService.On("Authenticate", mock.Anything, mock.Anything, mock.Anything, mock.Anything).Return(nil)
 
 					// open session
 					openSessionResponse, err := client.OpenSession(ctx, &pb.OpenSessionRequest{SlotId: 1, Flags: 1})
@@ -999,6 +1085,16 @@ func TestServer_Digest_TestVector_MultipleRun(t *testing.T) {
 						require.NoError(t, err)
 						require.Equal(t, pb.ReturnValue_OK, closeSessionResponse.GetReturnValue())
 					}()
+
+					// login
+					loginResponse, err := client.LoginUser(ctx, &pb.LoginUserRequest{
+						SessionHandle: sessionHandle,
+						UserType:      pb.UserType_USER,
+						Pin:           "password",
+						Username:      "user",
+					})
+					require.NoError(t, err)
+					require.Equal(t, pb.ReturnValue_OK, loginResponse.GetReturnValue())
 
 					// digest init
 					digestInitResponse, err := client.DigestInit(ctx, &pb.DigestInitRequest{SessionHandle: sessionHandle, Mechanism: &pb.Mechanism{Mechanism: tc.GivenMechanismType}})

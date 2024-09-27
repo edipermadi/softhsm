@@ -30,6 +30,11 @@ service CryptographicToken {
   rpc CloseAllSessions(CloseAllSessionsRequest)returns (CloseAllSessionsResponse){}
   rpc GetSessionInfo(GetSessionInfoRequest)returns (GetSessionInfoResponse){}
   rpc SessionCancel(SessionCancelRequest)returns(SessionCancelResponse){}
+  rpc GetOperationState(GetOperationStateRequest)returns(GetOperationStateResponse){}
+  rpc SetOperationState(SetOperationStateRequest)returns(SetOperationStateResponse){}
+  rpc Login(LoginRequest)returns(LoginResponse){}
+  rpc LoginUser(LoginUserRequest)returns(LoginUserResponse){}
+  rpc Logout(LogoutRequest)returns(LogoutResponse){}
 
   rpc CreateObject(CreateObjectRequest)returns(CreateObjectResponse){}
   rpc CopyObject(CopyObjectRequest)returns(CopyObjectResponse){}
@@ -748,8 +753,12 @@ message DigestUpdateRequest{
 message DigestUpdateResponse{
   ReturnValue returnValue = 1;
 }
-message DigestKeyRequest{}
-message DigestKeyResponse{}
+message DigestKeyRequest{
+  uint64 sessionHandle = 1;
+}
+message DigestKeyResponse{
+  ReturnValue returnValue = 1;
+}
 message DigestFinalRequest{
   uint64 sessionHandle = 1;
 }
@@ -861,7 +870,56 @@ message SessionCancelRequest {
 }
 
 message SessionCancelResponse {
+  ReturnValue returnValue = 1;
+}
 
+message GetOperationStateRequest{
+  uint64 sessionHandle = 1;
+}
+
+message GetOperationStateResponse{
+  ReturnValue returnValue = 1;
+}
+
+message SetOperationStateRequest{
+  uint64 sessionHandle = 1;
+}
+
+message SetOperationStateResponse{
+  ReturnValue returnValue = 1;
+}
+
+message LoginRequest{
+  uint64 sessionHandle = 1;
+  UserType userType = 2;
+  string pin = 3;
+}
+
+message LoginResponse{
+  ReturnValue returnValue = 1;
+}
+
+enum UserType{
+  SO = 0;
+  USER = 1;
+}
+
+message LoginUserRequest{
+  uint64 sessionHandle = 1;
+  UserType userType = 2;
+  string pin = 3;
+  string username = 4;
+}
+
+message LoginUserResponse{
+  ReturnValue returnValue = 1;
+}
+
+message LogoutRequest{
+  uint64 sessionHandle = 1;
+}
+message LogoutResponse{
+  ReturnValue returnValue = 1;
 }
 
 enum ReturnValue{
